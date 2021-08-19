@@ -1,25 +1,25 @@
 <!--   Core JS Files   -->
-<script src="{{asset('/backend/assets/js/core/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('/backend/assets/js/core/popper.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('/backend/assets/js/core/bootstrap.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('/assets/js/core/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('/assets/js/core/popper.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('/assets/js/core/bootstrap.min.js')}}" type="text/javascript"></script>
 <!--  Plugin for Switches, full documentation here: https://www.jque.re/plugins/version3/bootstrap.switch/ -->
-<script src="{{asset('/backend/assets/js/plugins/bootstrap-switch.js')}}"></script>
+<script src="{{asset('/assets/js/plugins/bootstrap-switch.js')}}"></script>
 <!--  Google Maps Plugin    -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
 <!--  Chartist Plugin  -->
-<script src="{{asset('/backend/assets/js/plugins/chartist.min.js')}}"></script>
+<script src="{{asset('//assets/js/plugins/chartist.min.js')}}"></script>
 <!--  Notifications Plugin    -->
-<script src="{{asset('/backend/assets/js/plugins/bootstrap-notify.js')}}"></script>
+<script src="{{asset('/assets/js/plugins/bootstrap-notify.js')}}"></script>
 <!--  Share Plugin -->
-<script src="{{asset('/backend/assets/js/plugins/jquery.sharrre.js')}}"></script>
+<script src="{{asset('/assets/js/plugins/jquery.sharrre.js')}}"></script>
 <!--  jVector Map  -->
-<script src="{{asset('/backend/assets/js/plugins/jquery-jvectormap.js')}}" type="text/javascript"></script>
+<script src="{{asset('/assets/js/plugins/jquery-jvectormap.js')}}" type="text/javascript"></script>
 <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
-<script src="{{asset('/backend/assets/js/plugins/moment.min.js')}}"></script>
+<script src="{{asset('/assets/js/plugins/moment.min.js')}}"></script>
 <!--  DatetimePicker   -->
-<script src="{{asset('/backend/assets/js/plugins/bootstrap-datetimepicker.js')}}"></script>
+<script src="{{asset('/assets/js/plugins/bootstrap-datetimepicker.js')}}"></script>
 <!--  Sweet Alert  -->
-<script src="{{asset('/backend/assets/js/plugins/sweetalert2.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('/assets/js/plugins/sweetalert2.min.js')}}" type="text/javascript"></script>
 <!--  Tags Input  -->
 <script src="{{asset('/backend/assets/js/plugins/bootstrap-tagsinput.js')}}" type="text/javascript"></script>
 <!--  Sliders  -->
