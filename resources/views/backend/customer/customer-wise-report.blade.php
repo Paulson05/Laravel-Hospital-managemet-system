@@ -1,5 +1,5 @@
 @extends('backend.template.defaults')
-@section('title', '|department-product-wise')
+@section('title', '|department-doctor-wise')
 @section('body')
     <div class="content">
         <div class="container-fluid">
@@ -156,10 +156,10 @@
                 var category_id = $(this).val();
                 $.ajax({
                     type: "GET",
-                    url:"{{route('get-product')}}",
+                    url:"{{route('get-doctor')}}",
                     data:{category_id:category_id},
                     success:function (data){
-                        var html = '<option value="">select product</option>';
+                        var html = '<option value="">select doctor</option>';
                         $.each(data,function (key,v){
                             html += '<option value="'+v.id+'">'+v.name+'</option>';
                         });

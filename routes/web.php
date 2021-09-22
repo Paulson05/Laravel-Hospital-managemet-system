@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DefaultController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
@@ -46,15 +47,15 @@ Route::get('/', function () {
 
 
 
-//product
-Route::get('/product/index', [ProductController::class, 'index'])->name('product.index');
-Route::get('/product/barcode', [ProductController::class, 'getProductCode'])->name('product.barcode');
+//doctor
+Route::get('/doctor/index', [DoctorController::class, 'index'])->name('doctor.index');
+Route::get('/doctor/barcode', [DoctorController::class, 'getProductCode'])->name('doctor.barcode');
 
-Route::post('/post-product', [ProductController::class, 'store']);
-Route::get('/fetch-product', [ProductController::class, 'fetchProduct']);
-Route::get('/edit-product/{id}', [ ProductController::class, 'edit']);
-Route::put('/update-product/{id}', [ProductController::class, 'update']);
-Route::delete('/delete-product/{id}', [ProductController::class, 'destroy']);
+Route::post('/post-doctor', [DoctorController::class, 'store']);
+Route::get('/fetch-doctor', [DoctorController::class, 'fetchProduct']);
+Route::get('/edit-doctor/{id}', [ DoctorController::class, 'edit']);
+Route::put('/update-doctor/{id}', [DoctorController::class, 'update']);
+Route::delete('/delete-doctor/{id}', [DoctorController::class, 'destroy']);
 
 //unit
 Route::get('/unit', [UnitController::class, 'index'])->name('unit.index');
@@ -122,7 +123,7 @@ Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice.index
 Route::get('/invoice/pending', [InvoiceController::class, 'invoiceList'])->name('invoice.list');
 //Route::get('/invoiceapproval', [InvoiceController::class, 'pendingList'])->name('invoicepending.list');
 
-Route::get('/get-stock', [DefaultController::class, 'getStock'])->name('check-product-stock');
+Route::get('/get-stock', [DefaultController::class, 'getStock'])->name('check-doctor-stock');
 Route::post('invoice/store',[InvoiceController::class, 'store'])->name('invoice.store');
 Route::get('invoice/add',[InvoiceController::class, 'add'])->name('invoice.add');
 Route::get('/approved/invoice/{id}', [InvoiceController::class, 'approve'])->name('invoice.approve');
@@ -139,12 +140,12 @@ Route::get('/stock/report', [StockController::class, 'stockReport'])->name('stoc
 Route::get('/stock/daily-report/pdf', [StockController::class, 'StockReportPdf'])->name('stock.report.pdf');
 Route::get('/report/department/wise', [StockController::class, 'supplierWiseReport'])->name('department.wise.report');
 Route::get('/report/department/wise/pdf', [StockController::class, 'supplierWiseReportPdf'])->name('department.wise.report.pdf');
-Route::get('/report/product/wise/pdf', [StockController::class, 'productWiseReportPdf'])->name('product.wise.report.pdf');
+Route::get('/report/doctor/wise/pdf', [StockController::class, 'productWiseReportPdf'])->name('doctor.wise.report.pdf');
 
 
 // default
 Route::get('/get-category', [DefaultController::class, 'getCategory'])->name('get-category');
-Route::get('/get-product', [DefaultController::class, 'getProduct'])->name('get-product');
+Route::get('/get-doctor', [DefaultController::class, 'getProduct'])->name('get-doctor');
 
 Route::get('/role', [RoleController::class, 'index'])->name('role.index');
 Route::post('/post-role', [RoleController::class, 'store']);

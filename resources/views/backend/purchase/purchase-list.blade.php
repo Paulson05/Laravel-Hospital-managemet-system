@@ -287,7 +287,7 @@
 
 
 
-                                            {{--                                        <td>{{$product->first()->name}}</td>--}}
+                                            {{--                                        <td>{{$doctor->first()->name}}</td>--}}
 
                                             <td>
                                                 <button type="button"   class="edit_product btn btn-primary" ><i class="fa fa-edit"></i></button>
@@ -317,7 +317,7 @@
             // function  fetchproduct() {
             //     $.ajax({
             //         type: "GET",
-            //         url:"/fetch-product/",
+            //         url:"/fetch-doctor/",
             //         dataType:"json",
             //         success: function (response) {
             //             // console.log(response.posts);
@@ -502,7 +502,7 @@
             });
 
 
-            // add product
+            // add doctor
 
 
 

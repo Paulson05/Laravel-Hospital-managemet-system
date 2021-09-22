@@ -4,18 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DoctorController extends Controller
+{ public function index()
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
+    return view('backend.doctor.index');
+}
 
     /**
      * Show the form for creating a new resource.
@@ -27,59 +23,107 @@ class DoctorController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->all();
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'suppliers_id'=>  'required',
+            'unit_id' => 'required',
+            'category_id' => 'required',
+
+
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->messages(),
+            ]);
+        }else{
+            $product_code = rand(106890128, 100000000);
+            $redColor = '255, 0, 0';
+            $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+            $barcodes =  $generator->getBarcode($product_code,  $generator::TYPE_STANDARD_2_5, 2, 60);
+            $product = new Product();
+            $product->suppliers_id = $request->suppliers_id;
+            $product->name = $request->name;
+            $product->quantity= '0';
+            $product->alert_stock = $request->alert_stock;
+            $product->unit_id = $request->unit_id;
+            $product->product_code = $product_code;
+            $product->barcode = $barcodes;
+            $product->category_id = $request->category_id;
+//        $department->created_by = Auth::user()->id;
+
+            $product->save();
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'post added successfully',
+
+            ]);
+        }
+    }
+    public function  fetchProduct(){
+        $products = Product::all();
+        return response()->json([
+            'products'=>$products,
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Doctor  $doctor
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Doctor $doctor)
+    public function show(Product $product)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Doctor  $doctor
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Doctor $doctor)
+
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+
+        if ($product) {
+            return response()->json([
+                'status' => 200,
+                'doctor' => $product,
+
+            ]);
+        } else {
+            return response()->json([
+                'status' => 200,
+                'message' => 'doctor added succesfully',
+
+            ]);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Doctor  $doctor
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Doctor $doctor)
+
+    public function update(Request $request, $id)
     {
-        //
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Doctor  $doctor
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Doctor $doctor)
+    public function destroy($id)
     {
-        //
+        $post = Product::find($id);
+        $post->delete();
+        return response()->json([
+            'status' => 200,
+            'message' => 'post deleted successfully',
+
+        ]);
+    }
+
+    public function getProductCode(){
+        $productBarCode = Product::select('barcode','product_code' )->get();
+        return view('backend.doctor.productbarcode')->with([
+            'productBarCode' =>  $productBarCode
+        ]);
     }
 }

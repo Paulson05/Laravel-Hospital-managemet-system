@@ -91,10 +91,10 @@
                 </li>
 
 
-                <li class="{{ Route::currentRouteNamed('product.index') ? 'active' : '' }}" >
-                    <a href="{{route('product.index')}}">
-                        <span class="sidebar-mini-icon">PM</span>
-                        <span class="sidebar-normal">Product Management</span>
+                <li class="{{ Route::currentRouteNamed('doctor.index') ? 'active' : '' }}" >
+                    <a href="{{route('doctor.index')}}">
+                        <span class="sidebar-mini-icon">D</span>
+                        <span class="sidebar-normal">Doctor</span>
                     </a>
                 </li>
 

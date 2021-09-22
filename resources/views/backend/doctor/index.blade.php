@@ -1,13 +1,13 @@
 @extends('backend.template.defaults')
-@section('title', '| product')
+@section('title', '| doctor')
 @section('body')
     <div class="content">
         <div class="container-fluid">
 
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Product</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">({{\App\Models\Product::count()}})</li>
+                    <li class="breadcrumb-item"><a href="#">Doctor</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">({{\App\Models\Doctor::count()}})</li>
                 </ol>
             </nav>
             <div class="row">
@@ -19,7 +19,7 @@
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Creat product</h4>
+                                    <h4 class="modal-title">Creat Doctor</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
 
@@ -52,61 +52,42 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
-                                                <strong>Category</strong>
-                                                @php
-                                                    $categories = \App\Models\Category::all();
-                                                @endphp
-                                                <select name="categories_id" id="category_id" class="category_id form-control" data-title="Single Category" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
-
-                                                    <option>--select category--</option>
-
-                                                    @forelse($categories as $category)
-                                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                                    @empty
 
 
-                                                        <option value="id">no category</option>
-
-                                                    @endforelse
-                                                </select>
 
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
-                                                @php
-                                                    $units = \App\Models\Unit::all();
-                                                @endphp
+
                                                 <strong>Unit</strong>
                                                 <select name="unit_id" id="unit_id" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
 
                                                     <option>--select unit--</option>
 
-                                                    @forelse($units as $unit)
-                                                        <option value="{{{$unit->id}}}">{{$unit->name}}</option>
-                                                    @empty
+
+                                                        <option value=""></option>
+
                                                         <option value="">no unit</option>
 
-                                                    @endforelse
+
                                                 </select>
 
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                                             <div class="form-group">
-                                                @php
-                                                    $suppliers = \App\Models\Supplier::all();
-                                                @endphp
+
                                                 <strong>Supplier</strong>
                                                 <select name="suppliers_id" id="suppliers_id" class="suppliers_id form-control" data-title="Single Select" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
                                                     <option>--select supplier--</option>
-                                                    @forelse($suppliers as $supplier)
 
-                                                        <option value="{{$supplier->id}}">{{$supplier->name}}</option>
-                                                    @empty
+
+                                                        <option value=""></option>
+
                                                         <option value="is">no supplier</option>
 
-                                                    @endforelse
+
                                                 </select>
 
                                             </div>
@@ -259,15 +240,15 @@
                                     </thead>
 
                                     <tbody>
-                                    @foreach($products as $product)
-                                        <tr>
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$product->name}}</td>
-                                            <td>{{$product->supplier->name}}</td>
-                                            <td>{{$product->unit->name}}</td>
-                                            <td>{{$product->category->name}}</td>
 
-                                            {{--                                        <td>{{$product->first()->name}}</td>--}}
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+
+
 
                                             <td>
                                                 <button type="button"   class="delete_post btn btn-primary" ><i class="fa fa-trash">delete</i></button>
@@ -276,7 +257,7 @@
                                             <td>
 
                                         </tr>
-                                    @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
@@ -358,7 +339,7 @@
                             fetchproduct();
                             swal.fire(
                                 'congratulation!',
-                                'product added successfully',
+                                'doctor added successfully',
                                 'success'
                             )
                         }
@@ -402,7 +383,7 @@
                         fetchproduct();
                         swal.fire(
                             'congratulation!',
-                            'product deleted successfully',
+                            'doctor deleted successfully',
                             'success'
                         )
                     }
@@ -486,7 +467,7 @@
                             fetchproduct();
                             swal.fire(
                                 'congratulation!',
-                                'product updated successfully',
+                                'doctor updated successfully',
                                 'success'
                             )
                         }
@@ -497,7 +478,7 @@
             });
 
 
-            // add product
+            // add doctor
 
 
 

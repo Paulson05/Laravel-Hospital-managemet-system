@@ -288,7 +288,7 @@
 
 
 
-                                            {{--                                        <td>{{$product->first()->name}}</td>--}}
+                                            {{--                                        <td>{{$doctor->first()->name}}</td>--}}
 
                                             <td>
                                                       @if($purchase->status == '0')
@@ -318,7 +318,7 @@
             // function  fetchproduct() {
             //     $.ajax({
             //         type: "GET",
-            //         url:"/fetch-product/",
+            //         url:"/fetch-doctor/",
             //         dataType:"json",
             //         success: function (response) {
             //             // console.log(response.posts);
@@ -503,7 +503,7 @@
             });
 
 
-            // add product
+            // add doctor
 
 
 

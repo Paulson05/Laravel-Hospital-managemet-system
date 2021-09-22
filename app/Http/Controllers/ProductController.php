@@ -17,7 +17,7 @@ class ProductController extends Controller
         $products =   Product::with(array('category'=>function($query){
             $query->select('id','name');
         }))->get();
-        return view('backend.product.index')->with([
+        return view('backend.doctor.index')->with([
             'products' => $products,
         ]);
     }
@@ -100,13 +100,13 @@ class ProductController extends Controller
         if ($product) {
             return response()->json([
                 'status' => 200,
-                'product' => $product,
+                'doctor' => $product,
 
             ]);
         } else {
             return response()->json([
                 'status' => 200,
-                'message' => 'product added succesfully',
+                'message' => 'doctor added succesfully',
 
             ]);
         }
@@ -131,7 +131,7 @@ class ProductController extends Controller
 
     public function getProductCode(){
         $productBarCode = Product::select('barcode','product_code' )->get();
-        return view('backend.product.productbarcode')->with([
+        return view('backend.doctor.productbarcode')->with([
             'productBarCode' =>  $productBarCode
         ]);
     }

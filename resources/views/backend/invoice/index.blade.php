@@ -357,7 +357,7 @@
             // function  fetchproduct() {
             //     $.ajax({
             //         type: "GET",
-            //         url:"/fetch-product/",
+            //         url:"/fetch-doctor/",
             //         dataType:"json",
             //         success: function (response) {
             //             // console.log(response.posts);
@@ -547,7 +547,7 @@
             });
 
 
-         // add product
+         // add doctor
 
 
 
@@ -585,10 +585,10 @@
                 var category_id = $(this).val();
                 $.ajax({
                     type: "GET",
-                    url:"{{route('get-product')}}",
+                    url:"{{route('get-doctor')}}",
                     data:{category_id:category_id},
                     success:function (data){
-                        var html = '<option value="">select product</option>';
+                        var html = '<option value="">select doctor</option>';
                         $.each(data,function (key,v){
                             html += '<option value="'+v.id+'">'+v.name+'</option>';
                         });
@@ -687,7 +687,7 @@
                 var products_id = $(this).val();
                 $.ajax({
                     type: "GET",
-                    url:"{{route('check-product-stock')}}",
+                    url:"{{route('check-doctor-stock')}}",
                     data:{products_id:products_id},
                     success:function (data){
                         $('#current_stock_qty').val(data)

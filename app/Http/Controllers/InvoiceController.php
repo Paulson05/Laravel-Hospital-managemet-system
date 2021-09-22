@@ -44,7 +44,7 @@ class InvoiceController extends Controller
     public function store(Request $request){
 //        dd('ok');
         if ($request->category_id == null){
-            return redirect()->back()->with('error', 'sorry you did not select any product  ');
+            return redirect()->back()->with('error', 'sorry you did not select any doctor  ');
         }
         else{
             if ($request->paid_amount>$request->estimate_amount){

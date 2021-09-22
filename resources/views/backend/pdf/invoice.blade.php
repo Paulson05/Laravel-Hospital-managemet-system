@@ -48,9 +48,9 @@
 
                     <td   >{{$loop->iteration}}</td>
                     <td >{{$data['category']['name']}}</td>
-                    <td >{{$data['product']['name']}}</td>
+                    <td >{{$data['doctor']['name']}}</td>
 
-                    <td>{{$data['product']['quantity']}}</td>
+                    <td>{{$data['doctor']['quantity']}}</td>
                     <td  >{{$data->selling_qty}}</td>
                     <td >{{$data->unit_price}}</td>
                     <td >{{$data->selling_price}}</td>
