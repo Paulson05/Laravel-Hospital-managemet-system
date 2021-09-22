@@ -2,84 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Stock;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function stockReport(){
+        $products = Product::orderBy('suppliers_id', 'asc')->orderBy('category_id', 'asc')->get();
+        return view('backend.stock.index')->with([
+            'products' => $products,
+        ]);
+    }
+    public function StockReportPdf(){
+        $data['products'] =  Product::orderBy('suppliers_id', 'asc')->orderBy('category_id', 'asc')->get();
+        $pdf = \PDF::loadView('backend.pdf.stockreportpdf',$data);
+        return $pdf->stream('invoice.pdf');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public  function supplierWiseReport(){
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('backend.stock.department-product-wise');
     }
+public  function supplierWiseReportPdf(Request $request){
+    $data['products'] =  Product::orderBy('suppliers_id', 'asc')->orderBy('category_id', 'asc')->where('suppliers_id',$request->suppliers_id)->get();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Stock $stock)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Stock $stock)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Stock $stock)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Stock $stock)
-    {
-        //
-    }
+    $pdf = \PDF::loadView('backend.pdf.supplierwisestockreportpdf',$data);
+    return $pdf->stream('invoice.pdf');
 }
+public function productWiseReportPdf(Request $request){
+    $data['product'] =  Product::where('category_id',$request->category_id)->where('id',$request->products_id)->first();
+
+    $pdf = \PDF::loadView('backend.pdf.productwisestockreportpdf',$data);
+    return $pdf->stream('invoice.pdf');}
+}
+
+
+

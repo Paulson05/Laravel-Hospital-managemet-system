@@ -14,7 +14,18 @@ class CreateAppointmentsTable extends Migration
     public function up()
     {
         Schema::create('appointments', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email');
+            $table->string('age')->nullable();
+            $table->string('doctor_name');
+            $table->string('phone_number');
+            $table->mediumText('message');
+            $table->string('department');
+            $table->dateTime('appointment_date');
+            $table->dateTime('appointment_time');
+            $table->enum('status',['active', 'inactive'])->default('inactive');
             $table->timestamps();
         });
     }

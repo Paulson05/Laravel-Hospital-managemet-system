@@ -14,8 +14,14 @@ class CreateSeatBedsTable extends Migration
     public function up()
     {
         Schema::create('seat_beds', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->bigIncrements('id');
+            $table->string('seat_no');
+            $table->string('floor_no');
+            $table->string('rent');
+            $table->string('room');
+            $table->string('photo')->nullable();
+            $table->enum('empty',['empty', 'full']);
+            $table->enum('type',['cabin', 'kingsize']);
         });
     }
 
