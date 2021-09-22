@@ -25,12 +25,12 @@ class DepartmentController extends Controller
 
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(),[
 
             'name' => 'required',
-            'email'=>  'required',
-            'mobile_no' => 'required',
-            'address' => 'required',
+            'description'=>  'required',
+            'status' => 'required',
 
         ]);
         if ($validator->fails()) {
@@ -39,11 +39,10 @@ class DepartmentController extends Controller
                 'errors' => $validator->messages(),
             ]);
         }else{
-            $supplier = new Supplier();
+            $supplier = new Department();
             $supplier->name = $request->name;
-            $supplier->email = $request->email;
-            $supplier->mobile_no= $request->mobile_no;
-            $supplier->address = $request->address;
+            $supplier->status = $request->status;
+            $supplier->description = $request->description;
 //        $supplier->created_by = Auth::user()->id;
             $supplier->save();
 
@@ -57,9 +56,9 @@ class DepartmentController extends Controller
 
     }
     public function fetchDepartment(){
-        $suppliers = Supplier::all();
+        $deparments = Department::all();
         return response()->json([
-            'suppliers'=>$suppliers,
+            'deparments'=>$deparments,
         ]);
     }
 

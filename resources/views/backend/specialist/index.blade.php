@@ -1,11 +1,11 @@
 @extends('backend.template.defaults')
-@section('title', '| department')
+@section('title', '| Specialist')
 @section('body')
     <div class="content">
         <div class="container-fluid">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Department</a></li>
+                    <li class="breadcrumb-item"><a href="#">Specialist</a></li>
                 </ol>
             </nav>
             <div class="row">
@@ -17,7 +17,7 @@
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Creat department</h4>
+                                    <h4 class="modal-title">Creat Specialist</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
 
@@ -32,35 +32,13 @@
 
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                                             <div class="form-group">
-                                                <strong>Department name</strong>
+                                                <strong>Specialist name</strong>
                                                 <input type="text" name="name"  id="name" class="name form-control" placeholder="supplier name" >
 
                                             </div>
 
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 text-left">
-                                            <div class="form-group">
-                                                <strong>status</strong>
-                                                <select class="form-control status" id="status" name="status">
-                                                    <option>---select category---</option>
 
-                                                    <option value="active">Active</option>
-                                                    <option value="inactive">Inactive</option>
-
-                                                </select>
-                                            </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 text-left">
-                                            <div class="form-group">
-                                                <strong>description</strong>
-
-                                                    <textarea id="mytextarea" cols="30" rows="4" name="description" class="form-control"></textarea>
-                                            </div>
-
-                                        </div>
-
-
-
-                                        </div>
 
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                                             <button type="submit" class="add_product btn btn-primary">Save</button>
@@ -94,18 +72,12 @@
                                     <tr>
                                         <th>SN</th>
                                         <th>Name</th>
-                                        <th>Mobile</th>
-                                        <th>Email</th>
-                                        <th>Address</th>
                                         <th class="disabled-sorting text-right">Actions</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td class="text-right">
@@ -234,23 +206,21 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            fetchDepartment();
-            function fetchDepartment() {
+            fetchSpecialist();
+            function fetchSpecialist() {
                 $.ajax({
                     type: "GET",
-                    url:/fetch-department/,
+                    url:/fetch-specialist/,
 
                     dataType:"json",
                     success: function (response) {
                         // console.log(response.posts);
 
                         $('tbody').html("");
-                        $.each(response.deparments, function (key, item){
+                        $.each(response.specialist, function (key, item){
                             $('tbody').append('<tr>\
                                             <td>'+item.id+'</td>\
                                            <td>'+item.name+'</td>\
-                                           <td>'+item.description+'</td>\
-                                           <td>'+item.status+'</td>\
                                             <td><button type="button"  value="'+item.id+'" class="edit_btn btn btn-primary" ><i class="fa fa-edit"></i></button></td>\
                                               <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash"></i></button></td>\
                                             </tr>');
@@ -394,10 +364,6 @@
                 // console.log('click');
                 var data = {
                     'name' : $('.name').val(),
-                    'description' : $('textarea#mytextarea').val(),
-                    'status' : $('#status').val(),
-
-
 
                 }
                 console.log(data);
@@ -409,7 +375,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url:"/post-department/",
+                    url:"/post-specialist/",
                     data:data,
                     dataType:"json",
 
@@ -429,10 +395,10 @@
                             $('#success_message').text(response.message);
                             $('#exampleModalLabel').modal("hide");
                             $('#addModal').find("input").val("");
-                            fetchSupplier();
+                            fetchSpecialist();
                             swal.fire(
                                 'congratulation!',
-                                'department added successfully',
+                                'specialist added successfully',
                                 'success'
                             )
                         }

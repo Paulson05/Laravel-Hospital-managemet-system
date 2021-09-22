@@ -4,17 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Specialist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SpecialistController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return view('backend.specialist.index');
     }
 
     /**
@@ -27,59 +23,106 @@ class SpecialistController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+
+            'name' => 'required',
+
+
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->messages(),
+            ]);
+        }else{
+            $category = new Specialist();
+            $category->name = $request->name;
+
+//        $department->created_by = Auth::user()->id;
+            $category->save();
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'sapecialist added successfully',
+
+            ]);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Specialist  $specialist
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Specialist $specialist)
+    public function fetchSpecialist(){
+        $specialist = Specialist::all();
+        return response()->json([
+            'specialist'=>$specialist,
+        ]);
+    }
+
+
+    public function show(Category $category)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Specialist  $specialist
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Specialist $specialist)
+
+    public function edit( $id)
     {
-        //
+        $category =Category::find($id);
+
+        if ( $category)
+        {
+            return response()->json([
+                'status' => 200,
+                'category' => $category,
+
+            ]);
+        }
+        else{
+            return response()->json([
+                'status' => 200,
+                'message' => 'category added succesfully',
+
+            ]);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Specialist  $specialist
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Specialist $specialist)
+
+    public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(),[
+
+            'name' => 'required',
+
+
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->messages(),
+            ]);
+        }else{
+            $category = Category::find($id);
+            $category->name = $request->name;
+
+//        $department->created_by = Auth::user()->id;
+            $category->update();
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'post added successfully',
+
+            ]);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Specialist  $specialist
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Specialist $specialist)
+    public function destroy($id)
     {
-        //
+        $post = Category::find($id);
+        $post->delete();
+        return response()->json([
+            'status' => 200,
+            'message' => 'post deleted successfully',
+
+        ]);
     }
 }

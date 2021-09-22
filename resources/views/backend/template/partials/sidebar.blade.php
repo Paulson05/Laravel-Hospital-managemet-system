@@ -56,10 +56,10 @@
                     </a>
                 </li>
 
-                <li  class="{{ Route::currentRouteNamed('customer.index') ? 'active' : '' }}" >
-                    <a href="{{route('customer.index')}}">
-                        <span class="sidebar-mini-icon">CM</span>
-                        <span class="sidebar-normal"> Customer Management</span>
+                <li  class="{{ Route::currentRouteNamed('specialist.index') ? 'active' : '' }}" >
+                    <a href="{{route('specialist.index')}}">
+                        <span class="sidebar-mini-icon">S</span>
+                        <span class="sidebar-normal">Specialist</span>
                     </a>
                 </li>
                 <li  class="{{ Route::currentRouteNamed('paid.customer') ? 'active' : '' }}" >
@@ -90,12 +90,6 @@
                     </a>
                 </li>
 
-                <li class="{{ Route::currentRouteNamed('category.index') ? 'active' : '' }} ">
-                    <a href="{{route('category.index')}}">
-                        <span class="sidebar-mini-icon">CM</span>
-                        <span class="sidebar-normal">Category Mangement</span>
-                    </a>
-                </li>
 
                 <li class="{{ Route::currentRouteNamed('product.index') ? 'active' : '' }}" >
                     <a href="{{route('product.index')}}">

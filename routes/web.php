@@ -10,6 +10,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
@@ -64,19 +65,19 @@ Route::put('/update-unit/{id}', [UnitController::class, 'update']);
 Route::delete('/delete-unit/{id}', [UnitController::class, 'destroy']);
 
 //category
-Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
-Route::post('/post-category', [CategoryController::class, 'store']);
-Route::get('/fetch-category', [CategoryController::class, 'fetchCategory']);
-Route::get('/edit-category/{id}', [CategoryController::class, 'edit']);
-Route::put('/update-category/{id}', [CategoryController::class, 'update']);
-Route::delete('/delete-category/{id}', [CategoryController::class, 'destroy']);
+Route::get('/specialist/index', [SpecialistController::class, 'index'])->name('specialist.index');
+Route::post('/post-specialist', [SpecialistController::class, 'store']);
+Route::get('/fetch-specialist', [SpecialistController::class, 'fetchSpecialist']);
+Route::get('/edit-specialist/{id}', [SpecialistController::class, 'edit']);
+Route::put('/update-specialist/{id}', [SpecialistController::class, 'update']);
+Route::delete('/delete-specialist/{id}', [SpecialistController::class, 'destroy']);
 
 
 //department
  Route::resource('/department',DepartmentController::class)->except('create');
 
 Route::post('/post-department', [DepartmentController::class, 'store']);
-Route::get('/fetchd-department', [DepartmentController::class, 'fetchDepartment']);
+Route::get('/fetch-department', [DepartmentController::class, 'fetchDepartment']);
 Route::get('/edit-departmentdepartment/{id}', [DepartmentController::class, 'edit']);
 Route::put('/update-department/{id}', [DepartmentController::class, 'update']);
 Route::delete('/delete-department/{id}', [DepartmentController::class, 'destroy']);
