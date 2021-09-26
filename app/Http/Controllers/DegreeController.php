@@ -2,22 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UnitFormRequest;
-use App\Models\unit;
+use App\Models\Degree;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use PhpParser\Node\UnionType;
 
-class UnitController extends Controller
+class DegreeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view ('backend.unit.index');
+        return view ('backend.degree.index');
     }
 
     /**
@@ -31,16 +24,20 @@ class UnitController extends Controller
     }
 
 
-    public function store(UnitFormRequest $request)
+    public function store(Request $request)
     {
-        Unit::create($request->validated());
+        $request->all();
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+
+        ]);
 
 
-            return response()->json([
-                'status' => 200,
-                'message' => 'post added successfully',
+        return response()->json([
+            'status' => 200,
+            'message' => 'post added successfully',
 
-            ]);
+        ]);
 
     }
     public function  fetchUnit(){

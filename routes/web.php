@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DefaultController;
+use App\Http\Controllers\DegreeController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\InvoiceController;
@@ -57,13 +58,18 @@ Route::get('/edit-doctor/{id}', [ DoctorController::class, 'edit']);
 Route::put('/update-doctor/{id}', [DoctorController::class, 'update']);
 Route::delete('/delete-doctor/{id}', [DoctorController::class, 'destroy']);
 
-//unit
-Route::get('/unit', [UnitController::class, 'index'])->name('unit.index');
-Route::post('/post-unit', [UnitController::class, 'store']);
-Route::get('/fetch-unit', [UnitController::class, 'fetchUnit']);
-Route::get('/edit-unit/{id}', [UnitController::class, 'edit']);
-Route::put('/update-unit/{id}', [UnitController::class, 'update']);
-Route::delete('/delete-unit/{id}', [UnitController::class, 'destroy']);
+
+
+// degree
+
+
+Route::get('/degree', [DegreeController::class, 'index'])->name('degree.index');
+Route::post('/post-degree', [DegreeController::class, 'store'])->name('degree.store');
+Route::get('/fetch-unit', [DegreeController::class, 'fetchUnit']);
+Route::get('/edit-unit/{id}', [DegreeController::class, 'edit']);
+Route::put('/update-unit/{id}', [DegreeController::class, 'update']);
+Route::delete('/delete-unit/{id}', [DegreeController::class, 'destroy']);
+
 
 //category
 Route::get('/specialist/index', [SpecialistController::class, 'index'])->name('specialist.index');

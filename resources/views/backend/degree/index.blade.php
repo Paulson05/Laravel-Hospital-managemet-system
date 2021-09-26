@@ -1,12 +1,12 @@
 @extends('backend.template.defaults')
-@section('title', '| unit')
+@section('title', '| degree')
 @section('body')
     <div class="content">
         <div class="container-fluid">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">UNIT</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">({{\App\Models\Unit::count()}})</li>
+                    <li class="breadcrumb-item"><a href="#">Degree</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">({{\App\Models\Degree::count()}})</li>
                 </ol>
             </nav>
             <div class="row">
@@ -17,7 +17,7 @@
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Creat unit</h4>
+                                    <h4 class="modal-title">Creat degree</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
 
@@ -347,7 +347,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url:"/post-unit/",
+                    url:"/post-degree/",
                     data:data,
                     dataType:"json",
 
@@ -370,7 +370,7 @@
                             fetchunit();
                             swal.fire(
                                 'congratulation!',
-                                'unit added successfully',
+                                'degree added successfully',
                                 'success'
                             )
                         }

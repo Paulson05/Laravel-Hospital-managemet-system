@@ -83,10 +83,10 @@
                     </a>
                 </li>
 
-                <li class="{{ Route::currentRouteNamed('unit.index') ? 'active' : '' }}" >
-                    <a href="{{route('unit.index')}}">
-                        <span class="sidebar-mini-icon">UM</span>
-                        <span class="sidebar-normal">Unit Management</span>
+                <li class="{{ Route::currentRouteNamed('degree.index') ? 'active' : '' }}" >
+                    <a href="{{route('degree.index')}}">
+                        <span class="sidebar-mini-icon">D</span>
+                        <span class="sidebar-normal">Degree</span>
                     </a>
                 </li>
 

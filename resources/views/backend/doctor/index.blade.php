@@ -35,64 +35,190 @@
 
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
                                             <div class="form-group">
-                                                <strong>Product name</strong>
-                                                <input type="text" name="name"   id="name" class="name form-control " placeholder="supplier name" >
+                                                <strong>Doctor name</strong>
+                                                <input type="text" name="name"   id="name" class="name form-control " placeholder=" name" >
 
                                             </div>
 
                                         </div>
-
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
                                             <div class="form-group">
-                                                <strong>alert stock</strong>
-                                                <input type="text" name="alert_stock"   id="alert_stock" class="alert_stock form-control " placeholder="alert_stock" >
+                                                <strong>User Name</strong>
+                                                <input type="text" name="username"   id="username" class="username form-control " placeholder="username" >
 
                                             </div>
 
                                         </div>
+
+
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
 
-
-
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
-                                            <div class="form-group">
-
-                                                <strong>Unit</strong>
+                                                <strong>Degree</strong>
                                                 <select name="unit_id" id="unit_id" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                    @php
+                                                        $degree = \App\Models\Degree::all();
+                                                    @endphp
 
-                                                    <option>--select unit--</option>
-
-
-                                                        <option value=""></option>
-
-                                                        <option value="">no unit</option>
-
+                                                    <option>--select specilist--</option>
+                                                    @forelse( $degree as $item)
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @empty
+                                                        <option value=""> select degree</option>
+                                                    @endforelse
 
                                                 </select>
 
                                             </div>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 text-left">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
+                                                <strong>email</strong>
+                                                <input type="text" name="email"   id="email" class="email form-control " placeholder="email" >
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
 
-                                                <strong>Supplier</strong>
-                                                <select name="suppliers_id" id="suppliers_id" class="suppliers_id form-control" data-title="Single Select" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
-                                                    <option>--select supplier--</option>
+                                                <strong>Specialist</strong>
+                                                <select name="specialist" id="specialist" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                  @php
+                                                      $specislist = \App\Models\Specialist::all();
+                                                  @endphp
 
+                                                    <option>--select specilist--</option>
+                                                    @forelse( $specislist as $item)
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @empty
+                                                    <option value="">specialist</option>
+                                                    @endforelse
 
-                                                        <option value=""></option>
+                                                </select>
 
-                                                        <option value="is">no supplier</option>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
+                                            <div class="form-group">
+                                                <strong>Date-Of-Birth</strong>
+                                                <input type="text" name="D_O_B"   id="D_O_B" class="D_O_B form-control " placeholder="D_O_B" >
 
+                                            </div>
+
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
+
+                                                <strong>Department</strong>
+                                                <select name="unit_id" id="unit_id" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                    @php
+                                                        $department = \App\Models\Department::all();
+                                                    @endphp
+
+                                                    <option>--select specilist--</option>
+                                                    @forelse( $department as $item)
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @empty
+                                                        <option value="">specialist</option>
+                                                    @endforelse
+
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
+
+                                                <strong>Country</strong>
+                                                <select name="country" id="country" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                    @php
+                                                        $department = \App\Models\Department::all();
+                                                    @endphp
+
+                                                    <option>--select specilist--</option>
+                                                    @forelse( $department as $item)
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @empty
+                                                        <option value="">specialist</option>
+                                                    @endforelse
 
                                                 </select>
 
                                             </div>
                                         </div>
 
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
+
+                                                <strong>Gender</strong>
+
+                                                    <select class="form-control" id="gender"  name="gender">
+                                                        <option>---select gender---</option>
+
+                                                        <option value="male">male</option>
+                                                        <option value="female">female</option>
+
+
+                                                    </select>
+
+
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
+                                            <div class="form-group">
+                                                <strong>Address</strong>
+                                                <input type="datetime-local" name="address"   id="address" class="address form-control " placeholder="address" >
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
+                                                <strong>Phone number</strong>
+                                                <input type="text" name="phone"   id="phone" class="phone form-control " placeholder="phone" >
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <h4 class="card-title text-left">Photo</h4>
+                                            <input type="file" id="photo" name="photo"  />
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12 text-left">
+
+                                            <div class="form-group">
+
+                                                <div class="form-group">
+                                                    <label>short bio</label>
+                                                    <textarea name="description" id="description" class="form-control col-12" rows="5" cols="30" required></textarea>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12 text-left">
+                                                <div class="form-group">
+
+                                                    <strong>status</strong>
+
+                                                    <select class="form-control" id="status"  name="status">
+                                                        <option>---select status---</option>
+
+                                                        <option value="active">active</option>
+                                                        <option value="inactive">inactive</option>
+
+
+                                                    </select>
+
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                                             <button type="submit" class="add_product btn btn-primary">Save</button>
                                         </div>
@@ -127,7 +253,7 @@
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <ul class="pl-3 text-center list-unstyled" id="saveform_errList"></ul>
-                                <div class="text-center" id="success_message"></div>
+
 
 
 
@@ -257,7 +383,7 @@
                                             <td>
 
                                         </tr>
-
+2
                                     </tbody>
                                 </table>
                             </div>
@@ -301,13 +427,20 @@
                 e.preventDefault();
                 // console.log('click');
                 var data = {
-                    'name' : $('.name').val(),
-                    'suppliers_id' : $('#suppliers_id').val(),
-                    'unit_id' : $('#unit_id').val(),
-                    'alert_stock' : $('#alert_stock').val(),
-                    'category_id' : $('#category_id').val(),
+                    'name' : $('#name').val(),
+                    'username' : $('#username').val(),
+                    'email' : $('#email').val(),
+                    'specialist' : $('#specialist').val(),
+                    'address' : $('#address').val(),
+                    'gender' : $('#gender').val(),
+                    'country' : $('#country').val(),
+                    'phone' : $('#phone').val(),
+                    'photo' : $('#photo').val(),
+                    'D_O_B' : $('#D_O_B').val(),
+                    'description' : $('#description').val(),
+                    'status' : $('#status').val(),
                 }
-                // console.log(data);
+                console.log(data);
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -316,10 +449,10 @@
 
                 $.ajax({
                     type: "POST",
-                    url:"/post-product/",
+                    url:"/post-doctor/",
                     data:data,
                     dataType:"json",
-
+                    datType: "image/jpeg",
                     success: function (response){
                         // console.log(response);
                         if (response.status == 400)
@@ -336,6 +469,7 @@
                             $('#success_message').text(response.message);
                             $('#addModal').modal("hide");
                             $('#addModal').find("input").val("");
+
                             fetchproduct();
                             swal.fire(
                                 'congratulation!',

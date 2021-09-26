@@ -19,9 +19,9 @@ class CreateDoctorsTable extends Migration
             $table->string('username');
             $table->string('email');
             $table->string('employer_id');
-            $table->string('salary');
             $table->string('specialist');
             $table->string('address');
+            $table->string('degree');
             $table->enum('gender',['male', 'female']);
             $table->string('D_O_B');
             $table->string('country');

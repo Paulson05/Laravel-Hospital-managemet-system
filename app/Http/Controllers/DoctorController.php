@@ -26,13 +26,22 @@ class DoctorController extends Controller
 
     public function store(Request $request)
     {
+
+
         $request->all();
         $validator = Validator::make($request->all(),[
             'name' => 'required',
-            'suppliers_id'=>  'required',
-            'unit_id' => 'required',
-            'category_id' => 'required',
-
+            'username'=>  'required',
+            'email' => 'required',
+            'specialist' => "required",
+            'address' => 'required',
+            'gender' => 'required',
+            'D_O_B' => 'required',
+            'country' => 'required',
+            'phone' => 'required',
+            'description' => 'required',
+            'photo' => 'required',
+            'status' => 'required'
 
         ]);
         if ($validator->fails()) {
@@ -41,22 +50,12 @@ class DoctorController extends Controller
                 'errors' => $validator->messages(),
             ]);
         }else{
-            $product_code = rand(106890128, 100000000);
-            $redColor = '255, 0, 0';
-            $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
-            $barcodes =  $generator->getBarcode($product_code,  $generator::TYPE_STANDARD_2_5, 2, 60);
-            $product = new Product();
-            $product->suppliers_id = $request->suppliers_id;
-            $product->name = $request->name;
-            $product->quantity= '0';
-            $product->alert_stock = $request->alert_stock;
-            $product->unit_id = $request->unit_id;
-            $product->product_code = $product_code;
-            $product->barcode = $barcodes;
-            $product->category_id = $request->category_id;
+            $employer_id = rand(106890128, 100000000);
+            $array=collect($request->only(['name','username', 'email', 'specialist', 'address', 'gender', 'D_O_B', 'country', 'phone', 'degree', 'description', 'photo']))->put('employer_id',$employer_id)->all();
+            Doctor::create($array);
+
 //        $department->created_by = Auth::user()->id;
 
-            $product->save();
 
             return response()->json([
                 'status' => 200,
