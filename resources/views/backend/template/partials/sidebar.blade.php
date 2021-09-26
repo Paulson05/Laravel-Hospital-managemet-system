@@ -197,9 +197,9 @@
                 </li>
 
                 <li >
-                    <a href="">
-                        <span class="sidebar-mini-icon">SWR</span>
-                        <span class="sidebar-normal">Supplier Wise Report </span>
+                    <a href="{{route('pharmacy.index')}}">
+                        <span class="sidebar-mini-icon">P</span>
+                        <span class="sidebar-normal">Pharmarcy</span>
                     </a>
                 </li>
 

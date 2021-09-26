@@ -9,6 +9,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PharmacyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RoleController;
@@ -143,6 +144,13 @@ Route::get('/invoice/daily-report/pdf', [InvoiceController::class, 'DailyInvoice
 //stock
 
 Route::get('/stock/report', [StockController::class, 'index'])->name('stock.index');
+Route::post('/post-doctor', [StockController::class, 'store'])->name('stock.store');
+Route::get('/fetch-doctor', [StockController::class, 'fetchProduct']);
+Route::get('/edit-doctor/{id}', [StockController::class, 'edit']);
+Route::put('/update-doctor/{id}', [StockController::class, 'update']);
+Route::delete('/delete-doctor/{id}', [StockController::class, 'destroy']);
+
+Route::get('/pharmarcy', [PharmacyController::class, 'index'])->name('pharmacy.index');
 Route::post('/post-doctor', [StockController::class, 'store'])->name('stock.store');
 Route::get('/fetch-doctor', [StockController::class, 'fetchProduct']);
 Route::get('/edit-doctor/{id}', [StockController::class, 'edit']);
