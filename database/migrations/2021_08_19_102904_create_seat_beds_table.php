@@ -21,7 +21,8 @@ class CreateSeatBedsTable extends Migration
             $table->string('room');
             $table->string('photo')->nullable();
             $table->enum('empty',['empty', 'full']);
-            $table->enum('type',['cabin', 'kingsize']);
+            $table->enum('type',['cabin', 'general']);
+            $table->timestamps();
         });
     }
 

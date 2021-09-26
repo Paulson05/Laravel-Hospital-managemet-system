@@ -3,37 +3,50 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Stock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class StockController extends Controller
 {
-    public function stockReport(){
-        $products = Product::orderBy('suppliers_id', 'asc')->orderBy('category_id', 'asc')->get();
-        return view('backend.stock.index')->with([
-            'products' => $products,
+    public function index(){
+
+        return view('backend.stocks.index');
+    }
+
+    public function store(Request $request)
+    {
+        $request->all();
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'qty'=> 'required',
+            'price'=> 'required',
+            'stock_type' => 'required'
+
         ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->messages(),
+            ]);
+        }
+        else{
+            $array=collect($request->only(['name','price','stock_type', 'qty']))->all();
+            Stock::create($array);
+
+//        $department->created_by = Auth::user()->id;
+
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'stock added successfully',
+
+            ]);
+        }
+
+
     }
-    public function StockReportPdf(){
-        $data['products'] =  Product::orderBy('suppliers_id', 'asc')->orderBy('category_id', 'asc')->get();
-        $pdf = \PDF::loadView('backend.pdf.stockreportpdf',$data);
-        return $pdf->stream('invoice.pdf');
-    }
-
-    public  function supplierWiseReport(){
-
-        return view('backend.stock.department-doctor-wise');
-    }
-public  function supplierWiseReportPdf(Request $request){
-    $data['products'] =  Product::orderBy('suppliers_id', 'asc')->orderBy('category_id', 'asc')->where('suppliers_id',$request->suppliers_id)->get();
-
-    $pdf = \PDF::loadView('backend.pdf.supplierwisestockreportpdf',$data);
-    return $pdf->stream('invoice.pdf');
-}
-public function productWiseReportPdf(Request $request){
-    $data['doctor'] =  Product::where('category_id',$request->category_id)->where('id',$request->products_id)->first();
-
-    $pdf = \PDF::loadView('backend.pdf.productwisestockreportpdf',$data);
-    return $pdf->stream('invoice.pdf');}
 }
 
 

@@ -190,14 +190,14 @@
             <ul class="nav">
 
                 <li >
-                    <a href="{{route('stock.report')}}">
-                        <span class="sidebar-mini-icon">SR</span>
-                        <span class="sidebar-normal">STOCK Report</span>
+                    <a href="{{route('stock.index')}}">
+                        <span class="sidebar-mini-icon">S</span>
+                        <span class="sidebar-normal">STOCK </span>
                     </a>
                 </li>
 
                 <li >
-                    <a href="{{route('department.wise.report')}}">
+                    <a href="">
                         <span class="sidebar-mini-icon">SWR</span>
                         <span class="sidebar-normal">Supplier Wise Report </span>
                     </a>

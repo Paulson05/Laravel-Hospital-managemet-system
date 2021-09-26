@@ -19,6 +19,7 @@ class CreateStocksTable extends Migration
             $table->integer('price');
             $table->integer('qty');
             $table->string('stock_type');
+            $table->timestamps();
         });
     }
 

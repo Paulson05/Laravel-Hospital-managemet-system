@@ -142,11 +142,12 @@ Route::get('/invoice/daily-report/pdf', [InvoiceController::class, 'DailyInvoice
 
 //stock
 
-Route::get('/stock/report', [StockController::class, 'stockReport'])->name('stock.report');
-Route::get('/stock/daily-report/pdf', [StockController::class, 'StockReportPdf'])->name('stock.report.pdf');
-Route::get('/report/department/wise', [StockController::class, 'supplierWiseReport'])->name('department.wise.report');
-Route::get('/report/department/wise/pdf', [StockController::class, 'supplierWiseReportPdf'])->name('department.wise.report.pdf');
-Route::get('/report/doctor/wise/pdf', [StockController::class, 'productWiseReportPdf'])->name('doctor.wise.report.pdf');
+Route::get('/stock/report', [StockController::class, 'index'])->name('stock.index');
+Route::post('/post-doctor', [StockController::class, 'store'])->name('stock.store');
+Route::get('/fetch-doctor', [StockController::class, 'fetchProduct']);
+Route::get('/edit-doctor/{id}', [StockController::class, 'edit']);
+Route::put('/update-doctor/{id}', [StockController::class, 'update']);
+Route::delete('/delete-doctor/{id}', [StockController::class, 'destroy']);
 
 
 // default
