@@ -49,7 +49,8 @@ class DoctorController extends Controller
                 'status' => 400,
                 'errors' => $validator->messages(),
             ]);
-        }else{
+        }
+        else{
             $employer_id = rand(106890128, 100000000);
             $array=collect($request->only(['name','username', 'email', 'specialist', 'address', 'gender', 'D_O_B', 'country', 'phone', 'degree', 'description', 'photo']))->put('employer_id',$employer_id)->all();
             Doctor::create($array);

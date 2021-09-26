@@ -60,7 +60,7 @@
                                                         $degree = \App\Models\Degree::all();
                                                     @endphp
 
-                                                    <option>--select specilist--</option>
+                                                    <option>--select degree--</option>
                                                     @forelse( $degree as $item)
                                                         <option value="{{$item->id}}">{{$item->name}}</option>
                                                     @empty

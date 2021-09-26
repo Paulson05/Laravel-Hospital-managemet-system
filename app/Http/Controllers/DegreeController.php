@@ -32,6 +32,26 @@ class DegreeController extends Controller
 
         ]);
 
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->messages(),
+            ]);
+        }
+        else{
+            $array=collect($request->only('name'))->all();
+            Degree::create($array);
+
+//        $department->created_by = Auth::user()->id;
+
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'post added successfully',
+
+            ]);
+        }
+
 
         return response()->json([
             'status' => 200,
