@@ -13,6 +13,7 @@ use App\Http\Controllers\PharmacyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SeatBedController;
 use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierController;
@@ -149,6 +150,14 @@ Route::get('/fetch-doctor', [StockController::class, 'fetchProduct']);
 Route::get('/edit-doctor/{id}', [StockController::class, 'edit']);
 Route::put('/update-doctor/{id}', [StockController::class, 'update']);
 Route::delete('/delete-doctor/{id}', [StockController::class, 'destroy']);
+
+//bed seat
+Route::get('/stock/report', [SeatBedController::class, 'index'])->name('bed.seat.index');
+Route::post('/post-doctor', [SeatBedController::class, 'store'])->name('stock.store');
+Route::get('/fetch-doctor', [SeatBedController::class, 'fetchProduct']);
+Route::get('/edit-doctor/{id}', [SeatBedController::class, 'edit']);
+Route::put('/update-doctor/{id}', [SeatBedController::class, 'update']);
+Route::delete('/delete-doctor/{id}', [SeatBedController::class, 'destroy']);
 
 Route::get('/pharmarcy', [PharmacyController::class, 'index'])->name('pharmacy.index');
 Route::post('/post-doctor', [StockController::class, 'store'])->name('stock.store');

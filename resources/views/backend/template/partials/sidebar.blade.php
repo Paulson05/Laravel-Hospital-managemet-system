@@ -68,10 +68,10 @@
                         <span class="sidebar-normal">Paid Cutomer</span>
                     </a>
                 </li>
-                <li  class="{{ Route::currentRouteNamed('customer.wise.report') ? 'active' : '' }}" >
-                    <a href="{{route('customer.wise.report')}}">
-                        <span class="sidebar-mini-icon">CC</span>
-                        <span class="sidebar-normal">Credit Cutomer</span>
+                <li  class="{{ Route::currentRouteNamed('bed.seat.index') ? 'active' : '' }}" >
+                    <a href="{{route('bed.seat.index')}}">
+                        <span class="sidebar-mini-icon">Bs</span>
+                        <span class="sidebar-normal">Bed seat</span>
                     </a>
                 </li>
 
@@ -190,7 +190,7 @@
             <ul class="nav">
 
                 <li >
-                    <a href="{{route('stock.index')}}">
+                    <a href="">
                         <span class="sidebar-mini-icon">S</span>
                         <span class="sidebar-normal">STOCK </span>
                     </a>

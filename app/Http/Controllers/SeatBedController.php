@@ -14,7 +14,7 @@ class SeatBedController extends Controller
      */
     public function index()
     {
-        //
+        return  view('backend.bedseat.index');
     }
 
     /**
