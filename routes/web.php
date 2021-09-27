@@ -11,6 +11,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\MarketingController;
 use App\Http\Controllers\MedecineController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PharmacyController;
 use App\Http\Controllers\ProductController;
@@ -167,6 +168,10 @@ Route::delete('/delete-doctor/{id}', [MarketingController::class, 'destroy']);
 
 Route::get('/medicine/drug', [MedecineController::class, 'index'])->name('medicine.index');
 Route::post('/post-medicine', [MedecineController::class, 'store'])->name('medicine.store');
+
+//patient
+Route::get('/patient', [PatientController::class, 'index'])->name('patient.index');
+Route::post('/post-patient', [PatientController::class, 'store'])->name('patient.store');
 
 
 //ABULANCE

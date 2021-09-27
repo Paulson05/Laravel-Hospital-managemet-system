@@ -43,8 +43,8 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
                                             <div class="form-group">
-                                                <strong>User Name</strong>
-                                                <input type="text" name="username"   id="username" class="username form-control " placeholder="username" >
+                                                <strong>Cccupation</strong>
+                                                <input type="text" name="occupation"   id="occupation" class="occupation form-control " placeholder="occupation" >
 
                                             </div>
 
@@ -54,18 +54,13 @@
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
 
-                                                <strong>Degree</strong>
-                                                <select name="degree" id="degree" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
-                                                    @php
-                                                        $degree = \App\Models\Degree::all();
-                                                    @endphp
+                                                <strong>Relative Name</strong>
+                                                <select name="relative" id="relative" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
 
-                                                    <option>--select degree--</option>
-                                                    @forelse( $degree as $item)
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                                    @empty
-                                                        <option value=""> select degree</option>
-                                                    @endforelse
+                                                    <option value="sister">sister</option>
+                                                    <option value="father">father</option>
+                                                    <option value="brother">brother</option>
+
 
                                                 </select>
 
@@ -81,28 +76,24 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
+                                                <strong>Date of Birth</strong>
+                                                <input type="date" name="d_o_b"   id="d_o_b" class="ed_o_b form-control " placeholder="d_o_b" >
 
-                                                <strong>Specialist</strong>
-                                                <select name="specialist" id="specialist" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
-                                                  @php
-                                                      $specislist = \App\Models\Specialist::all();
-                                                  @endphp
 
-                                                    <option>--select specilist--</option>
-                                                    @forelse( $specislist as $item)
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                                    @empty
-                                                    <option value="">specialist</option>
-                                                    @endforelse
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
 
-                                                </select>
+                                                <strong>current_address</strong>
+                                                <input type="text" name="current_address"   id="current_address" class="current_address form-control " placeholder="current_address" >
 
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
                                             <div class="form-group">
-                                                <strong>Date-Of-Birth</strong>
-                                                <input type="text" name="D_O_B"   id="D_O_B" class="D_O_B form-control " placeholder="D_O_B" >
+                                                <strong>permanent_address</strong>
+                                                <input type="text" name="permanent_address"   id="permanent_address" class="permanent_address form-control " placeholder="permanent_address" >
 
                                             </div>
 
@@ -110,13 +101,13 @@
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
 
-                                                <strong>Department</strong>
-                                                <select name="department" id="department" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                <strong>Visiting Doctor</strong>
+                                                <select name="visiting_doctor" id="visiting_doctor" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
                                                     @php
-                                                        $department = \App\Models\Department::all();
+                                                        $department = \App\Models\Doctor::all();
                                                     @endphp
 
-                                                    <option>--select specilist--</option>
+                                                    <option>--select doctor--</option>
                                                     @forelse( $department as $item)
                                                         <option value="{{$item->id}}">{{$item->name}}</option>
                                                     @empty
@@ -130,18 +121,13 @@
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
 
-                                                <strong>Country</strong>
-                                                <select name="country" id="country" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
-                                                    @php
-                                                        $department = \App\Models\Department::all();
-                                                    @endphp
+                                                <strong>floor</strong>
+                                                <select name="floor_bed" id="floor_bed" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
 
-                                                    <option>--select specilist--</option>
-                                                    @forelse( $department as $item)
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                                    @empty
-                                                        <option value="">specialist</option>
-                                                    @endforelse
+                                                    <option>--select floor--</option>
+                                                    <option value="floor1">floor1</option>
+                                                    <option value="floor2">floor2</option>
+                                                    <option value="floor2">floor2</option>
 
                                                 </select>
 
@@ -151,15 +137,12 @@
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
 
-                                                <strong>Gender</strong>
+                                                <strong>Blood Group</strong>
 
-                                                    <select class="form-control" id="gender"  name="gender">
-                                                        <option>---select gender---</option>
-
-                                                        <option value="male">male</option>
-                                                        <option value="female">female</option>
-
-
+                                                    <select class="form-control" id="blood-group"  name="blood_group">
+                                                        <option>---select blood group---</option>
+                                                        <option value="male">0+</option>
+                                                        <option value="female">0-</option>
                                                     </select>
 
 
@@ -167,18 +150,35 @@
 
                                             </div>
                                         </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
+
+                                                <strong>Religion</strong>
+
+                                                <select class="form-control" id="blood-group"  name="blood_group">
+                                                    <option>---select Religion---</option>
+                                                    <option value="male">christain</option>
+                                                    <option value="female">muslism</option>
+                                                </select>
+
+
+                                                </select>
+
+                                            </div>
+                                        </div>
+
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
                                             <div class="form-group">
-                                                <strong>Address</strong>
-                                                <input type="text" name="address"   id="address" class="address form-control " placeholder="address" >
+                                                <strong>home_phone</strong>
+                                                <input type="text" name="home_phone"   id="home_phone" class="home_phone form-control " placeholder="home_phone" >
 
                                             </div>
 
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
-                                                <strong>Phone number</strong>
-                                                <input type="text" name="phone"   id="phone" class="phone form-control " placeholder="phone" >
+                                                <strong>patient_number</strong>
+                                                <input type="text" name="patient_number"   id="patient_number" class="patient_number form-control " placeholder="patient_number" >
 
 
                                             </div>
@@ -194,8 +194,8 @@
                                             <div class="form-group">
 
                                                 <div class="form-group">
-                                                    <label>short bio</label>
-                                                    <textarea name="description" id="description" class="form-control col-12" rows="5" cols="30" required></textarea>
+                                                    <label>symptoms</label>
+                                                    <textarea name="symptoms" id="symptoms" class="form-control col-12" rows="5" cols="30" required></textarea>
                                                 </div>
 
                                             </div>
@@ -203,13 +203,13 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                                                 <div class="form-group">
 
-                                                    <strong>status</strong>
+                                                    <strong>Patient TYPE</strong>
 
                                                     <select class="form-control" id="status"  name="status">
-                                                        <option>---select status---</option>
+                                                        <option>---select patient type---</option>
 
-                                                        <option value="active">active</option>
-                                                        <option value="inactive">inactive</option>
+                                                        <option value="general">general</option>
+                                                        <option value="admit">admit</option>
 
 
                                                     </select>
@@ -219,6 +219,7 @@
 
                                                 </div>
                                             </div>
+
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                                             <button type="submit" class="add_product btn btn-primary">Save</button>
                                         </div>
@@ -428,18 +429,21 @@
                 console.log('click');
                 var data = {
                     'name' : $('#name').val(),
-                    'username' : $('#username').val(),
+                    'occupation' : $('#occupation').val(),
                     'email' : $('#email').val(),
-                    'specialist' : $('#specialist').val(),
-                    'address' : $('#address').val(),
-                    'degree' : $('#degree').val(),
+                    'relative' : $('#relative').val(),
+                    'current_address' : $('#current_address').val(),
+                    'permanent_address' : $('#permanent_address').val(),
                     'gender' : $('#gender').val(),
-                    'country' : $('#country').val(),
-                    'phone' : $('#phone').val(),
+                    'visiting_doctor' : $('#visiting_doctor').val(),
+                    'floor_bed' : $('#floor_bed').val(),
                     'photo' : $('#photo').val(),
-                    'D_O_B' : $('#D_O_B').val(),
-                    'description' : $('#description').val(),
-                    'status' : $('#status').val(),
+                    'd_o_b' : $('#d_o_b').val(),
+                    'patient_number' : $('#patient_number').val(),
+                    'home_phone' : $('#home_phone').val(),
+                    'blood_group' : $('#blood_group').val(),
+                    'patient_type' : $('#patient_type').val(),
+                    'symptoms' : $('#symptoms').val(),
                 }
                 console.log(data);
                 $.ajaxSetup({
@@ -450,7 +454,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url:"/post-doctor/",
+                    url:"{{route('patient.store')}}",
                     data:data,
                     dataType:"json",
 

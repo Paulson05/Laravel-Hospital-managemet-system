@@ -62,10 +62,10 @@
                         <span class="sidebar-normal">Specialist</span>
                     </a>
                 </li>
-                <li  class="{{ Route::currentRouteNamed('paid.customer') ? 'active' : '' }}" >
-                    <a href="{{route('paid.customer')}}">
-                        <span class="sidebar-mini-icon">PC</span>
-                        <span class="sidebar-normal">Paid Cutomer</span>
+                <li  class="{{ Route::currentRouteNamed('patient.index') ? 'active' : '' }}" >
+                    <a href="{{route('patient.index')}}">
+                        <span class="sidebar-mini-icon">P</span>
+                        <span class="sidebar-normal">Patient</span>
                     </a>
                 </li>
                 <li  class="{{ Route::currentRouteNamed('bed.seat.index') ? 'active' : '' }}" >

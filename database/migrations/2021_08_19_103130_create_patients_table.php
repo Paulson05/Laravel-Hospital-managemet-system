@@ -18,6 +18,7 @@ class CreatePatientsTable extends Migration
             $table->string('name');
             $table->string('occupation');
             $table->string('relative');
+            $table->string('gender');
             $table->string('relative_name');
             $table->string('current_address');
             $table->string('permanent_address');
