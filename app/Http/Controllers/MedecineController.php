@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Medecine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MedecineController extends Controller
 {
@@ -14,7 +15,7 @@ class MedecineController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.medicine.index');
     }
 
     /**
@@ -27,15 +28,38 @@ class MedecineController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->all();
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'price'=>  'required',
+            'expire_date' => 'required',
+            'qty' => 'required',
+            'alert_stock' => 'required',
+            'description' => 'required',
+            'status' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->messages(),
+            ]);
+        }else{
+            $product_code = rand(106890128, 100000000);
+            $array=collect($request->only(['name','price', 'expire_date', 'qty', 'status', 'description','alert_stock']))->put('product_code',$product_code)->all();
+           Medecine::create($array);
+
+//        $supplier->created_by = Auth::user()->id;
+
+
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'post added successfully',
+
+            ]);
+        }
     }
 
     /**

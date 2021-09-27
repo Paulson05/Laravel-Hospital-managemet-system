@@ -10,6 +10,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\MarketingController;
+use App\Http\Controllers\MedecineController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PharmacyController;
 use App\Http\Controllers\ProductController;
@@ -161,6 +162,11 @@ Route::get('/fetch-markert', [MarketingController::class, 'fetchMarketer']);
 Route::get('/edit-doctor/{id}', [MarketingController::class, 'edit']);
 Route::put('/update-doctor/{id}', [MarketingController::class, 'update']);
 Route::delete('/delete-doctor/{id}', [MarketingController::class, 'destroy']);
+
+//medecine
+
+Route::get('/medicine/drug', [MedecineController::class, 'index'])->name('medicine.index');
+Route::post('/post-medicine', [MedecineController::class, 'store'])->name('medicine.store');
 
 
 //ABULANCE
