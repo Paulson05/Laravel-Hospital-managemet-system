@@ -14,7 +14,11 @@ class CreateMarketingsTable extends Migration
     public function up()
     {
         Schema::create('marketings', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('name');
+            $table->string('phone_number');
+
+
             $table->timestamps();
         });
     }

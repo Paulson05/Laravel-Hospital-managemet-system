@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ambulance;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AmbulanceController extends Controller
 {
@@ -14,7 +15,7 @@ class AmbulanceController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.ambulance.index');
     }
 
     /**
@@ -35,7 +36,36 @@ class AmbulanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->all();
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'ambulance_type' => 'required',
+            'ambulance_status' => "required",
+            'ambulance_id' => 'required',
+            'photo' => 'required'
+
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->messages(),
+            ]);
+        }
+        else{
+            $ambulance = rand(1068901, 100000);
+            $array=collect($request->only(['name','ambulance_id', 'ambulance_type', 'ambulance_status', 'photo']))->put('ambulance_number',$ambulance)->all();
+            Ambulance::create($array);
+
+//        $department->created_by = Auth::user()->id;
+
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'abmbulance added successfully',
+
+            ]);
+        }
     }
 
     /**

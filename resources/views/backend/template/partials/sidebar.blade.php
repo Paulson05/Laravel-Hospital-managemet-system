@@ -190,9 +190,9 @@
             <ul class="nav">
 
                 <li >
-                    <a href="">
-                        <span class="sidebar-mini-icon">S</span>
-                        <span class="sidebar-normal">STOCK </span>
+                    <a href="{{route('marketing.index')}}">
+                        <span class="sidebar-mini-icon">M</span>
+                        <span class="sidebar-normal">Marketing</span>
                     </a>
                 </li>
 
@@ -203,10 +203,10 @@
                     </a>
                 </li>
 
-                <li >
-                    <a href="forms/validation.html">
-                        <span class="sidebar-mini-icon">V</span>
-                        <span class="sidebar-normal"> Validation Forms </span>
+                <li class="{{ Route::currentRouteNamed('ambulance.index') ? 'active' : '' }}" >
+                    <a href="{{route('ambulance.index')}}">
+                        <span class="sidebar-mini-icon">A</span>
+                        <span class="sidebar-normal">Ambulance</span>
                     </a>
                 </li>
 

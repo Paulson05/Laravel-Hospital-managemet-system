@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\AmbulanceController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DefaultController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\DegreeController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\MarketingController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PharmacyController;
 use App\Http\Controllers\ProductController;
@@ -54,7 +56,7 @@ Route::get('/', function () {
 Route::get('/doctor/index', [DoctorController::class, 'index'])->name('doctor.index');
 Route::get('/doctor/barcode', [DoctorController::class, 'getProductCode'])->name('doctor.barcode');
 
-Route::post('/post-doctor', [DoctorController::class, 'store']);
+Route::post('/post-doctor', [DoctorController::class, 'store'])->name('post.doctor');
 Route::get('/fetch-doctor', [DoctorController::class, 'fetchProduct']);
 Route::get('/edit-doctor/{id}', [ DoctorController::class, 'edit']);
 Route::put('/update-doctor/{id}', [DoctorController::class, 'update']);
@@ -145,22 +147,43 @@ Route::get('/invoice/daily-report/pdf', [InvoiceController::class, 'DailyInvoice
 //stock
 
 Route::get('/stock/report', [StockController::class, 'index'])->name('stock.index');
-Route::post('/post-doctor', [StockController::class, 'store'])->name('stock.store');
+Route::post('/post-stock', [StockController::class, 'store'])->name('stock.store');
 Route::get('/fetch-doctor', [StockController::class, 'fetchProduct']);
 Route::get('/edit-doctor/{id}', [StockController::class, 'edit']);
 Route::put('/update-doctor/{id}', [StockController::class, 'update']);
 Route::delete('/delete-doctor/{id}', [StockController::class, 'destroy']);
 
 //bed seat
+
+Route::get('/marketer', [MarketingController::class, 'index'])->name('marketing.index');
+Route::post('/post-markter', [MarketingController::class, 'store'])->name('markerter.store');
+Route::get('/fetch-markert', [MarketingController::class, 'fetchMarketer']);
+Route::get('/edit-doctor/{id}', [MarketingController::class, 'edit']);
+Route::put('/update-doctor/{id}', [MarketingController::class, 'update']);
+Route::delete('/delete-doctor/{id}', [MarketingController::class, 'destroy']);
+
+
+//ABULANCE
+Route::get('/amblulance', [AmbulanceController::class, 'index'])->name('ambulance.index');
+Route::post('/post-ambulance', [AmbulanceController::class, 'store'])->name('ambulance.store');
+Route::get('/fetch-ambulance', [AmbulanceController::class, 'fetchAmbulance']);
+Route::get('/edit-ambulance/{id}', [AmbulanceController::class, 'edit']);
+Route::put('/update-ambulance/{id}', [AmbulanceController::class, 'update']);
+Route::delete('/delete-ambulance/{id}', [AmbulanceController::class, 'destroy']);
+
+
+
+
+
 Route::get('/stock/report', [SeatBedController::class, 'index'])->name('bed.seat.index');
-Route::post('/post-doctor', [SeatBedController::class, 'store'])->name('stock.store');
+Route::post('/post-bedseat', [SeatBedController::class, 'store'])->name('bedseat.store');
 Route::get('/fetch-doctor', [SeatBedController::class, 'fetchProduct']);
 Route::get('/edit-doctor/{id}', [SeatBedController::class, 'edit']);
 Route::put('/update-doctor/{id}', [SeatBedController::class, 'update']);
 Route::delete('/delete-doctor/{id}', [SeatBedController::class, 'destroy']);
 
 Route::get('/pharmarcy', [PharmacyController::class, 'index'])->name('pharmacy.index');
-Route::post('/post-doctor', [StockController::class, 'store'])->name('stock.store');
+Route::post('/post-stock', [StockController::class, 'store'])->name('stock.store');
 Route::get('/fetch-doctor', [StockController::class, 'fetchProduct']);
 Route::get('/edit-doctor/{id}', [StockController::class, 'edit']);
 Route::put('/update-doctor/{id}', [StockController::class, 'update']);

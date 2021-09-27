@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Marketing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MarketingController extends Controller
 {
@@ -14,7 +15,7 @@ class MarketingController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.marketing.index');
     }
 
     /**
@@ -35,7 +36,31 @@ class MarketingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->all();
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'phone_number' => 'required',
+
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->messages(),
+            ]);
+        }
+        else
+            $array=collect($request->only(['name','phone_number']))->all();
+            Marketing::create($array);
+
+//        $department->created_by = Auth::user()->id;
+
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'post added successfully',
+
+            ]);
+
     }
 
     /**

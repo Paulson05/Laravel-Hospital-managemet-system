@@ -89,7 +89,7 @@
 
                                                     <strong>Type</strong>
 
-                                                    <select class="form-control" id="status"  name="status">
+                                                    <select class="form-control" id="type"  name="type">
                                                         <option>---select bed type---</option>
 
                                                         <option value="general">General</option>
@@ -315,12 +315,14 @@
                 e.preventDefault();
                 // console.log('click');
                 var data = {
-                    'p_name' : $('#p_name').val(),
-                    'p_holder' : $('#pholder').val(),
-                    'p_address' : $('#address').val(),
-                    'p_marketer' : $('#p_marketer').val(),
-                    'p_phone' : $('#p_phone').val(),
-                    'status' : $('#status').val(),
+                    'seat_no' : $('#seat_no').val(),
+                    'floor_no' : $('#floor_no').val(),
+                    'rent' : $('#rent').val(),
+                    'room' : $('#room').val(),
+                    'photo' : $('#photo').val(),
+                    'empty' : $('#empty').val(),
+                    'type' : $('#type').val(),
+
                 }
                 console.log(data);
                 $.ajaxSetup({
@@ -331,7 +333,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url:"/post-doctor/",
+                    url:"{{route('bedseat.store')}}",
                     data:data,
                     dataType:"json",
                     datType: "image/jpeg",

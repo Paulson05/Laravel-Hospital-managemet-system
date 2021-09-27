@@ -14,7 +14,16 @@ class CreateAmbulancesTable extends Migration
     public function up()
     {
         Schema::create('ambulances', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('ambulance_number');
+            $table->integer('ambulance_id');
+            $table->string('ambulance_type');
+            $table->string('ambulance_status');
+            $table->string('photo');
+
+
+
             $table->timestamps();
         });
     }
