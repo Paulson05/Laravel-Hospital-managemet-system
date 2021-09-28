@@ -43,7 +43,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
                                             <div class="form-group">
-                                                <strong>Cccupation</strong>
+                                                <strong>Occupation</strong>
                                                 <input type="text" name="occupation"   id="occupation" class="occupation form-control " placeholder="occupation" >
 
                                             </div>
@@ -68,6 +68,29 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
+                                                <strong>relative name</strong>
+                                                <input type="text" name="relative_name"   id="relative_name" class="relative_name form-control " placeholder="relative_name" >
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
+
+                                                <strong>Gender</strong>
+                                                <select name="gender" id="gender" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                    <option value="">---select gender---</option>
+                                                    <option value="sister">male</option>
+                                                    <option value="father">female</option>
+
+
+
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
                                                 <strong>email</strong>
                                                 <input type="text" name="email"   id="email" class="email form-control " placeholder="email" >
 
@@ -77,7 +100,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
                                                 <strong>Date of Birth</strong>
-                                                <input type="date" name="d_o_b"   id="d_o_b" class="ed_o_b form-control " placeholder="d_o_b" >
+                                                <input type="date" name="d_o_b"   id="d_o_b" class="d_o_b form-control " placeholder="d_o_b" >
 
 
                                             </div>
@@ -111,7 +134,7 @@
                                                     @forelse( $department as $item)
                                                         <option value="{{$item->id}}">{{$item->name}}</option>
                                                     @empty
-                                                        <option value="">specialist</option>
+                                                        <option value=""> select visiting doctor</option>
                                                     @endforelse
 
                                                 </select>
@@ -183,7 +206,25 @@
 
                                             </div>
                                         </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
 
+                                                <strong>Patient TYPE</strong>
+
+                                                <select class="form-control" id="status"  name="status">
+                                                    <option>---select patient type---</option>
+
+                                                    <option value="general">general</option>
+                                                    <option value="admit">admit</option>
+
+
+                                                </select>
+
+
+                                                </select>
+
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <h4 class="card-title text-left">Photo</h4>
                                             <input type="file" id="photo" name="photo"  />
@@ -200,25 +241,7 @@
 
                                             </div>
                                         </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12 text-left">
-                                                <div class="form-group">
 
-                                                    <strong>Patient TYPE</strong>
-
-                                                    <select class="form-control" id="status"  name="status">
-                                                        <option>---select patient type---</option>
-
-                                                        <option value="general">general</option>
-                                                        <option value="admit">admit</option>
-
-
-                                                    </select>
-
-
-                                                    </select>
-
-                                                </div>
-                                            </div>
 
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                                             <button type="submit" class="add_product btn btn-primary">Save</button>
@@ -433,6 +456,7 @@
                     'email' : $('#email').val(),
                     'relative' : $('#relative').val(),
                     'current_address' : $('#current_address').val(),
+                    'relative_name' : $('#relative_name').val(),
                     'permanent_address' : $('#permanent_address').val(),
                     'gender' : $('#gender').val(),
                     'visiting_doctor' : $('#visiting_doctor').val(),

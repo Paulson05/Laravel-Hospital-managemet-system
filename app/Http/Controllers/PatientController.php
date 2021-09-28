@@ -47,9 +47,9 @@ class PatientController extends Controller
             'gender' => 'required',
             'permanent_address' => 'required',
             'relative' => 'required',
-            'phone' => 'required',
             'visiting_doctor' => 'required',
             'photo' => 'required',
+            'patient_number' => 'required',
             'floor_bed' => 'required',
              'd_o_b' => 'required',
             'home_phone' => 'required',
@@ -67,7 +67,7 @@ class PatientController extends Controller
         }
         else{
 
-            $array=collect($request->only(['name','username', 'email', 'specialist', 'address', 'gender', 'D_O_B', 'country', 'phone', 'degree', 'description', 'photo']))->all();
+            $array=collect($request->only(['name','occupation','phone', 'relative', 'gender', 'patient_number',  'email',  'permanent_address', 'relative_name', 'current_address', 'symptoms', 'patient_type', 'religion', 'home_phone', 'd_o_b', 'floor_bed','visiting_doctor', 'photo']))->all();
             Patient::create($array);
 
 //        $department->created_by = Auth::user()->id;
