@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AppointmentController extends Controller
 {
@@ -14,7 +15,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.patient-appointment.index');
     }
 
     /**
@@ -35,7 +36,39 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->all();
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'appointment_id' => 'required',
+            'phone_number' => 'required',
+            'email' => 'required',
+            'doctor' => 'required',
+            'department' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'message' => 'required',
+
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->messages(),
+            ]);
+        }
+        else
+            $array=collect($request->only(['name','phone_number','appointment_id','email','doctor','department','date','time','message' ]))->all();
+       Appointment::create($array);
+
+//        $department->created_by = Auth::user()->id;
+
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'post added successfully',
+
+        ]);
+
     }
 
     /**

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\AmbulanceController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DefaultController;
@@ -172,6 +173,9 @@ Route::post('/post-medicine', [MedecineController::class, 'store'])->name('medic
 //patient
 Route::get('/patient', [PatientController::class, 'index'])->name('patient.index');
 Route::post('/post-patient', [PatientController::class, 'store'])->name('patient.store');
+
+Route::get('/patient/appointment', [AppointmentController::class, 'index'])->name('patient.appointment.index');
+Route::post('/post-patient-appointment', [AppointmentController::class, 'store'])->name('patient.appointment.store');
 
 
 //ABULANCE

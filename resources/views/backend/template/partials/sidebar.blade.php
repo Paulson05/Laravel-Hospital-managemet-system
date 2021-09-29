@@ -68,6 +68,12 @@
                         <span class="sidebar-normal">Patient</span>
                     </a>
                 </li>
+                <li  class="{{ Route::currentRouteNamed('patient.appointment.index') ? 'active' : '' }}" >
+                    <a href="{{route('patient.appointment.index')}}">
+                        <span class="sidebar-mini-icon">PA</span>
+                        <span class="sidebar-normal">Patient Appointment</span>
+                    </a>
+                </li>
                 <li  class="{{ Route::currentRouteNamed('bed.seat.index') ? 'active' : '' }}" >
                     <a href="{{route('bed.seat.index')}}">
                         <span class="sidebar-mini-icon">Bs</span>
