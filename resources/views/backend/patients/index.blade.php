@@ -162,10 +162,10 @@
 
                                                 <strong>Blood Group</strong>
 
-                                                    <select class="form-control" id="blood-group"  name="blood_group">
+                                                    <select class="form-control" id="blood_group"  name="blood_group">
                                                         <option>---select blood group---</option>
-                                                        <option value="male">0+</option>
-                                                        <option value="female">0-</option>
+                                                        <option value="0+">0+</option>
+                                                        <option value="0-">0-</option>
                                                     </select>
 
 
@@ -178,10 +178,10 @@
 
                                                 <strong>Religion</strong>
 
-                                                <select class="form-control" id="blood-group"  name="blood_group">
+                                                <select class="form-control" id="religion"  name="religion">
                                                     <option>---select Religion---</option>
-                                                    <option value="male">christain</option>
-                                                    <option value="female">muslism</option>
+                                                    <option value="christain">christain</option>
+                                                    <option value="muslism">muslism</option>
                                                 </select>
 
 
@@ -211,7 +211,7 @@
 
                                                 <strong>Patient TYPE</strong>
 
-                                                <select class="form-control" id="status"  name="status">
+                                                <select class="form-control" id="patient_type"  name="patient_type">
                                                     <option>---select patient type---</option>
 
                                                     <option value="general">general</option>
@@ -468,6 +468,8 @@
                     'blood_group' : $('#blood_group').val(),
                     'patient_type' : $('#patient_type').val(),
                     'symptoms' : $('#symptoms').val(),
+                    'religion' : $('#religion').val(),
+
                 }
                 console.log(data);
                 $.ajaxSetup({

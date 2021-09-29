@@ -102,7 +102,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
                                             <div class="form-group">
                                                 <strong>Date-Of-Birth</strong>
-                                                <input type="text" name="D_O_B"   id="D_O_B" class="D_O_B form-control " placeholder="D_O_B" >
+                                                <input type="date" name="D_O_B"   id="D_O_B" class="D_O_B form-control " placeholder="D_O_B" >
 
                                             </div>
 
