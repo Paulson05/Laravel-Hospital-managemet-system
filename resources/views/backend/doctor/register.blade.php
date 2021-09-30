@@ -1,5 +1,5 @@
 @extends('backend.template.defaults')
-@section('auth', '| login')
+@section('auth', '| register')
 
 @section('body')
     <style>
@@ -14,27 +14,35 @@
             <div class="content">
                 <div class="container">
                     <div class="col-md-4 ml-auto mr-auto">
+                        <div class="col-md-12">
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                        </div>
 
 
-                        <form class="form" method="post" action="{{route('doctor.post.login')}}">
-
+                        <form class="form" method="post" action="{{route('doctor.post.register')}}">
                             @csrf
                             <div class="card card-login card-plain">
+                                <h2 class="text-center">Register</h2>
 
-                                <div class="card-header ">
-                                    <div class="logo-container">
-                                        <img src="{{asset('assets/img/now-logo.png')}}" alt="">
+                                <div class="card-body ml-5 ">
+
+
+                                    <div class="input-group no-border form-control-lg">
+                                <span class="input-group-prepend">
+                                  <div class="input-group-text">
+                                    <i class="now-ui-icons users_circle-08"></i>
+                                  </div>
+                                </span>
+                                        <input type="text" name="name" class="form-control" placeholder="name">
                                     </div>
-                                </div>
-                                <h2 class="text-center">Login</h2>
-
-                                <div class="card-body ">
-
-
-
-
-
-
 
                                     <div class="input-group no-border form-control-lg">
                                 <span class="input-group-prepend">
@@ -56,7 +64,7 @@
 
 
                                     <div class="col-xs-12 col-sm-12 col-md-12 ">
-                                        <button type="submit" class="btn btn-primary">login</button>
+                                        <button type="submit" class="btn btn-primary text-center">Register</button>
                                     </div>
                                 </div>
 
@@ -73,9 +81,10 @@
             </div>
 
 
-
         </div>
 
 
     </div>
 @endsection
+
+

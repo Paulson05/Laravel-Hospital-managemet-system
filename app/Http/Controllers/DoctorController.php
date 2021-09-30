@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class DoctorController extends Controller
@@ -12,8 +14,26 @@ class DoctorController extends Controller
 
     return view('backend.doctor.index');
 }
+public  function doctorDashboard(){
+    return view('backend.doctor.dashboard');
+}
+public  function doctorRegister(){
+    return view('backend.doctor.register');
+}
 
+    public function postRegister(Request $request){
 
+        $this->validate($request,[
+            'name'=> 'required',
+            'email'=> 'required',
+            'password' => 'required',
+        ]);
+
+        $post = User::create(collect($request->only(['name','email']))->put('password',bcrypt($request->password))->all());
+        $post->save();
+        return redirect()->route('doctor.get.login');
+
+    }
     public function getLogin(){
       return view('backend.doctor.login');
     }
@@ -21,10 +41,10 @@ class DoctorController extends Controller
     {
         $cred = $request->only('email', 'password');
 
-        if (Auth::guard('admin')->attempt($cred)) {
-            return redirect()->route('admin.home');
+        if (Auth::guard('doctor')->attempt($cred)) {
+            return redirect()->route('doctor.dashboard');
         } else {
-            return redirect()->route('admin.getlogin');
+            return redirect()->route('doctor.get.login');
         }
     }
     /**
