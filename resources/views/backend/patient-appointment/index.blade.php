@@ -36,7 +36,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
                                             <div class="form-group">
                                                 <strong>Patient name</strong>
-                                                <select name="name" id="name" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                <select name="patients_id" id="name" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
                                                        @php
                                                            $patient = \App\Models\Patient::all();
                                                        @endphp
@@ -331,6 +331,30 @@
 
 @endsection
 @section('script')
+    <script>
+        $(function (){
+            $(document).on('change', '#name', function (){
+                  // alert('ok');
+                var patient_name = $(this).val();
+
+                $.ajax({
+                    type: "GET",
+                    url:"{{route('get.patient.name')}}",
+                    data:{name:name},
+                    success:function (data){
+                        var html = '<option value="">select category</option>';
+                        $.each(data,function (key,v){
+                            html += '<option value="'+v.category_id+'">'+v.category.name+'</option>';
+                        });
+                        $('#category_id').html(html);
+                    }
+                });
+            });
+        });
+
+
+
+    </script>
     <script>
         $(document).ready(function () {
             fetchproduct();

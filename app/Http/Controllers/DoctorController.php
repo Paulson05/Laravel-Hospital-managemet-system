@@ -13,6 +13,20 @@ class DoctorController extends Controller
     return view('backend.doctor.index');
 }
 
+
+    public function getLogin(){
+      return view('backend.doctor.login');
+    }
+    public function postLogin(Request $request)
+    {
+        $cred = $request->only('email', 'password');
+
+        if (Auth::guard('admin')->attempt($cred)) {
+            return redirect()->route('admin.home');
+        } else {
+            return redirect()->route('admin.getlogin');
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *

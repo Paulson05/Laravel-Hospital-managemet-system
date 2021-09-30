@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class DefaultController extends Controller
 {
-    public function getCategory(Request $request){
-        $suppliers_id = $request->suppliers_id;
-//        dd($suppliers_id);
-        $allCategory = Product::with(['category'])->select('category_id')->where('suppliers_id', $suppliers_id)->groupBy('category_id')->get();
-//        dd($allCategory);
-        return response()->json($allCategory);
+    public function getName(Request $request){
+dd($request->all());
+        $patient_name = $request->patients_id;
+        dd($patient_name);
+        $allpatient = Appointment::where('id')->all();
+//        $allpatient = Appointment::with(['category'])->select('category_id')->where('suppliers_id',$patient_name)->groupBy('category_id')->get();
+
+        dd($allpatient );
+        return response()->json($allpatient);
     }
 
     public function getProduct(Request $request){

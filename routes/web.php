@@ -23,6 +23,7 @@ use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,9 +39,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('backend.login');
-
-
-
 })->name('loginpage');
 
 //Route::get('/qr-code-g', function () {
@@ -58,6 +56,7 @@ Route::get('/', function () {
 //doctor
 Route::get('/doctor/index', [DoctorController::class, 'index'])->name('doctor.index');
 Route::get('/doctor/barcode', [DoctorController::class, 'getProductCode'])->name('doctor.barcode');
+Route::post('/get-doctor/login', [DoctorController::class, 'getLogin'])->name('doctor.login');
 
 Route::post('/post-doctor', [DoctorController::class, 'store'])->name('post.doctor');
 Route::get('/fetch-doctor', [DoctorController::class, 'fetchProduct']);
@@ -206,7 +205,7 @@ Route::delete('/delete-doctor/{id}', [StockController::class, 'destroy']);
 
 
 // default
-Route::get('/get-category', [DefaultController::class, 'getCategory'])->name('get-category');
+Route::get('/get-patient-name', [DefaultController::class, 'getName'])->name('get.patient.name');
 Route::get('/get-doctor', [DefaultController::class, 'getProduct'])->name('get-doctor');
 
 Route::get('/role', [RoleController::class, 'index'])->name('role.index');
@@ -237,4 +236,34 @@ Route::post('/postRegister', [AdminController::class, 'postRegister']);
 
 
 Route::get('/fetchuser', [AdminController::class, 'fetchUser']);
+Route::prefix('doctor')->group(function (){
+    Route::middleware(['guest'])->group(function (){
+        Route::get('/getlogin', [DoctorController::class, 'getLogin'])->name('user.getlogin');
+        Route::post('/postlogin', [DoctorController::class, 'postLogin'])->name('user.postlogin');
+        Route::get('/getregister', [DoctorController::class, 'getRegister'])->name('user.getregister');
+        Route::post('/postregister', [DoctorController::class, 'PostRegister'])->name('user.postregister');
+//        Route::post('/check', [AdminController::class, 'check'])->name('admin.check');
+
+    });
+    Route::middleware(['auth:doctor'])->group(function (){
+        Route::get('/logout', [DoctorController::class, 'logout'])->name('user.logout');
+        Route::get('/homepage', [DoctorController::class, 'homepage'])->name('user.home');
+
+    });
+});
+Route::prefix('admin')->group(function (){
+
+    Route::middleware(['guest'])->group(function (){
+        Route::get('/login', [AdminController::class, 'login'])->name('admin.login');
+        Route::post('/create', [AdminController::class, 'create'])->name('admin.create');
+        Route::post('/check', [AdminController::class, 'check'])->name('admin.check');
+
+    });
+    Route::middleware(['auth:admin'])->group(function (){
+        Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
+        Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+    });
+});
 Auth::routes();
+

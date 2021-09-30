@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Admin;
+use App\Models\Doctor;
+
 return [
 
     /*
@@ -16,6 +19,14 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+    ],
+    'admin' =>[
+        'driver'=> 'eloquent',
+        'model' => Admin::class,
+    ],
+    'writer' =>[
+        'driver'=> 'eloquent',
+        'model' =>  Doctor::class,
     ],
 
     /*
@@ -39,6 +50,15 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'doctor' => [
+            'driver' => 'session',
+            'provider' => 'doctors',
         ],
 
         'api' => [
@@ -70,6 +90,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => Admin::class,
+        ],
+        'doctor' => [
+            'driver' => 'eloquent',
+            'model' => Doctor::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -98,6 +126,14 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'admins' =>[
+            'driver'=> 'eloquent',
+            'model' => Admin::class,
+        ],
+        'doctors' =>[
+            'driver'=> 'eloquent',
+            'model' =>  Doctor::class,
         ],
     ],
 
