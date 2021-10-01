@@ -24,10 +24,7 @@ return [
         'driver'=> 'eloquent',
         'model' => Admin::class,
     ],
-    'writer' =>[
-        'driver'=> 'eloquent',
-        'model' =>  Doctor::class,
-    ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -55,10 +52,6 @@ return [
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
-        ],
-        'doctor' => [
-            'driver' => 'session',
-            'provider' => 'doctors',
         ],
 
         'api' => [
@@ -94,10 +87,7 @@ return [
             'driver' => 'eloquent',
             'model' => Admin::class,
         ],
-        'doctor' => [
-            'driver' => 'eloquent',
-            'model' => Doctor::class,
-        ],
+
 
         // 'users' => [
         //     'driver' => 'database',
@@ -130,10 +120,6 @@ return [
         'admins' =>[
             'driver'=> 'eloquent',
             'model' => Admin::class,
-        ],
-        'doctors' =>[
-            'driver'=> 'eloquent',
-            'model' =>  Doctor::class,
         ],
     ],
 

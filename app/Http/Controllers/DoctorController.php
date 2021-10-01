@@ -41,10 +41,10 @@ public  function doctorRegister(){
     {
         $cred = $request->only('email', 'password');
 
-        if (Auth::guard('doctor')->attempt($cred)) {
+        if (Auth::guard('web')->attempt($cred)) {
             return redirect()->route('doctor.dashboard');
         } else {
-            return redirect()->route('doctor.get.login');
+            return redirect()->back();
         }
     }
     /**

@@ -1,6 +1,6 @@
-@extends('backend.template.defaults')
+@extends('backend.doctor.template.defaults')
 @section('title', '| dashboard')
-@section('body')
+@section('doctor')
     <div class="row">
         <div class="col-md-12">
             <div class="card card-stats">

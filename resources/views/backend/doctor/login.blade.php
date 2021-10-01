@@ -16,7 +16,7 @@
                     <div class="col-md-4 ml-auto mr-auto">
 
 
-                        <form class="form" method="post" action="{{route('doctor.post.login')}}">
+                        <form class="form" method="post" action="{{route('doctor.post')}}">
 
                             @csrf
                             <div class="card card-login card-plain">

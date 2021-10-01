@@ -55,15 +55,12 @@ Route::get('/', function () {
 
 //doctor
 Route::get('/doctor/index', [DoctorController::class, 'index'])->name('doctor.index');
-Route::get('/doctor/barcode', [DoctorController::class, 'getProductCode'])->name('doctor.barcode');
-Route::post('/doctor/getlogin', [DoctorController::class, 'getLogin'])->name('doctor.get.login');
-Route::post('/doctor/postlogin', [DoctorController::class, 'postLogin'])->name('doctor.post.login');
+//Route::get('/doctor/barcode', [DoctorController::class, 'getProductCode'])->name('doctor.barcode');
+Route::get('/doctor/getlogin', [DoctorController::class, 'getLogin'])->name('doctor.login');
+Route::post('/doctor/post/login', [DoctorController::class, 'postLogin'])->name('doctor.post');
 Route::get('/doctor/dashboard', [DoctorController::class, 'doctorDashboard'])->name('doctor.dashboard');
 Route::get('/doctor/register', [DoctorController::class, 'doctorRegister'])->name('doctor.register');
 Route::post('/doctor/post/register', [DoctorController::class, 'postRegister'])->name('doctor.post.register');
-
-
-
 
 Route::post('/post-doctor', [DoctorController::class, 'store'])->name('post.doctor');
 Route::get('/fetch-doctor', [DoctorController::class, 'fetchProduct']);
