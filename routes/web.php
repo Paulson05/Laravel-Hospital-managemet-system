@@ -9,6 +9,7 @@ use App\Http\Controllers\DefaultController;
 use App\Http\Controllers\DegreeController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\MarketingController;
 use App\Http\Controllers\MedecineController;
@@ -37,9 +38,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('backend.login');
-})->name('loginpage');
+//Route::get('/', function () {
+//    return view('backend.login');
+//})->name('loginpage');
 
 //Route::get('/qr-code-g', function () {
 //
@@ -51,7 +52,7 @@ Route::get('/', function () {
 //
 //});
 
-
+Route::get('/', [HomepageController::class, 'index'])->name('home.index');
 
 //doctor
 Route::get('/doctor/index', [DoctorController::class, 'index'])->name('doctor.index');
