@@ -1,4 +1,4 @@
-@extends('backend.template.defaults')
+@extends('backend.doctor.template.defaults')
 @section('title', '| doctor')
 @section('body')
     <div class="content">

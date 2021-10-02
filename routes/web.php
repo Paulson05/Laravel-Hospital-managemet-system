@@ -57,7 +57,7 @@ Route::get('/', [HomepageController::class, 'index'])->name('home.index');
 //doctor
 Route::get('/doctor/index', [DoctorController::class, 'index'])->name('doctor.index');
 //Route::get('/doctor/barcode', [DoctorController::class, 'getProductCode'])->name('doctor.barcode');
-Route::get('/doctor/getlogin', [DoctorController::class, 'getLogin'])->name('doctor.login');
+Route::get('/doctor/get/login', [DoctorController::class, 'getLogin'])->name('doctor.login');
 Route::post('/doctor/post/login', [DoctorController::class, 'postLogin'])->name('doctor.post');
 Route::get('/doctor/dashboard', [DoctorController::class, 'doctorDashboard'])->name('doctor.dashboard');
 Route::get('/doctor/register', [DoctorController::class, 'doctorRegister'])->name('doctor.register');

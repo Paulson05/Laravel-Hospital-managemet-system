@@ -1,4 +1,4 @@
-@extends('backend.doctor.template.defaults')
+@extends('backend.template.defaults')
 @section('title', '| dashboard')
 @section('doctor')
     <div class="row">
@@ -130,7 +130,7 @@
                 })
             }
 
-            {{--delete--}}
+
             $(document).on('click', '.delete_post', function (e){
                 e.preventDefault();
 
@@ -174,7 +174,7 @@
 
             });
 
-            {{--edit--}}
+
             $(document).on('click', '.edit_btn', function (e){
                 e.preventDefault();
                 let post_id  = $(this).val();
@@ -207,7 +207,7 @@
 
 
             });
-            {{--update--}}
+
             $(document).on('click', '.update_supplier', function (e){
                 e.preventDefault();
 

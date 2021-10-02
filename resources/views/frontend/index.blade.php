@@ -1,41 +1,9 @@
 <!doctype html>
 <html lang="en">
 
-<!-- Mirrored from hms.infyom.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Oct 2021 22:06:14 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="title" content="InfyHMS">
-
-    <meta name="keywords" content="Hospital Management System"/>
-
-    <meta name="description" content="Hospital Management System | HMS"/>
-    <meta name="author" content="hms.infyom.com">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="lehBkHv5U0RFlIWNrZtxQg91f66ObgbXMTR1CJqK">
-    <title>    Home
- | InfyHMS</title>
-
-    <link href="assets/css/sweetalert.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="assets/css/jquery.toast.min.css">
-
-    <!-- Bootstrap 4.1.1 -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
-    <link rel="stylesheet" href="assets/front/front8500.css?id=84c970022b4faf343c63">
-    <link rel="stylesheet" href="web/css/responsive.css">
-
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="assets/css/%40fortawesome/fontawesome-free/css/all.min.css">
-    <link href="http://fonts.googleapis.com/css?family=Nunito:300,400,600,700,900&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/simple-line-icons/css/simple-line-icons.css">
-    <link href="assets/css/infy-loadera9fe.css?id=e7b014656fb64100730e" rel="stylesheet" type="text/css"/>
-
-        <link rel="stylesheet" href="web/css/animate.css">
-    <link rel="stylesheet" href="assets/lightgallery/dist/css/lightgallery.css">
-    <link rel="stylesheet" href="assets/lightgallery/dist/css/lg-transitions.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css"/>
+    @include('frontend.partials.head')
     </head>
 <body>
 <div class="infy-loader d-none" id="overlay-screen-lock">
@@ -54,67 +22,7 @@
 <div class="container-fluid nav-bg">
     <div class="row">
         <div class="container">
-            <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand pl-3" href="index.html">
-                    <img src="web/img/logo.jpg" class="d-inline-block align-top img-fluid logo-size"
-                         alt="hms-logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto font-weight-bold">
-                        <li class="nav-item active">
-                            <a class="nav-link active"
-                               href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link "
-                               href="appointment.html">Appointments</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link "
-                               href="contact-us.html">Contact Us</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link "
-                               href="about-us.html">About Us</a>
-                        </li>
-                        <li class="nav-item simple-menu">
-                            <div class="nav-link language-name">
-                                <span><i class="fas fa-language"></i> English</span>
-                                <div class="language-contents">
-                                                                                                                                                                                                    <a href="javascript:void(0)" class="language-menu languageSelection"
-                                               data-prefix-value="es">SPANISH</a>
-                                                                                                                                                                <a href="javascript:void(0)" class="language-menu languageSelection"
-                                               data-prefix-value="fr">FRENCH</a>
-                                                                                                                                                                <a href="javascript:void(0)" class="language-menu languageSelection"
-                                               data-prefix-value="de">GERMAN</a>
-                                                                                                                                                                <a href="javascript:void(0)" class="language-menu languageSelection"
-                                               data-prefix-value="ru">RUSSIAN</a>
-                                                                                                                                                                <a href="javascript:void(0)" class="language-menu languageSelection"
-                                               data-prefix-value="pt">PORTUGUESE</a>
-                                                                                                                                                                <a href="javascript:void(0)" class="language-menu languageSelection"
-                                               data-prefix-value="ar">ARABIC</a>
-                                                                                                                                                                <a href="javascript:void(0)" class="language-menu languageSelection"
-                                               data-prefix-value="zh">CHINESE</a>
-                                                                                                                                                                <a href="javascript:void(0)" class="language-menu languageSelection"
-                                               data-prefix-value="tr">TURKISH</a>
-                                                                                                            </div>
-                            </div>
-                        </li>
-                                                    <li class="nav-item mt-1">
-                                <a class="login btn btn-sm" href="login.html">Login</a>
-                            </li>
-                            <li class="nav-item mt-1">
-                                <a class="login btn btn-sm ml-2"
-                                   href="register.html">Register</a>
-                            </li>
-                                            </ul>
-                </div>
-            </nav>
+           @include('frontend.partials.navbar')
         </div>
     </div>
 </div>
@@ -611,112 +519,8 @@
 
 </div>
 
-    <script>
-
-        window.laravelCookieConsent = (function () {
-
-            const COOKIE_VALUE = 1;
-            const COOKIE_DOMAIN = 'hms.infyom.com';
-
-            function consentWithCookies() {
-                setCookie('laravel_cookie_consent', COOKIE_VALUE, 7300);
-                hideCookieDialog();
-            }
-
-            function cookieExists(name) {
-                return (document.cookie.split('; ').indexOf(name + '=' + COOKIE_VALUE) !== -1);
-            }
-
-            function hideCookieDialog() {
-                const dialogs = document.getElementsByClassName('js-cookie-consent');
-
-                for (let i = 0; i < dialogs.length; ++i) {
-                    dialogs[i].style.display = 'none';
-                }
-            }
-
-            function setCookie(name, value, expirationInDays) {
-                const date = new Date();
-                date.setTime(date.getTime() + (expirationInDays * 24 * 60 * 60 * 1000));
-                document.cookie = name + '=' + value
-                    + ';expires=' + date.toUTCString()
-                    + ';domain=' + COOKIE_DOMAIN
-                    + ';path=/'
-                    + '';
-            }
-
-            if (cookieExists('laravel_cookie_consent')) {
-                hideCookieDialog();
-            }
-
-            const buttons = document.getElementsByClassName('js-cookie-consent-agree');
-
-            for (let i = 0; i < buttons.length; ++i) {
-                buttons[i].addEventListener('click', consentWithCookies);
-            }
-
-            return {
-                consentWithCookies: consentWithCookies,
-                hideCookieDialog: hideCookieDialog
-            };
-        })();
-    </script>
-
-
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/custom/custom0487.js?id=d04ddb545fe4d74aca2d"></script>
-<script src="assets/js/sweetalert.min.js"></script>
-<script src="assets/js/jquery.toast.min.js"></script>
-<script src="assets/js/custom/helpersd82a.js?id=596854587928328cf9c5"></script>
-<script src="web/js/scripts.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.alert').delay(5000).slideUp(300);
-    });
-</script>
-    <script>
-        $(window).on('load', function () {
-            $('.owl-carousel').owlCarousel({
-                margin: 10,
-                autoplay: true,
-                loop: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true,
-                responsiveClass: false,
-                responsive: {
-                    0: {
-                        items: 1,
-                    },
-                    320: {
-                        items: 1,
-                        margin: 20,
-                    },
-                    540: {
-                        items: 1,
-                    },
-                    600: {
-                        items: 1,
-                    },
-                    1000: {
-                        items: 3,
-                    },
-                    1024: {
-                        items: 3,
-                    },
-                    2256: {
-                        items: 3,
-                    },
-                },
-            });
-        });
-    </script>
-    <script src="web/js/wow.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/lightgallery/dist/js/lightgallery.js"></script>
-    <script src="assets/js/web/plugin0fb0.js?id=4a9735720fa809a2a4b4"></script>
+    @include('frontend.partials.scripts')
 </body>
 
-<!-- Mirrored from hms.infyom.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Oct 2021 22:06:39 GMT -->
+
 </html>
