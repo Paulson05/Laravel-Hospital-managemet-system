@@ -9,4 +9,7 @@ class Patient extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function depts(){
+        return $this->belongsTo(Department::class, 'department_id');
+    }
 }

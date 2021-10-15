@@ -42,26 +42,6 @@
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
 
-                                                <strong>Deparment</strong>
-                                                <select name="department" id="department" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
-                                                    @php
-                                                    $department = \App\Models\Department::all();
-                                                    @endphp
-
-                                                    <option>--select departmentr--</option>
-                                                    @forelse( $department as $item)
-                                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                                    @empty
-                                                    <option value=""> select visiting department</option>
-                                                    @endforelse
-
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
-                                            <div class="form-group">
-
                                                 <strong>Doctor</strong>
                                                 <select name="doctor" id="doctor" class="doctor form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
                                                     @php
@@ -103,7 +83,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                                             <div class="form-group">
                                                 <strong>Phone Number</strong>
                                                 <input type="text" name="phone_number"   id="phone_number" class="patient_number form-control " placeholder="phone_number" >
@@ -111,47 +91,14 @@
 
                                             </div>
                                         </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left d-none">
+                                            <div class="form-group">
+                                                <strong>Department</strong>
+                                                <input type="text" name="department"   id="department_id" class="department_id form-control " placeholder="departments_id" >
 
-<!--                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">-->
-<!--                                            <div class="form-group">-->
-<!---->
-<!--                                                <strong>Deparment</strong>-->
-<!--                                                <select name="department" id="department" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">-->
-<!--                                                    @php-->
-<!--                                                        $department = \App\Models\Department::all();-->
-<!--                                                    @endphp-->
-<!---->
-<!--                                                    <option>--select doctor--</option>-->
-<!--                                                    @forelse( $department as $item)-->
-<!--                                                        <option value="{{$item->id}}">{{$item->name}}</option>-->
-<!--                                                    @empty-->
-<!--                                                        <option value=""> select visiting doctor</option>-->
-<!--                                                    @endforelse-->
-<!---->
-<!--                                                </select>-->
-<!---->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">-->
-<!--                                            <div class="form-group">-->
-<!---->
-<!--                                                <strong>Doctor</strong>-->
-<!--                                                <select name="doctor" id="doctor" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">-->
-<!--                                                    @php-->
-<!--                                                        $doctor = \App\Models\Doctor::all();-->
-<!--                                                    @endphp-->
-<!---->
-<!--                                                    <option>--select doctor--</option>-->
-<!--                                                    @forelse( $doctor as $item)-->
-<!--                                                        <option value="{{$item->id}}">{{$item->name}}</option>-->
-<!--                                                    @empty-->
-<!--                                                        <option value=""> select visiting doctor</option>-->
-<!--                                                    @endforelse-->
-<!---->
-<!--                                                </select>-->
-<!---->
-<!--                                            </div>-->
-<!--                                        </div>-->
+
+                                            </div>
+                                        </div>
 
 
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
@@ -415,6 +362,7 @@
                         console.log(data.email);
                         a.find('.email').val(data.email);
                         a.find('.patient_number').val(data.patient_number);
+                        a.find('.department_id').val(data.department_id);
                         },
                     error:function (){
 
@@ -458,7 +406,7 @@
                     'email' : $('#email').val(),
                     'phone_number' : $('#phone_number').val(),
                     'doctor' : $('#doctor').val(),
-                    'department' : $('#department').val(),
+                    'department' : $('#department_id').val(),
                     'date' : $('#date').val(),
                     'time' : $('#time').val(),
                     'message' : $('#message').val(),

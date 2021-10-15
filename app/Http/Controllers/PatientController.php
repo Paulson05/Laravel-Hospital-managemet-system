@@ -15,7 +15,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-                 return  view('backend.patients.index');
+                 return  view('backend.patients.index', );
     }
 
     /**

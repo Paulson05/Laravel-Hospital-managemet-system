@@ -23,6 +23,7 @@ class CreatePatientsTable extends Migration
             $table->string('current_address');
             $table->string('permanent_address');
             $table->integer('visiting_doctor');
+            $table->integer('department_id');
             $table->string('floor_bed');
             $table->string('email');
             $table->string('photo');
