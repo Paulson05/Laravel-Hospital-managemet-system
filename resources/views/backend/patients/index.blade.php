@@ -35,7 +35,7 @@
 
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
                                             <div class="form-group">
-                                                <strong>Doctor name</strong>
+                                                <strong>Patient name</strong>
                                                 <input type="text" name="name"   id="name" class="name form-control " placeholder=" name" >
 
                                             </div>

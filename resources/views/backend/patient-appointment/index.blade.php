@@ -31,23 +31,61 @@
 
 
                                     <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
+                                                <strong>appointment_id</strong>
+                                                <input type="text" name="appointment_id"   id="appointment_id" class="appointment_id form-control " placeholder="appointment_id" >
 
 
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
+
+                                                <strong>Deparment</strong>
+                                                <select name="department" id="department" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                    @php
+                                                    $department = \App\Models\Department::all();
+                                                    @endphp
+
+                                                    <option>--select departmentr--</option>
+                                                    @forelse( $department as $item)
+                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @empty
+                                                    <option value=""> select visiting department</option>
+                                                    @endforelse
+
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
+
+                                                <strong>Doctor</strong>
+                                                <select name="doctor" id="doctor" class="doctor form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                    @php
+                                                    $doctor = \App\Models\Doctor::all();
+                                                    @endphp
+
+                                                    <option value="0" disabled="true" selected="true">--select doctor--</option>
+                                                    @forelse( $doctor as $item)
+                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @empty
+                                                    <option value=""> select visiting doctor</option>
+                                                    @endforelse
+
+                                                </select>
+
+                                            </div>
+                                        </div>
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
                                             <div class="form-group">
                                                 <strong>Patient name</strong>
-                                                <select name="patients_id" id="name" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
-                                                       @php
-                                                           $patient = \App\Models\Patient::all();
-                                                       @endphp
-                                                    <option value="">-- select patient name ---</option>
-                                                  @forelse($patient as $item)
-                                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                                    @empty
-                                                        <option value="">no patient yet</option>
-                                                    @endforelse
+                                                <select name="patients_id" id="name" class="name form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
 
 
+                                                    <option value="0" disabled="true" selected="true">patient name</option>
                                                 </select>
 
                                             </div>
@@ -64,63 +102,56 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
-                                            <div class="form-group">
-                                                <strong>appointment_id</strong>
-                                                <input type="text" name="appointment_id"   id="appointment_id" class="appointment_id form-control " placeholder="appointment_id" >
 
-
-                                            </div>
-                                        </div>
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
                                                 <strong>Phone Number</strong>
-                                                <input type="text" name="phone_number"   id="phone_number" class="phone_number form-control " placeholder="phone_number" >
+                                                <input type="text" name="phone_number"   id="phone_number" class="patient_number form-control " placeholder="phone_number" >
 
 
                                             </div>
                                         </div>
 
-                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
-                                            <div class="form-group">
-
-                                                <strong>Deparment</strong>
-                                                <select name="department" id="department" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
-                                                    @php
-                                                        $department = \App\Models\Department::all();
-                                                    @endphp
-
-                                                    <option>--select doctor--</option>
-                                                    @forelse( $department as $item)
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                                    @empty
-                                                        <option value=""> select visiting doctor</option>
-                                                    @endforelse
-
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
-                                            <div class="form-group">
-
-                                                <strong>Doctor</strong>
-                                                <select name="doctor" id="doctor" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
-                                                    @php
-                                                        $doctor = \App\Models\Doctor::all();
-                                                    @endphp
-
-                                                    <option>--select doctor--</option>
-                                                    @forelse( $doctor as $item)
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                                    @empty
-                                                        <option value=""> select visiting doctor</option>
-                                                    @endforelse
-
-                                                </select>
-
-                                            </div>
-                                        </div>
+<!--                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">-->
+<!--                                            <div class="form-group">-->
+<!---->
+<!--                                                <strong>Deparment</strong>-->
+<!--                                                <select name="department" id="department" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">-->
+<!--                                                    @php-->
+<!--                                                        $department = \App\Models\Department::all();-->
+<!--                                                    @endphp-->
+<!---->
+<!--                                                    <option>--select doctor--</option>-->
+<!--                                                    @forelse( $department as $item)-->
+<!--                                                        <option value="{{$item->id}}">{{$item->name}}</option>-->
+<!--                                                    @empty-->
+<!--                                                        <option value=""> select visiting doctor</option>-->
+<!--                                                    @endforelse-->
+<!---->
+<!--                                                </select>-->
+<!---->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">-->
+<!--                                            <div class="form-group">-->
+<!---->
+<!--                                                <strong>Doctor</strong>-->
+<!--                                                <select name="doctor" id="doctor" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">-->
+<!--                                                    @php-->
+<!--                                                        $doctor = \App\Models\Doctor::all();-->
+<!--                                                    @endphp-->
+<!---->
+<!--                                                    <option>--select doctor--</option>-->
+<!--                                                    @forelse( $doctor as $item)-->
+<!--                                                        <option value="{{$item->id}}">{{$item->name}}</option>-->
+<!--                                                    @empty-->
+<!--                                                        <option value=""> select visiting doctor</option>-->
+<!--                                                    @endforelse-->
+<!---->
+<!--                                                </select>-->
+<!---->
+<!--                                            </div>-->
+<!--                                        </div>-->
 
 
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
@@ -332,31 +363,67 @@
 @endsection
 @section('script')
     <script>
-        $(function (){
-            $(document).on('change', '#name', function (){
-                  // alert('ok');
-                var patient_name = $(this).val();
 
-                $.ajax({
-                    type: "GET",
-                    url:"{{route('get.patient.name')}}",
-                    data:{name:name},
-                    success:function (data){
-                        var html = '<option value="">select category</option>';
-                        $.each(data,function (key,v){
-                            html += '<option value="'+v.category_id+'">'+v.category.name+'</option>';
-                        });
-                        $('#category_id').html(html);
-                    }
-                });
-            });
-        });
 
 
 
     </script>
     <script>
         $(document).ready(function () {
+            $(document).on('change', '.doctor', function (){
+
+                var doctor_id = $(this).val();
+                console.log(doctor_id);
+                var div = $(this).parent().parent().parent();
+                // div.css('background-color','yellow');
+                var op = " ";
+
+
+                $.ajax({
+                    type:"get",
+                    url:"{{route('get.patient.name')}}",
+                    data:{id:doctor_id},
+                    success:function (data) {
+                        console.log(data)
+                        op+='<option value="0" selected disabled>chose name</option>';
+                        for (var i = 0; i<data.length; i++) {
+                            op+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                        }
+                        div.find('.name').html(" ");
+                        div.find('.name').append(op);
+                    },
+                    error:function (){
+
+                    }
+                });
+            });
+            $(document).on('change', '.name', function (){
+
+                var patient_id = $(this).val();
+                var a = $(this).parent().parent().parent();
+                // a.css('background-color','red');
+                console.log(patient_id);
+
+                var op = " ";
+                $.ajax({
+                    type:"get",
+                    url:"{{route('get-name')}}",
+                    data:{id:patient_id},
+                    dataType:'json',
+                    success:function (data){
+                       console.log(data);
+                        console.log(data.email);
+                        a.find('.email').val(data.email);
+                        a.find('.patient_number').val(data.patient_number);
+                        },
+                    error:function (){
+
+                    }
+                });
+            });
+            $(function (){
+
+            });
             fetchproduct();
             function  fetchproduct() {
                 $.ajax({

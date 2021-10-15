@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,17 +7,17 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
 
-@include('backend.template.partials.head')
 
+    @include('backend.template.partials.head')
 
 </head>
+
+<body class="login-page sidebar-mini ">
 <style>
     #background_image{
-        background-image: url(../../assets/img/bg14.jpg) !important;
+        background-image: url({{asset('/backend/assets/img/bg14.jpg')}}) !important;
     }
 </style>
-<body class="login-page sidebar-mini ">
-
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -26,40 +27,7 @@
 
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
-    <div class="container-fluid">
-        <div class="navbar-wrapper">
-
-            <a class="navbar-brand" href="#pablo">Login Page</a>
-        </div>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-end" id="navigation">
-
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-
-
-        </div>
-    </div>
-</nav>
+@include('backend.template.partials.navbar')
 <!-- End Navbar -->
 
 
@@ -70,24 +38,22 @@
 
 
 
-
-    <div id="background_image" class="full-page login-page section-image" filter-color="black" data-image="" style="background-image: url(../../assets/img/bg14.jpg) !important;" >
+    <div id="background_image" class="full-page login-page section-image" filter-color="black" data-image="" style="background-image: url(../../assets/img/bg14.jpg) !important;">
         <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
         <div class="content">
             <div class="container">
                 <div class="col-md-4 ml-auto mr-auto">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form class="form" method="post" action="{{route('doctor.post')}}">
 
-                                  @csrf
-
-
+                        @csrf
                         <div class="card card-login card-plain">
 
                             <div class="card-header ">
                                 <div class="logo-container">
-                                    <img src="../../assets/img/now-logo.png" alt="">
+                                    <img src="{{asset('assets/img/now-logo.png')}}" alt="">
                                 </div>
                             </div>
+                            <h2 class="text-center">Login</h2>
 
                             <div class="card-body ">
 
@@ -103,13 +69,7 @@
                                     <i class="now-ui-icons users_circle-08"></i>
                                   </div>
                                 </span>
-                                    <input id="email" placeholder="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <input type="text" name="email" class="form-control" placeholder="email">
                                 </div>
 
                                 <div class="input-group no-border form-control-lg">
@@ -118,31 +78,23 @@
                                             <i class="now-ui-icons text_caps-small"></i>
                                         </div>
                                     </div>
-                                    <input id="password" placeholder="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <input type="password" name="password" placeholder="Password..." class="form-control">
                                 </div>
 
 
-
+                                <div class="col-xs-12 col-sm-12 col-md-12 ">
+                                    <button type="submit" class="btn btn-primary">login</button>
+                                </div>
                             </div>
 
 
 
-                            <div class="card-footer ">
-                                <button  type="submit"  class="btn btn-primary btn-round btn-lg btn-block mb-3">Login</button>
-
-                            </div>
 
                         </div>
 
 
-                    </form>
 
+                    </form>
                 </div>
             </div>
         </div>
@@ -182,10 +134,73 @@
 
 </div>
 
+<div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+        <a href="#" data-toggle="dropdown">
+            <i class="fa fa-cog fa-2x"> </i>
+        </a>
+        <ul class="dropdown-menu">
+            <li class="header-title"> Sidebar Background</li>
+            <li class="adjustments-line">
+                <a href="javascript:void(0)" class="switch-trigger background-color">
+                    <div class="badge-colors text-center">
+                        <span class="badge filter badge-yellow" data-color="yellow"></span>
+                        <span class="badge filter badge-blue" data-color="blue"></span>
+                        <span class="badge filter badge-green" data-color="green"></span>
+                        <span class="badge filter badge-orange active" data-color="orange"></span>
+                        <span class="badge filter badge-red" data-color="red"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </a>
+            </li>
 
+
+            <li class="header-title">
+                Sidebar Mini
+            </li>
+            <li class="adjustments-line">
+
+                <div class="togglebutton switch-sidebar-mini">
+                    <span class="label-switch">OFF</span>
+                    <input type="checkbox" name="checkbox" checked class="bootstrap-switch"
+                           data-on-label=""
+                           data-off-label=""
+                    />
+                    <span class="label-switch label-right">ON</span>
+                </div>
+            </li>
+
+            <li class="button-container">
+                <a href="https://www.creative-tim.com/product/now-ui-dashboard-pro" target="_blank" class="btn btn-primary btn-block btn-round">Buy Now</a>
+                <a href="https://demos.creative-tim.com/now-ui-dashboard-pro/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
+                    <i class="now-ui-icons files_single-copy-04"></i>
+                    Documentation
+                </a>
+                <a href="https://www.creative-tim.com/product/now-ui-dashboard" target="_blank" class="btn btn-info btn-block btn-round">
+                    <i class="now-ui-icons files_single-copy-04"></i>
+                    Get Free Demo!
+                </a>
+            </li>
+
+
+
+
+            <li class="header-title">Thank you for 95 shares!</li>
+
+            <li class="button-container text-center">
+                <button id="twitter" class="btn btn-round btn-info"><i class="fab fa-twitter"></i> &middot; 45</button>
+                <button id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i> &middot; 50</button>
+                <br>
+                <br>
+                <a class="github-button" href="https://github.com/creativetimofficial/ct-now-ui-dashboard-pro" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+            </li>
+        </ul>
+    </div>
+</div>
 
 
 @include('backend.template.partials.script')
+
 </body>
 
 

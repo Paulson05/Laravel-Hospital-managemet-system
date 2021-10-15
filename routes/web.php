@@ -210,8 +210,8 @@ Route::delete('/delete-doctor/{id}', [StockController::class, 'destroy']);
 
 
 // default
-Route::get('/get-patient-name', [DefaultController::class, 'getName'])->name('get.patient.name');
-Route::get('/get-doctor', [DefaultController::class, 'getProduct'])->name('get-doctor');
+Route::get('/get-patient-name', [DefaultController::class, 'findPatientName'])->name('get.patient.name');
+Route::get('/get-email', [DefaultController::class, 'findEmail'])->name('get-name');
 
 Route::get('/role', [RoleController::class, 'index'])->name('role.index');
 Route::post('/post-role', [RoleController::class, 'store']);
@@ -236,7 +236,6 @@ Route::get('/admin', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('/user-create', [AdminController::class, 'create'])->name('create');
 Route::get('/logout', [AdminController::class, 'logOut'])->name('logOut');
 Route::get('/login', [AdminController::class, 'login'])->name('login');
-
 Route::post('/postRegister', [AdminController::class, 'postRegister']);
 
 
@@ -265,10 +264,13 @@ Route::prefix('admin')->group(function (){
 
     });
     Route::middleware(['auth:admin'])->group(function (){
-        Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
+        Route::get('/admin', [AdminController::class, 'home'])->name('admin.home');
         Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
     });
 });
+
+Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+
 Auth::routes();
 
