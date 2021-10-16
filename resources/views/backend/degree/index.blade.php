@@ -180,8 +180,8 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            fetchunit();
-            function  fetchunit() {
+            fetchDegree();
+            function  fetchDegree() {
                 $.ajax({
                     type: "GET",
                     url:"/fetch-unit/",
@@ -202,7 +202,7 @@
                 })
             }
 
-            {{--delete--}}
+
             $(document).on('click', '.delete_post', function (e){
                 e.preventDefault();
 
@@ -234,7 +234,7 @@
                         $('#success_message').text("response.message");
                         $('#example2Modal').modal("hide");
                         $('.delete_post_btn').text("yes Delete");
-                        fetchunit();
+                        fetchDegree();
                         swal.fire(
                             'congratulation!',
                             'uni deleted successfully',
@@ -246,7 +246,7 @@
 
             });
 
-            {{--edit--}}
+
             $(document).on('click', '.edit_unit', function (e){
                 e.preventDefault();
                 let post_id  = $(this).val();
@@ -275,7 +275,7 @@
 
 
             });
-            {{--update--}}
+
             $(document).on('click', '.update_unit', function (e){
                 e.preventDefault();
 
@@ -314,7 +314,7 @@
                             $('#success_message').addClass("alert  alert-success");
                             $('#success_message').text(response.message);
                             $('#editModal').modal("hide");
-                            fetchunit();
+                            fetchDegree();
                              swal.fire(
                                  'congratulation!',
                                  'unit updated successfully',
@@ -367,7 +367,7 @@
                             $('#success_message').text(response.message);
                             $('#addModal').modal("hide");
                             $('#addModal').find("input").val("");
-                            fetchunit();
+                            fetchDegree();
                             swal.fire(
                                 'congratulation!',
                                 'degree added successfully',

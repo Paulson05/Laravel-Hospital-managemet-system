@@ -93,10 +93,10 @@
                                     <thead>
                                     <tr>
                                         <th>SN</th>
-                                        <th>Name</th>
-                                        <th>Mobile</th>
-                                        <th>Email</th>
-                                        <th>Address</th>
+                                        <th>Dept Name</th>
+                                        <th>description</th>
+                                        <th>Status</th>
+
                                         <th class="disabled-sorting text-right">Actions</th>
                                     </tr>
                                     </thead>
@@ -259,7 +259,6 @@
                 })
             }
 
-            {{--delete--}}
             $(document).on('click', '.delete_post', function (e){
                 e.preventDefault();
 
@@ -303,7 +302,7 @@
 
             });
 
-            {{--edit--}}
+
             $(document).on('click', '.edit_btn', function (e){
                 e.preventDefault();
                 let post_id  = $(this).val();
@@ -336,7 +335,7 @@
 
 
             });
-            {{--update--}}
+
             $(document).on('click', '.update_supplier', function (e){
                 e.preventDefault();
 
@@ -386,7 +385,7 @@
             });
 
 
-            {{--add post--}}
+
 
 
             $(document).on('click', '.add_product', function (e){
@@ -429,7 +428,7 @@
                             $('#success_message').text(response.message);
                             $('#exampleModalLabel').modal("hide");
                             $('#addModal').find("input").val("");
-                            fetchSupplier();
+                            fetchDepartment();
                             swal.fire(
                                 'congratulation!',
                                 'department added successfully',

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Seat_bed extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 }

@@ -64,7 +64,7 @@ Route::get('/doctor/register', [DoctorController::class, 'doctorRegister'])->nam
 Route::post('/doctor/post/register', [DoctorController::class, 'postRegister'])->name('doctor.post.register');
 
 Route::post('/post-doctor', [DoctorController::class, 'store'])->name('post.doctor');
-Route::get('/fetch-doctor', [DoctorController::class, 'fetchProduct']);
+Route::get('/fetch-doc', [DoctorController::class, 'fetchDoctor'])->name('fetch.doctor');
 Route::get('/edit-doctor/{id}', [ DoctorController::class, 'edit']);
 Route::put('/update-doctor/{id}', [DoctorController::class, 'update']);
 Route::delete('/delete-doctor/{id}', [DoctorController::class, 'destroy']);
@@ -76,7 +76,7 @@ Route::delete('/delete-doctor/{id}', [DoctorController::class, 'destroy']);
 
 Route::get('/degree', [DegreeController::class, 'index'])->name('degree.index');
 Route::post('/post-degree', [DegreeController::class, 'store'])->name('degree.store');
-Route::get('/fetch-unit', [DegreeController::class, 'fetchUnit']);
+Route::get('/fetch-unit', [DegreeController::class, 'fetchDegree']);
 Route::get('/edit-unit/{id}', [DegreeController::class, 'edit']);
 Route::put('/update-unit/{id}', [DegreeController::class, 'update']);
 Route::delete('/delete-unit/{id}', [DegreeController::class, 'destroy']);
@@ -155,7 +155,7 @@ Route::get('/invoice/daily-report/pdf', [InvoiceController::class, 'DailyInvoice
 
 Route::get('/stock/report', [StockController::class, 'index'])->name('stock.index');
 Route::post('/post-stock', [StockController::class, 'store'])->name('stock.store');
-Route::get('/fetch-doctor', [StockController::class, 'fetchProduct']);
+Route::get('/fetch-stock', [StockController::class, 'fetchProduct']);
 Route::get('/edit-doctor/{id}', [StockController::class, 'edit']);
 Route::put('/update-doctor/{id}', [StockController::class, 'update']);
 Route::delete('/delete-doctor/{id}', [StockController::class, 'destroy']);
@@ -164,7 +164,7 @@ Route::delete('/delete-doctor/{id}', [StockController::class, 'destroy']);
 
 Route::get('/marketer', [MarketingController::class, 'index'])->name('marketing.index');
 Route::post('/post-markter', [MarketingController::class, 'store'])->name('markerter.store');
-Route::get('/fetch-markert', [MarketingController::class, 'fetchMarketer']);
+Route::get('/fetch-markerter', [MarketingController::class, 'fetchMarketer'])->name('fetch.marketer');
 Route::get('/edit-doctor/{id}', [MarketingController::class, 'edit']);
 Route::put('/update-doctor/{id}', [MarketingController::class, 'update']);
 Route::delete('/delete-doctor/{id}', [MarketingController::class, 'destroy']);
@@ -173,12 +173,14 @@ Route::delete('/delete-doctor/{id}', [MarketingController::class, 'destroy']);
 
 Route::get('/medicine/drug', [MedecineController::class, 'index'])->name('medicine.index');
 Route::post('/post-medicine', [MedecineController::class, 'store'])->name('medicine.store');
+Route::get('/fetch-medecine', [MedecineController::class, 'fetchMedecine'])->name('fetch.medecine');
 
 //patient
 Route::get('/patient', [PatientController::class, 'index'])->name('patient.index');
 Route::post('/post-patient', [PatientController::class, 'store'])->name('patient.store');
 
 Route::get('/patient/appointment', [AppointmentController::class, 'index'])->name('patient.appointment.index');
+Route::get('/patient/list', [AppointmentController::class, 'appointmentList'])->name('patient.appointment.list');
 Route::post('/post-patient-appointment', [AppointmentController::class, 'store'])->name('patient.appointment.store');
 
 
@@ -194,12 +196,12 @@ Route::delete('/delete-ambulance/{id}', [AmbulanceController::class, 'destroy'])
 
 
 
-Route::get('/stock/report', [SeatBedController::class, 'index'])->name('bed.seat.index');
+Route::get('/seat/index', [SeatBedController::class, 'index'])->name('bed.seat.index');
 Route::post('/post-bedseat', [SeatBedController::class, 'store'])->name('bedseat.store');
-Route::get('/fetch-doctor', [SeatBedController::class, 'fetchProduct']);
-Route::get('/edit-doctor/{id}', [SeatBedController::class, 'edit']);
-Route::put('/update-doctor/{id}', [SeatBedController::class, 'update']);
-Route::delete('/delete-doctor/{id}', [SeatBedController::class, 'destroy']);
+Route::get('/fetch-seat', [SeatBedController::class, 'fetchSeat'])->name('fetch.seat');
+Route::get('/edit-seat/{id}', [SeatBedController::class, 'edit']);
+Route::put('/update-seat/{id}', [SeatBedController::class, 'update']);
+Route::delete('/delete-seat/{id}', [SeatBedController::class, 'destroy']);
 
 Route::get('/pharmarcy', [PharmacyController::class, 'index'])->name('pharmacy.index');
 Route::post('/post-stock', [StockController::class, 'store'])->name('stock.store');

@@ -60,8 +60,8 @@ class DegreeController extends Controller
         ]);
 
     }
-    public function  fetchUnit(){
-        $units = Unit::all();
+    public function  fetchDegree(){
+        $units = Degree::all();
         return response()->json([
             'units'=>$units,
         ]);

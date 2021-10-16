@@ -9,6 +9,7 @@
                 </ol>
             </nav>
             <div class="row">
+
                 <div class="col-md-12 text-right">
                     <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#addModal">+</button>
 {{--                    <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">--}}
@@ -75,25 +76,24 @@
                                 <!--        Here you can write extra buttons/actions for the toolbar              -->
                             </div>
                             <div class="fresh-datatables">
-                                <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                <table id="myTable"  class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                     <thead>
                                     <tr>
                                         <th>SN</th>
                                         <th>Name</th>
                                         <th>Mobile</th>
-                                        <th>Email</th>
-                                        <th>Address</th>
+
                                         <th class="disabled-sorting text-right">Actions</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
                                     <tr>
+                                      @foreach($marketer as $data)
+                                        <td>{{$data->id}}</td>
+                                        <td>{{$data->name}}</td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                       @endforeach
                                         <td class="text-right">
                                             <a href="#" class="btn btn-link btn-info like"><i class="fa fa-heart"></i></a>
                                             <a href="#" class="btn btn-link btn-warning edit"><i class="fa fa-edit"></i></a>
@@ -218,34 +218,38 @@
     </div>
 @endsection
 @section('script')
+
+        <script>
+            $(document).ready( function () {
+                $('#myTable').DataTable();
+            });
+        </script>
     <script>
         $(document).ready(function () {
-            fetchDepartment();
-            function fetchDepartment() {
+            fetchMarketer();
+            function fetchMarketer() {
                 $.ajax({
                     type: "GET",
-                    url:/fetch-department/,
-
+                    url:"{{route('fetch.marketer')}}",
                     dataType:"json",
-                    success: function (response) {
-                        // console.log(response.posts);
-
-                        $('tbody').html("");
-                        $.each(response.deparments, function (key, item){
-                            $('tbody').append('<tr>\
-                                            <td>'+item.id+'</td>\
-                                           <td>'+item.name+'</td>\
-                                           <td>'+item.description+'</td>\
-                                           <td>'+item.status+'</td>\
-                                            <td><button type="button"  value="'+item.id+'" class="edit_btn btn btn-primary" ><i class="fa fa-edit"></i></button></td>\
-                                              <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash"></i></button></td>\
-                                            </tr>');
-                        });
-                    }
+                    // success: function (response) {
+                    //     // console.log(response.posts);
+                    //
+                    //     $('tbody').html("");
+                    //     $.each(response.marketing, function (key, item){
+                    //         $('tbody').append('<tr>\
+                    //                         <td>'+item.id+'</td>\
+                    //                        <td>'+item.name+'</td>\
+                    //                        <td>'+item.phone_number+'</td>\
+                    //                         <td><button type="button"  value="'+item.id+'" class="edit_btn btn btn-primary" ><i class="fa fa-edit"></i></button></td>\
+                    //                           <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash"></i></button></td>\
+                    //                         </tr>');
+                    //     });
+                    // }
                 })
             }
 
-            {{--delete--}}
+
             $(document).on('click', '.delete_post', function (e){
                 e.preventDefault();
 
@@ -277,10 +281,10 @@
                         $('#success_message').text(response.message);
                         $('#example2Modal').modal("hide");
                         $('.delete_post_btn').text("yes Delete");
-                        fetchDepartment();
+                        fetchMarketer();
                         swal.fire(
                             'congratulation!',
-                            'supllier deleted successfully',
+                            'marketer deleted successfully',
                             'success'
                         )
                     }
@@ -289,7 +293,7 @@
 
             });
 
-            {{--edit--}}
+
             $(document).on('click', '.edit_btn', function (e){
                 e.preventDefault();
                 let post_id  = $(this).val();
@@ -322,7 +326,7 @@
 
 
             });
-            {{--update--}}
+
             $(document).on('click', '.update_supplier', function (e){
                 e.preventDefault();
 
@@ -363,7 +367,7 @@
                             $('#success_message').addClass("alert  alert-success");
                             $('#success_message').text(response.message);
                             $('#editModal').modal("hide");
-                            fetchDepartment();
+                            fetchMarketer();
                         }
 
                     }
@@ -372,7 +376,7 @@
             });
 
 
-            {{--add post--}}
+
 
 
             $(document).on('click', '.add_product', function (e){
@@ -415,7 +419,7 @@
                             $('#success_message').text(response.message);
                             $('#exampleModalLabel').modal("hide");
                             $('#addModal').find("input").val("");
-                            fetchSupplier();
+                            fetchMarketer();
                             swal.fire(
                                 'congratulation!',
                                 'department added successfully',
@@ -430,5 +434,7 @@
 
         });
     </script>
+
+
 @endsection
 

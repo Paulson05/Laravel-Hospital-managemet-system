@@ -27,7 +27,9 @@ class AppointmentController extends Controller
     {
         //
     }
-
+public function appointmentList(){
+        return view('patient-appointment.appointment_list');
+}
     /**
      * Store a newly created resource in storage.
      *

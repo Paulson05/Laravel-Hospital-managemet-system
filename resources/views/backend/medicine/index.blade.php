@@ -245,10 +245,10 @@
                                     <tr>
                                         <th>S/N</th>
                                         <th>NAME</th>
-                                        <th>Supplier</th>
-                                        <th>Unit</th>
+                                        <th>price</th>
+                                        <th>expire date</th>
                                         <th>alert stock</th>
-                                        <th>Category</th>
+                                        <th>description</th>
                                         <th class="disabled-sorting text-right">Actions</th>
                                     </tr>
                                     </thead>
@@ -271,7 +271,7 @@
                                             <td>
 
                                         </tr>
-2
+
                                     </tbody>
                                 </table>
                             </div>
@@ -286,24 +286,25 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            fetchproduct();
-            function  fetchproduct() {
+            fetchMedecine();
+            function  fetchMedecine() {
                 $.ajax({
                     type: "GET",
-                    url:"/fetch-product/",
+                    url:"{{route('fetch.medecine')}}",
                     dataType:"json",
                     success: function (response) {
                         // console.log(response.posts);
 
                         $('tbody').html("");
-                        $.each(response.products, function (key, item){
+                        $.each(response.meds, function (key, item){
                             $('tbody').append('<tr>\
                                             <td>'+item.id+'</td>\
                                            <td>'+item.name+'</td>\
-                                           <td>'+item.suppliers_id+'</td>\
-                                           <td>'+item.unit_id+'</td>\
+                                           <td>'+item.price+'</td>\
+                                           <td>'+item.expire_date+'</td>\
                                             <td>'+item.alert_stock+'</td>\
-                                           <td>'+item.category_id+'</td>\
+                                            <td>'+item.description+'</td>\
+                                            <td>'+item.status+'</td>\
                                             <td><button type="button"  value="'+item.id+'" class="edit_product btn btn-primary" ><i class="fa fa-edit">edit</i></button></td>\
                                               <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash">delete</i></button></td>\
                                             </tr>');
@@ -318,7 +319,7 @@
                     'name' : $('#name').val(),
                     'price' : $('#price').val(),
                     'qty' : $('#qty').val(),
-                    'expire_date' : $('#alert_stock').val(),
+                    'expire_date' : $('#expire_date').val(),
                     'status' : $('#status').val(),
                     'description' : $('#description').val(),
                     'alert_stock' : $('#alert_stock').val(),
@@ -354,7 +355,7 @@
                             $('#addModal').modal("hide");
                             $('#addModal').find("input").val("");
 
-                            fetchproduct();
+                            fetchMedecine();
                             swal.fire(
                                 'congratulation!',
                                 'medicine added successfully',
@@ -398,7 +399,7 @@
                         $('#success_message').text(response.message);
                         $('#example2Modal').modal("hide");
                         $('.delete_post_btn').text("yes Delete");
-                        fetchproduct();
+                        fetchMedecine();
                         swal.fire(
                             'congratulation!',
                             'doctor deleted successfully',
@@ -482,7 +483,7 @@
                             $('#success_message').addClass("alert  alert-success");
                             $('#success_message').text(response.message);
                             $('#editModal').modal("hide");
-                            fetchproduct();
+                            fetchMedecine();
                             swal.fire(
                                 'congratulation!',
                                 'doctor updated successfully',

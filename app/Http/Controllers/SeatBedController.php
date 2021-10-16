@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Seat_bed;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SeatBedController extends Controller
 {
@@ -35,9 +36,42 @@ class SeatBedController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->all();
+        $validator = Validator::make($request->all(),[
+            'seat_no'=> 'required',
+            'floor_no'=>  'required',
+            'rent' => 'required',
+            'room' => 'required',
+            'photo'  => 'required',
+            'empty' => 'required',
+            'type' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->messages(),
+            ]);
+        }else{
+            $array=collect($request->only(['seat_no','floor_no', 'rent', 'qty','room', 'photo','photo', 'type','empty']))->all();
+            Seat_bed::create($array);
 
+//        $supplier->created_by = Auth::user()->id;
+
+
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'seat details added successfully',
+
+            ]);
+        }
+    }
+    public function fetchSeat(){
+        $seat = Seat_bed::all();
+        return response()->json([
+            'seat'=>$seat,
+        ]);
+    }
     /**
      * Display the specified resource.
      *

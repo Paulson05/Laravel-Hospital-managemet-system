@@ -25,7 +25,7 @@ class CreateAppointmentsTable extends Migration
             $table->string('department');
             $table->dateTime('appointment_date');
             $table->dateTime('appointment_time');
-            $table->enum('status',['active', 'inactive'])->default('inactive');
+            $table->tinyInteger('status')->default(0)->comment('0=pending, 1=Approved');
             $table->timestamps();
         });
     }

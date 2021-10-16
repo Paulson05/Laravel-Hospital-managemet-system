@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\marketerDataTable;
 use App\Models\Marketing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -13,9 +14,10 @@ class MarketingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(marketerDataTable $dataTable)
     {
-        return view('backend.marketing.index');
+        $marketer = Marketing::all();
+        return  view('backend.marketing.index', [ 'marketer' => $marketer]);
     }
 
     /**
@@ -32,7 +34,7 @@ class MarketingController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -62,7 +64,12 @@ class MarketingController extends Controller
             ]);
 
     }
-
+    public function  fetchMarketer(){
+        $marketing = Marketing::all();
+        return response()->json([
+            'marketing'=>$marketing,
+        ]);
+    }
     /**
      * Display the specified resource.
      *

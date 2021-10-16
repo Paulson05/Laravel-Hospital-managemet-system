@@ -62,12 +62,13 @@ class MedecineController extends Controller
         }
     }
 
+    public function fetchMedecine(){
+        $meds = Medecine::all();
+        return response()->json([
+            'meds'=>$meds ,
+        ]);
+    }
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Medecine  $medecine
-     * @return \Illuminate\Http\Response
-     */
     public function show(Medecine $medecine)
     {
         //

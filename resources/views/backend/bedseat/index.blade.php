@@ -70,9 +70,9 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                                             <div class="form-group">
 
-                                                <strong>Status</strong>
+                                                <strong>SEAT STATUS</strong>
 
-                                                <select class="form-control" id="p_marketer"  name="p_marketer">
+                                                <select class="form-control" id="empty"  name="empty">
                                                     <option>---select status---</option>
 
                                                     <option value="empty">empty</option>
@@ -81,7 +81,6 @@
                                                 </select>
 
 
-                                                </select>
 
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-left">
@@ -99,7 +98,7 @@
                                                     </select>
 
 
-                                                    </select>
+
 
                                                 </div>
                                             </div>
@@ -244,11 +243,15 @@
                                     <thead>
                                     <tr>
                                         <th>S/N</th>
-                                        <th>NAME</th>
-                                        <th>Supplier</th>
-                                        <th>Unit</th>
-                                        <th>alert stock</th>
-                                        <th>Category</th>
+                                        <th>Seat</th>
+                                        <th>floor</th>
+                                        <th>Rent</th>
+                                        <th>Room</th>
+                                        <th>photo</th>
+                                        <th>Status</th>
+                                        <th>Status</th>
+                                        <th>Type</th>
+
                                         <th class="disabled-sorting text-right">Actions</th>
                                     </tr>
                                     </thead>
@@ -286,24 +289,26 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            fetchproduct();
-            function  fetchproduct() {
+            fetchBedseat();
+            function  fetchBedseat() {
                 $.ajax({
                     type: "GET",
-                    url:"/fetch-product/",
+                    url:"{{route('fetch.seat')}}",
                     dataType:"json",
                     success: function (response) {
                         // console.log(response.posts);
 
                         $('tbody').html("");
-                        $.each(response.products, function (key, item){
+                        $.each(response.seat, function (key, item){
                             $('tbody').append('<tr>\
                                             <td>'+item.id+'</td>\
-                                           <td>'+item.name+'</td>\
-                                           <td>'+item.suppliers_id+'</td>\
-                                           <td>'+item.unit_id+'</td>\
-                                            <td>'+item.alert_stock+'</td>\
-                                           <td>'+item.category_id+'</td>\
+                                           <td>'+item.seat_no+'</td>\
+                                           <td>'+item.floor_no+'</td>\
+                                           <td>'+item.room+'</td>\
+                                            <td>'+item.rent+'</td>\
+                                           <td>'+item.empty+'</td>\
+                                            <td>'+item.photo+'</td>\
+                                             <td>'+item.status+'</td>\
                                             <td><button type="button"  value="'+item.id+'" class="edit_product btn btn-primary" ><i class="fa fa-edit">edit</i></button></td>\
                                               <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash">delete</i></button></td>\
                                             </tr>');
@@ -354,7 +359,7 @@
                             $('#addModal').modal("hide");
                             $('#addModal').find("input").val("");
 
-                            fetchproduct();
+                            fetchBedseat();
                             swal.fire(
                                 'congratulation!',
                                 'doctor added successfully',
@@ -398,7 +403,7 @@
                         $('#success_message').text(response.message);
                         $('#example2Modal').modal("hide");
                         $('.delete_post_btn').text("yes Delete");
-                        fetchproduct();
+                        fetchBedseat();
                         swal.fire(
                             'congratulation!',
                             'doctor deleted successfully',
@@ -482,7 +487,7 @@
                             $('#success_message').addClass("alert  alert-success");
                             $('#success_message').text(response.message);
                             $('#editModal').modal("hide");
-                            fetchproduct();
+                            fetchBedseat();
                             swal.fire(
                                 'congratulation!',
                                 'doctor updated successfully',

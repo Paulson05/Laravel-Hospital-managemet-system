@@ -229,7 +229,6 @@
                 })
             }
 
-            {{--delete--}}
             $(document).on('click', '.delete_post', function (e){
                 e.preventDefault();
 
@@ -273,7 +272,7 @@
 
             });
 
-            {{--edit--}}
+
             $(document).on('click', '.edit_btn', function (e){
                 e.preventDefault();
                 let post_id  = $(this).val();
@@ -306,7 +305,7 @@
 
 
             });
-            {{--update--}}
+
             $(document).on('click', '.update_supplier', function (e){
                 e.preventDefault();
 
@@ -347,7 +346,7 @@
                             $('#success_message').addClass("alert  alert-success");
                             $('#success_message').text(response.message);
                             $('#editModal').modal("hide");
-                            fetchDepartment();
+                            fetchSpecialist();
                         }
 
                     }
@@ -356,7 +355,7 @@
             });
 
 
-            {{--add post--}}
+
 
 
             $(document).on('click', '.add_product', function (e){

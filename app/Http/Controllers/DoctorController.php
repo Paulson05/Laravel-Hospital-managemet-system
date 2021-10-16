@@ -74,7 +74,8 @@ public  function doctorRegister(){
             'phone' => 'required',
             'description' => 'required',
             'photo' => 'required',
-            'status' => 'required'
+            'status' => 'required',
+             'departments_id' => 'required'
 
         ]);
         if ($validator->fails()) {
@@ -85,7 +86,7 @@ public  function doctorRegister(){
         }
         else{
             $employer_id = rand(106890128, 100000000);
-            $array=collect($request->only(['name','username', 'email', 'specialist', 'address', 'gender', 'D_O_B', 'country', 'phone', 'degree', 'description', 'photo']))->put('employer_id',$employer_id)->all();
+            $array=collect($request->only(['name','username',  'departments_id', 'email', 'specialist', 'address', 'gender', 'D_O_B', 'country', 'phone', 'degree', 'description', 'photo']))->put('employer_id',$employer_id)->all();
             Doctor::create($array);
 
 //        $department->created_by = Auth::user()->id;
@@ -98,10 +99,10 @@ public  function doctorRegister(){
             ]);
         }
     }
-    public function  fetchProduct(){
-        $products = Product::all();
+    public function  fetchDoctor(){
+        $doc = Doctor::all();
         return response()->json([
-            'products'=>$products,
+            'doc'=>$doc,
         ]);
     }
 

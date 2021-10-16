@@ -111,7 +111,7 @@
                                             <div class="form-group">
 
                                                 <strong>Department</strong>
-                                                <select name="department" id="department" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                <select name="departments_id" id="departments_id" class="departments_id form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
                                                     @php
                                                         $department = \App\Models\Department::all();
                                                     @endphp
@@ -398,17 +398,17 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            fetchproduct();
-            function  fetchproduct() {
+            fetchDoctor();
+            function  fetchDoctor() {
                 $.ajax({
                     type: "GET",
-                    url:"/fetch-product/",
+                    url:"/fetch-doc/",
                     dataType:"json",
                     success: function (response) {
                         // console.log(response.posts);
 
                         $('tbody').html("");
-                        $.each(response.products, function (key, item){
+                        $.each(response.doc, function (key, item){
                             $('tbody').append('<tr>\
                                             <td>'+item.id+'</td>\
                                            <td>'+item.name+'</td>\
@@ -440,6 +440,7 @@
                     'D_O_B' : $('#D_O_B').val(),
                     'description' : $('#description').val(),
                     'status' : $('#status').val(),
+                    'departments_id' : $('#departments_id').val(),
                 }
                 console.log(data);
                 $.ajaxSetup({
@@ -471,7 +472,7 @@
                             $('#addModal').modal("hide");
                             $('#addModal').find("input").val("");
 
-                            fetchproduct();
+                            fetchDoctor();
                             swal.fire(
                                 'congratulation!',
                                 'doctor added successfully',
@@ -515,7 +516,7 @@
                         $('#success_message').text(response.message);
                         $('#example2Modal').modal("hide");
                         $('.delete_post_btn').text("yes Delete");
-                        fetchproduct();
+                        fetchDoctor();
                         swal.fire(
                             'congratulation!',
                             'doctor deleted successfully',
@@ -599,7 +600,7 @@
                             $('#success_message').addClass("alert  alert-success");
                             $('#success_message').text(response.message);
                             $('#editModal').modal("hide");
-                            fetchproduct();
+                            fetchDoctor();
                             swal.fire(
                                 'congratulation!',
                                 'doctor updated successfully',
