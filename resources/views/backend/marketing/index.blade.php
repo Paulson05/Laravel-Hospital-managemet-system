@@ -76,7 +76,7 @@
                                 <!--        Here you can write extra buttons/actions for the toolbar              -->
                             </div>
                             <div class="fresh-datatables">
-                                <table id="myTable"  class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                <table id="student_table"  class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                     <thead>
                                     <tr>
                                         <th>SN</th>
@@ -217,6 +217,19 @@
 
     </div>
 @endsection
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#student_table").DataTable({
+                    "Processing":true,
+                    "serverSide":true,
+                    "ajax":"{{ route('getdataed') }}",
+                    "columns":[
+                        {'data':'name'},
+                        {'data':'name'}
+                    ]
+                });
+            });
+        </script>
 @section('script')
 
         <script>

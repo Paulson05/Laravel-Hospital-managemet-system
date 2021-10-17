@@ -56,7 +56,8 @@ class PatientController extends Controller
             'blood_group' => 'required',
             'religion' => 'required',
             'patient_type' => 'required',
-            'symptoms' => 'required'
+            'symptoms' => 'required',
+            'department_id' => 'required'
 
         ]);
         if ($validator->fails()) {
@@ -67,7 +68,7 @@ class PatientController extends Controller
         }
         else{
 
-            $array=collect($request->only(['name','occupation','phone', 'relative', 'gender',  'blood_group', 'patient_number',  'email',  'permanent_address', 'relative_name', 'current_address', 'symptoms', 'patient_type', 'religion', 'home_phone', 'd_o_b', 'floor_bed','visiting_doctor', 'photo']))->all();
+            $array=collect($request->only(['name','occupation','phone', 'department_id', 'relative', 'gender',  'blood_group', 'patient_number',  'email',  'permanent_address', 'relative_name', 'current_address', 'symptoms', 'patient_type', 'religion', 'home_phone', 'd_o_b', 'floor_bed','visiting_doctor', 'photo']))->all();
             Patient::create($array);
 
 //        $department->created_by = Auth::user()->id;
@@ -80,7 +81,12 @@ class PatientController extends Controller
             ]);
         }
     }
-
+    public function  fetchPatient(){
+        $patient = Patient::all();
+        return response()->json([
+            'patient'=> $patient,
+        ]);
+    }
     /**
      * Display the specified resource.
      *

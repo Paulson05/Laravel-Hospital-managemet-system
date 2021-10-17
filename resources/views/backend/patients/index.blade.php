@@ -144,6 +144,26 @@
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
 
+                                                <strong>Visiting Department</strong>
+                                                <select name="department_id" id="department_id" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                    @php
+                                                    $department = \App\Models\Department::all();
+                                                    @endphp
+
+                                                    <option>--select doctor--</option>
+                                                    @forelse( $department as $item)
+                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @empty
+                                                    <option value=""> select visiting doctor</option>
+                                                    @endforelse
+
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                            <div class="form-group">
+
                                                 <strong>floor</strong>
                                                 <select name="floor_bed" id="floor_bed" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
 
@@ -407,7 +427,7 @@
                                             <td>
 
                                         </tr>
-2
+
                                     </tbody>
                                 </table>
                             </div>
@@ -426,20 +446,24 @@
             function  fetchproduct() {
                 $.ajax({
                     type: "GET",
-                    url:"/fetch-product/",
+                    url:"{{route('fetch.patient')}}",
                     dataType:"json",
                     success: function (response) {
                         // console.log(response.posts);
 
                         $('tbody').html("");
-                        $.each(response.products, function (key, item){
+                        $.each(response.patient, function (key, item){
                             $('tbody').append('<tr>\
                                             <td>'+item.id+'</td>\
                                            <td>'+item.name+'</td>\
-                                           <td>'+item.suppliers_id+'</td>\
-                                           <td>'+item.unit_id+'</td>\
-                                            <td>'+item.alert_stock+'</td>\
-                                           <td>'+item.category_id+'</td>\
+                                           <td>'+item.occupation+'</td>\
+                                           <td>'+item.relative+'</td>\
+                                            <td>'+item.gender+'</td>\
+                                           <td>'+item.d_o_b+'</td>\
+                                            <td>'+item.occupation+'</td>\
+                                           <td>'+item.religion+'</td>\
+                                            <td>'+item.patient_number+'</td>\
+                                           <td>'+item.email+'</td>\
                                             <td><button type="button"  value="'+item.id+'" class="edit_product btn btn-primary" ><i class="fa fa-edit">edit</i></button></td>\
                                               <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash">delete</i></button></td>\
                                             </tr>');
@@ -469,6 +493,7 @@
                     'patient_type' : $('#patient_type').val(),
                     'symptoms' : $('#symptoms').val(),
                     'religion' : $('#religion').val(),
+                    'department_id' : $('#department_id').val(),
 
                 }
                 console.log(data);

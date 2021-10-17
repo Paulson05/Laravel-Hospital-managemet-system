@@ -6,6 +6,8 @@ use App\DataTables\marketerDataTable;
 use App\Models\Marketing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\DataTables;
+
 
 class MarketingController extends Controller
 {
@@ -70,6 +72,12 @@ class MarketingController extends Controller
             'marketing'=>$marketing,
         ]);
     }
+    function getdata()
+    {
+        $data=Marketing::select('name','id');
+        return Datatables::of($data)->make(true);
+    }
+
     /**
      * Display the specified resource.
      *

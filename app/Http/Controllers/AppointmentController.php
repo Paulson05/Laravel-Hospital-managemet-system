@@ -41,7 +41,7 @@ public function appointmentList(){
 
         $request->all();
         $validator = Validator::make($request->all(),[
-            'name' => 'required',
+            'patients_id' => 'required',
             'appointment_id' => 'required',
             'phone_number' => 'required',
             'email' => 'required',
@@ -50,7 +50,6 @@ public function appointmentList(){
             'date' => 'required',
             'time' => 'required',
             'message' => 'required',
-
         ]);
         if ($validator->fails()) {
             return response()->json([

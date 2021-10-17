@@ -65,7 +65,7 @@
                                                 <select name="patients_id" id="name" class="name form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
 
 
-                                                    <option value="0" disabled="true" selected="true">patient name</option>
+                                                    <option value="0" disabled="true" id="" selected="true">patient name</option>
                                                 </select>
 
                                             </div>
@@ -401,7 +401,7 @@
                 e.preventDefault();
                 console.log('click');
                 var data = {
-                    'name' : $('#name').val(),
+                    'patients_id': $('#name').val(),
                     'appointment_id' : $('#appointment_id').val(),
                     'email' : $('#email').val(),
                     'phone_number' : $('#phone_number').val(),
@@ -445,7 +445,7 @@
                             fetchproduct();
                             swal.fire(
                                 'congratulation!',
-                                'doctor added successfully',
+                                'appointment appointed  successfully',
                                 'success'
                             )
                         }

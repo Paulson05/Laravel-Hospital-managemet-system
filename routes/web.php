@@ -168,7 +168,7 @@ Route::get('/fetch-markerter', [MarketingController::class, 'fetchMarketer'])->n
 Route::get('/edit-doctor/{id}', [MarketingController::class, 'edit']);
 Route::put('/update-doctor/{id}', [MarketingController::class, 'update']);
 Route::delete('/delete-doctor/{id}', [MarketingController::class, 'destroy']);
-
+Route::get('getdata/ajax',[MarketingController::class, 'getdata'])->name('getdataed');
 //medecine
 
 Route::get('/medicine/drug', [MedecineController::class, 'index'])->name('medicine.index');
@@ -178,6 +178,7 @@ Route::get('/fetch-medecine', [MedecineController::class, 'fetchMedecine'])->nam
 //patient
 Route::get('/patient', [PatientController::class, 'index'])->name('patient.index');
 Route::post('/post-patient', [PatientController::class, 'store'])->name('patient.store');
+Route::get('/fetch/patient', [PatientController::class, 'fetchPatient'])->name('fetch.patient');
 
 Route::get('/patient/appointment', [AppointmentController::class, 'index'])->name('patient.appointment.index');
 Route::get('/patient/list', [AppointmentController::class, 'appointmentList'])->name('patient.appointment.list');
