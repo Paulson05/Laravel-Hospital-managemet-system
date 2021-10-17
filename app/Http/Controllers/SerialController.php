@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appointment;
+use App\Models\Serial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class AppointmentController extends Controller
+class SerialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('backend.patient-appointment.index');
+        return view('backend.serial.index');
     }
 
     /**
@@ -27,10 +27,7 @@ class AppointmentController extends Controller
     {
         //
     }
-public function approved(){
 
-        return view('backend.patient-appointment.approved_list');
-}
     /**
      * Store a newly created resource in storage.
      *
@@ -39,54 +36,47 @@ public function approved(){
      */
     public function store(Request $request)
     {
-              dd('ok');
         $request->all();
         $validator = Validator::make($request->all(),[
-            'patients_id' => 'required',
-            'appointment_id' => 'required',
-            'phone_number' => 'required',
-            'email' => 'required',
-            'doctor' => 'required',
-            'department' => 'required',
-            'date' => 'required',
-            'time' => 'required',
-            'message' => 'required',
+            'name' => 'required',
+
         ]);
+
         if ($validator->fails()) {
             return response()->json([
                 'status' => 400,
                 'errors' => $validator->messages(),
             ]);
         }
-        else
-            $array=collect($request->only(['name','phone_number', 'number', 'patients_id','appointment_id','email','doctor','department','date','time','message' ]))->all();
-       Appointment::create($array);
+        else{
+            $array=collect($request->only('name'))->all();
+            Serial::create($array);
 
 //        $department->created_by = Auth::user()->id;
 
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'post added successfully',
+            return response()->json([
+                'status' => 200,
+                'message' => 'serial added successfully',
 
-        ]);
+            ]);
+        }
+
 
     }
-
-    public function  fetchPatientAppointment(){
-        $appointment = Appointment::all();
+    public function  fetchSerial(){
+        $serial = Serial::all();
         return response()->json([
-            'appointment'=> $appointment,
+            'serial'=>$serial,
         ]);
     }
-
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Appointment  $appointment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Appointment $appointment)
+    public function show($id)
     {
         //
     }
@@ -94,10 +84,10 @@ public function approved(){
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Appointment  $appointment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Appointment $appointment)
+    public function edit($id)
     {
         //
     }
@@ -106,10 +96,10 @@ public function approved(){
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Appointment  $appointment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Appointment $appointment)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -117,10 +107,10 @@ public function approved(){
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Appointment  $appointment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Appointment $appointment)
+    public function destroy($id)
     {
         //
     }

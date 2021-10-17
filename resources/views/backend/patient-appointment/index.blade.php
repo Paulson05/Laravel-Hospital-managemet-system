@@ -33,8 +33,22 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
+
+
                                                 <strong>appointment_id</strong>
-                                                <input type="text" name="appointment_id"   id="appointment_id" class="appointment_id form-control " placeholder="appointment_id" >
+                                                <select name="appointment_id"   id="appointment_id" class=" appointment_id form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                    @php
+                                                    $serial = \App\Models\Serial::all();
+                                                    @endphp
+
+                                                    <option>--select series--</option>
+                                                    @forelse(  $serial as $item)
+                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @empty
+                                                    <option value="">no series</option>
+                                                    @endforelse
+
+                                                </select>
 
 
                                             </div>
@@ -264,39 +278,88 @@
                             <div class="toolbar">
                                 <!--        Here you can write extra buttons/actions for the toolbar              -->
                             </div>
+<!--                            <div class="fresh-datatables">-->
+<!--                                <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th>S/N</th>-->
+<!--                                        <th>NAME</th>-->
+<!--                                        <th>Supplier</th>-->
+<!--                                        <th>Unit</th>-->
+<!--                                        <th>alert stock</th>-->
+<!--                                        <th>Category</th>-->
+<!--                                        <th class="disabled-sorting text-right">Actions</th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!---->
+<!--                                    <tbody>-->
+<!---->
+<!--                                        <tr>-->
+<!--                                            <td></td>-->
+<!--                                            <td></td>-->
+<!--                                            <td></td>-->
+<!--                                            <td></td>-->
+<!--                                            <td></td>-->
+<!---->
+<!---->
+<!---->
+<!--                                            <td>-->
+<!--                                                <button type="button"   class="delete_post btn btn-primary" ><i class="fa fa-trash">delete</i></button>-->
+<!---->
+<!--                                                <button type="button"   class="edit_product btn btn-primary" ><i class="fa fa-edit">edit</i></button>-->
+<!--                                            <td>-->
+<!---->
+<!--                                        </tr>-->
+<!---->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </div>-->
+
                             <div class="fresh-datatables">
                                 <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                     <thead>
                                     <tr>
                                         <th>S/N</th>
-                                        <th>NAME</th>
-                                        <th>Supplier</th>
-                                        <th>Unit</th>
-                                        <th>alert stock</th>
-                                        <th>Category</th>
-                                        <th class="disabled-sorting text-right">Actions</th>
+                                        <th>Name</th>
+
+                                        <th>Invoice No</th>
+                                        <th>date</th>
+                                        <th>Description</th>
+                                        <th>status</th>
+
                                     </tr>
                                     </thead>
-
+                                    @php
+                                    $invoices = \App\Models\Appointment::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
+                                    @endphp
                                     <tbody>
 
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                    @foreach($invoices as $invoice)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+
+                                        <td>#{{$invoice->patients_id}}</td>
+                                        <td>{{date('d-m-y', strtotime($invoice->date))}}</td>
+                                        <td>{{$invoice->email}}</td>
+                                        <td>{{$invoice->message}}</td>
+                                        <td>{{$invoice->time}}</td>
+                                        <td>{{$invoice->date}}</td>
+                                        <td>
+                                            @if($invoice->status == '0')
+                                            <button class=" btn btn-danger">reject</button>
+                                            @elseif($invoice->status == '1')
+                                            <button class="btn btn-success">approved</button>
+                                            @endif
+                                        </td>
+                                        <td>
+                                             @if($invoice->status == '0')
+                                            <a href="{{route('invoice.approve', $invoice->id)}}"><button class="btn btn-outline-success"><i class="fa fa-check-circle" style="color: black;"></i></button></a>
+                                            @endif
+                                        <td>
 
 
-
-                                            <td>
-                                                <button type="button"   class="delete_post btn btn-primary" ><i class="fa fa-trash">delete</i></button>
-
-                                                <button type="button"   class="edit_product btn btn-primary" ><i class="fa fa-edit">edit</i></button>
-                                            <td>
-
-                                        </tr>
-
+                                    </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -373,31 +436,31 @@
 
             });
             fetchproduct();
-            function  fetchproduct() {
-                $.ajax({
-                    type: "GET",
-                    url:"{{route('fetch.patient.appointment')}}",
-                    dataType:"json",
-                    success: function (response) {
-                        // console.log(response.posts);
-
-                        $('tbody').html("");
-                        $.each(response.appointment, function (key, item){
-                            $('tbody').append('<tr>\
-                                            <td>'+item.id+'</td>\
-                                           <td>'+item.patients_id+'</td>\
-                                           <td>'+item.email+'</td>\
-                                           <td>'+item.phone_number+'</td>\
-                                            <td>'+item.time+'</td>\
-                                           <td>'+item.date+'</td>\
-                                           <td>'+item.message+'</td>\
-                                            <td><button type="button"  value="'+item.id+'" class="edit_product btn btn-primary" ><i class="fa fa-edit">edit</i></button></td>\
-                                              <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash">delete</i></button></td>\
-                                            </tr>');
-                        });
-                    }
-                })
-            }
+            // function  fetchproduct() {
+            //     $.ajax({
+            //         type: "GET",
+            //         url:"{{route('fetch.patient.appointment')}}",
+            //         dataType:"json",
+            //         success: function (response) {
+            //             // console.log(response.posts);
+            //
+            //             $('tbody').html("");
+            //             $.each(response.appointment, function (key, item){
+            //                 $('tbody').append('<tr>\
+            //                                 <td>'+item.id+'</td>\
+            //                                <td>'+item.patients_id+'</td>\
+            //                                <td>'+item.email+'</td>\
+            //                                <td>'+item.phone_number+'</td>\
+            //                                 <td>'+item.time+'</td>\
+            //                                <td>'+item.date+'</td>\
+            //                                <td>'+item.message+'</td>\
+            //                                 <td><button type="button"  value="'+item.id+'" class="edit_product btn btn-primary" ><i class="fa fa-edit">edit</i></button></td>\
+            //                                   <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash">delete</i></button></td>\
+            //                                 </tr>');
+            //             });
+            //         }
+            //     })
+            // }
             $(document).on('click', '.add_product', function (e){
                 e.preventDefault();
                 console.log('click');

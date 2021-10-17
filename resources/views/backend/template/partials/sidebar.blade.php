@@ -68,10 +68,22 @@
                         <span class="sidebar-normal">Patient</span>
                     </a>
                 </li>
+                <li  class="{{ Route::currentRouteNamed('serial.index') ? 'active' : '' }}" >
+                    <a href="{{route('serial.index')}}">
+                        <span class="sidebar-mini-icon">S</span>
+                        <span class="sidebar-normal">Serial</span>
+                    </a>
+                </li>
                 <li  class="{{ Route::currentRouteNamed('patient.appointment.index') ? 'active' : '' }}" >
                     <a href="{{route('patient.appointment.index')}}">
                         <span class="sidebar-mini-icon">PA</span>
-                        <span class="sidebar-normal">Patient Appointment</span>
+                        <span class="sidebar-normal">PAtent Appointmetn</span>
+                    </a>
+                </li>
+                <li  class="{{ Route::currentRouteNamed('patient.approved.list') ? 'active' : '' }}" >
+                    <a href="{{route('patient.approved.list')}}">
+                        <span class="sidebar-mini-icon">PAL</span>
+                        <span class="sidebar-normal">Patient Approved list</span>
                     </a>
                 </li>
                 <li  class="{{ Route::currentRouteNamed('bed.seat.index') ? 'active' : '' }}" >

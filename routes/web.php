@@ -20,6 +20,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SeatBedController;
+use App\Http\Controllers\SerialController;
 use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierController;
@@ -69,7 +70,9 @@ Route::get('/edit-doctor/{id}', [ DoctorController::class, 'edit']);
 Route::put('/update-doctor/{id}', [DoctorController::class, 'update']);
 Route::delete('/delete-doctor/{id}', [DoctorController::class, 'destroy']);
 
-
+//serial
+Route::resource('serial', SerialController::class)->except('create');
+Route::get('/fetch-serial', [SerialController::class, 'fetchSerial'])->name('fetch.serial');
 
 // degree
 
@@ -178,11 +181,13 @@ Route::get('/fetch-medecine', [MedecineController::class, 'fetchMedecine'])->nam
 //patient
 Route::get('/patient', [PatientController::class, 'index'])->name('patient.index');
 Route::post('/post-patient', [PatientController::class, 'store'])->name('patient.store');
-Route::get('/fetch/appointment', [PatientController::class, 'fetchPatientAppointment'])->name('fetch.patient.appointment');
+Route::get('/fetch/patient', [PatientController::class, 'fetchPatient'])->name('fetch.patient');
 
 Route::get('/patient/appointment', [AppointmentController::class, 'index'])->name('patient.appointment.index');
-Route::get('/patient/list', [AppointmentController::class, 'appointmentList'])->name('patient.appointment.list');
-Route::post('/post-patient-appointment', [AppointmentController::class, 'store'])->name('patient.appointment.store');
+Route::get('/fetch/appointment', [AppointmentController::class, 'fetchPatientAppointment'])->name('fetch.patient.appointment');
+
+Route::get('/patient/list', [AppointmentController::class, 'approved'])->name('patient.approved.list');
+Route::post('/post-patient-appointments', [AppointmentController::class, 'store'])->name('patient.appointment.store');
 
 
 //ABULANCE

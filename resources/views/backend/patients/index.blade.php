@@ -12,6 +12,7 @@
             </nav>
             <div class="row">
                 <div class="col-md-12 text-right">
+
                     <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#addModal">+</button>
                     {{--add modal--}}
                     <div  class="modal  fade pt-5" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
@@ -442,8 +443,8 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            fetchproduct();
-            function  fetchproduct() {
+            fetchPatient();
+            function  fetchPatient() {
                 $.ajax({
                     type: "GET",
                     url:"{{route('fetch.patient')}}",
@@ -526,7 +527,7 @@
                             $('#addModal').modal("hide");
                             $('#addModal').find("input").val("");
 
-                            fetchproduct();
+                            fetchPatient();
                             swal.fire(
                                 'congratulation!',
                                 'doctor added successfully',
@@ -570,7 +571,7 @@
                         $('#success_message').text(response.message);
                         $('#example2Modal').modal("hide");
                         $('.delete_post_btn').text("yes Delete");
-                        fetchproduct();
+                        fetchPatient();
                         swal.fire(
                             'congratulation!',
                             'doctor deleted successfully',
@@ -654,7 +655,7 @@
                             $('#success_message').addClass("alert  alert-success");
                             $('#success_message').text(response.message);
                             $('#editModal').modal("hide");
-                            fetchproduct();
+                            fetchPatient();
                             swal.fire(
                                 'congratulation!',
                                 'doctor updated successfully',

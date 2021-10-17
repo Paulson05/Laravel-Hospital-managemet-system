@@ -1,80 +1,94 @@
-@extends(''backend.template.defaults')
-@section('title', '| appointment-list')
+@extends('backend.template.defaults')
+@section('title', '| approve-list')
 @section('body')
 <div class="content">
     <div class="container-fluid">
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Appointment</a></li>
-                {{--                    <li class="breadcrumb-item active" aria-current="page">({{\App\Models\Appointment::count()}})</li>--}}
-            </ol>
-        </nav>
+
         <div class="row">
             <div class="col-md-12 text-right">
-                <a href="{{route('invoice.index')}}" class="btn btn-primary " >add</a>
-                {{--add modal--}}
-
+                <a href="{{route('invoice.list')}}" class="btn btn-primary " >pending list</a>
 
             </div>
 
-            <div class="col-md-12">
-                <div class="card data-tables">
-                    <div class="card-body table-striped table-no-bordered table-hover dataTable dtr-inline table-full-width">
-                        <div class="toolbar">
-                            <!--        Here you can write extra buttons/actions for the toolbar              -->
-                        </div>
-                        <div class="fresh-datatables justify-content-center ">
-                            <table id="datatables" class="table table-striped table-no-bordered table-hover table-responsive container justify-content-center" cellspacing="0" width="100%" style="width:100%">
-                                <thead>
-                                <tr>
-                                    <th>S/N</th>
-                                    <th>Invoice No</th>
-                                    <th>Name</th>
-                                    <th>date</th>
-                                    <th>Description</th>
-                                    <th>status</th>
-                                    <th>approved</th>
+            <div class="card-body">
+                @php
+                $payment = \App\Models\payment::where('invoice_id', $invoice->id)->first();
+                @endphp
+                <table style="width: 100%;">
+                    <tbody>
+                    <tr class="text-center">
 
-                                </tr>
-                                </thead>
-                                @php
-                                $data = \App\Models\Appointment::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
-                                @endphp
-                                <tbody>
+                        <td width = '15%' ><p><strong>customer Info</strong></p></td>
+                        <td width = '25%' ><p><strong>Name: {{$payment['customer']['name']}}</strong></p></td>
+                        <td width = '25%' ><p><strong>Mobile No: {{$payment['customer']['mobile_no']}}</strong></p></td>
+                        <td width = '35%' ><p><strong>Address : {{$payment['customer']['address']}}</strong></p></td>
 
-                                @foreach($data as $item)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{ $item->first_name}}</td>
-                                    <td>
-                                        {{ $item->email}}
-                                    </td>
-                                    <td>{{$item->message}}</td>
-                                    <td>{{date('d-m-y', strtotime($item->appointment_date))}}</td>
-                                    <td>{{date('d-m-y', strtotime($item->appointment_time))}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><p><strong>Description {{$invoice->description}}</strong></p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <form method="post" action="{{route('approval.store', $invoice->id)}}">
+                    @csrf
+                    <table border="1" width="100%">
+                        <thead>
+                        <tr  class="text-center">
+                            <td>S/N</td>
+                            <td>Category</td>
+                            <td>Product Name</td>
+                            <td>Current stock</td>
+                            <td>Qty</td>
+                            <td>Unit price</td>
+                            <td>Total Price</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @php
+                        $total_sum = '0';
+                        @endphp
+                        @foreach($invoice['invoicedetails'] as $data)
+                        <tr   class="text-center">
+                            <input type="hidden" name="category_id[]" value="{{$data->category_id}}">
+                            <input type="hidden" name="products_id[]" value="{{$data->products_id}}">
+                            <input type="hidden" name="selling_qty[{{$data->id}}]" value="{{$data->selling_qty}}">
 
-                                    <td>
-                                        @if($item->status == '0')
-                                        <button class=" btn btn-danger">pending</button>
-                                        @elseif($item->status == '1')
-                                        <button class="btn btn-success">approved</button>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if($item->status == '0')
-                                        <a href=""><button class="btn btn-outline-success"><i class="fa fa-check-circle" style="color: black;"></i></button></a>
-                                        @endif
-                                    <td>
+                            <td   >{{$loop->iteration}}</td>
+                            <td >{{$data['category']['name']}}</td>
+                            <td >{{$data['product']['name']}}</td>
 
+                            <td>{{$data['product']['quantity']}}</td>
+                            <td  >{{$data->selling_qty}}</td>
+                            <td >{{$data->unit_price}}</td>
+                            <td >{{$data->selling_price}}</td>
+                        </tr>
+                        @php
+                        $total_sum += $data->selling_price;
+                        @endphp
+                        @endforeach
+                        <tr>
+                            <td colspan="6" class="text-right"><strong>Sub Total</strong></td>
+                            <td  class="text-center" ><strong>{{$total_sum}}</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="text-right"><strong>Discount</strong></td>
+                            <td  class="text-center" ><strong>{{$payment->paid_amount}}</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="text-right"><strong>Due Amount</strong></td>
+                            <td  class="text-center" ><strong>{{$payment->due_amount}}</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="text-right"><strong>Grand Total</strong></td>
+                            <td  class="text-center" ><strong>{{$payment->total_amount}}</strong></td>
+                        </tr>
+                        </tbody>
 
-                                </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                    </table>
+                    <button type="submit" class="btn btn-primary mt-2">approved invoice</button>
+                </form>
             </div>
         </div>
     </div>

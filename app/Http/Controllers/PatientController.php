@@ -82,10 +82,10 @@ class PatientController extends Controller
             ]);
         }
     }
-    public function  fetchPatientAppointment(){
-        $appointment = Appointment::all();
+    public function  fetchPatient(){
+        $patient = Patient::all();
         return response()->json([
-            'appointment'=> $appointment,
+            'patient'=> $patient,
         ]);
     }
     /**
