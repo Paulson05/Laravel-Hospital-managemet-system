@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -81,10 +82,10 @@ class PatientController extends Controller
             ]);
         }
     }
-    public function  fetchPatient(){
-        $patient = Patient::all();
+    public function  fetchPatientAppointment(){
+        $appointment = Appointment::all();
         return response()->json([
-            'patient'=> $patient,
+            'appointment'=> $appointment,
         ]);
     }
     /**

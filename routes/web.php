@@ -178,7 +178,7 @@ Route::get('/fetch-medecine', [MedecineController::class, 'fetchMedecine'])->nam
 //patient
 Route::get('/patient', [PatientController::class, 'index'])->name('patient.index');
 Route::post('/post-patient', [PatientController::class, 'store'])->name('patient.store');
-Route::get('/fetch/patient', [PatientController::class, 'fetchPatient'])->name('fetch.patient');
+Route::get('/fetch/appointment', [PatientController::class, 'fetchPatientAppointment'])->name('fetch.patient.appointment');
 
 Route::get('/patient/appointment', [AppointmentController::class, 'index'])->name('patient.appointment.index');
 Route::get('/patient/list', [AppointmentController::class, 'appointmentList'])->name('patient.appointment.list');

@@ -24,6 +24,7 @@ class CreatePatientsAppointmentsTable extends Migration
             $table->string('date');
             $table->string('time');
             $table->string('message');
+            $table->tinyInteger('status')->default(0)->comment('0=pending, 1=Approved');
             $table->timestamps();
         });
     }

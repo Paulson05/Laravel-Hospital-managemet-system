@@ -58,7 +58,7 @@ public function appointmentList(){
             ]);
         }
         else
-            $array=collect($request->only(['name','phone_number','appointment_id','email','doctor','department','date','time','message' ]))->all();
+            $array=collect($request->only(['name','phone_number', 'patients_id','appointment_id','email','doctor','department','date','time','message' ]))->all();
        Appointment::create($array);
 
 //        $department->created_by = Auth::user()->id;

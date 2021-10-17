@@ -65,7 +65,7 @@
                                                 <select name="patients_id" id="name" class="name form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
 
 
-                                                    <option value="0" disabled="true" id="" selected="true">patient name</option>
+                                                    <option value="0" disabled="true" id="" name="patients_id" selected="true">patient name</option>
                                                 </select>
 
                                             </div>
@@ -296,7 +296,7 @@
                                             <td>
 
                                         </tr>
-2
+
                                     </tbody>
                                 </table>
                             </div>
@@ -376,20 +376,21 @@
             function  fetchproduct() {
                 $.ajax({
                     type: "GET",
-                    url:"/fetch-product/",
+                    url:"{{route('fetch.patient.appointment')}}",
                     dataType:"json",
                     success: function (response) {
                         // console.log(response.posts);
 
                         $('tbody').html("");
-                        $.each(response.products, function (key, item){
+                        $.each(response.appointment, function (key, item){
                             $('tbody').append('<tr>\
                                             <td>'+item.id+'</td>\
-                                           <td>'+item.name+'</td>\
-                                           <td>'+item.suppliers_id+'</td>\
-                                           <td>'+item.unit_id+'</td>\
-                                            <td>'+item.alert_stock+'</td>\
-                                           <td>'+item.category_id+'</td>\
+                                           <td>'+item.patients_id+'</td>\
+                                           <td>'+item.email+'</td>\
+                                           <td>'+item.phone_number+'</td>\
+                                            <td>'+item.time+'</td>\
+                                           <td>'+item.date+'</td>\
+                                           <td>'+item.message+'</td>\
                                             <td><button type="button"  value="'+item.id+'" class="edit_product btn btn-primary" ><i class="fa fa-edit">edit</i></button></td>\
                                               <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash">delete</i></button></td>\
                                             </tr>');
