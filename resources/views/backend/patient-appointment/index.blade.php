@@ -34,25 +34,24 @@
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
 
-
-                                                <strong>appointment_id</strong>
-                                                <select name="appointment_id"   id="appointment_id" class=" appointment_id form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                <strong>Serial</strong>
+                                                <select name="appointment_id" id="appointment_id" class="appointment_id form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
                                                     @php
-                                                    $serial = \App\Models\Serial::all();
+                                                    $doctor = \App\Models\Serial::all();
                                                     @endphp
 
-                                                    <option>--select series--</option>
-                                                    @forelse(  $serial as $item)
+                                                    <option value="0" disabled="true" selected="true">--select serial--</option>
+                                                    @forelse( $doctor as $item)
                                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                                     @empty
-                                                    <option value="">no series</option>
+                                                    <option value=""> select series </option>
                                                     @endforelse
 
                                                 </select>
 
-
                                             </div>
                                         </div>
+
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
 
@@ -100,7 +99,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                                             <div class="form-group">
                                                 <strong>Phone Number</strong>
-                                                <input type="text" name="phone_number"   id="phone_number" class="patient_number form-control " placeholder="phone_number" >
+                                                <input type="text" name="phone_number"   id="phone_number" class="patient_number form-control  @error('phone_number'){{"is-invalid"}}@enderror " placeholder="phone_number" >
 
 
                                             </div>
@@ -110,7 +109,9 @@
                                                 <strong>Department</strong>
                                                 <input type="text" name="department"   id="department_id" class="department_id form-control " placeholder="departments_id" >
 
-
+                                                @error('date')
+                                                <span class="form-text text-danger">{{$errors->first('date')}}</span>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -118,16 +119,20 @@
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
                                             <div class="form-group">
                                                 <strong>date</strong>
-                                                <input type="date" name="date"   id="date" class="date form-control " placeholder="date" >
-
+                                                <input type="date" name="date"   id="date" class="date form-control  @error('time'){{"is-invalid"}}@enderror " placeholder="date" >
+                                                @error('date')
+                                                <span class="form-text text-danger">{{$errors->first('date')}}</span>
+                                                @enderror
                                             </div>
 
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-6 text-left">
                                             <div class="form-group">
                                                 <strong>time</strong>
-                                                <input type="time" name="timer"   id="time" class="time form-control " placeholder="time" >
-
+                                                <input type="time" name="time"   id="time" class="time form-control @error('time'){{"is-invalid"}}@enderror " placeholder="time" >
+                                                @error('time')
+                                                <span class="form-text text-danger">{{$errors->first('time')}}</span>
+                                                @enderror
 
                                             </div>
                                         </div>
@@ -139,9 +144,11 @@
 
                                                 <div class="form-group">
                                                     <label>message</label>
-                                                    <textarea name="messages" id="message" class="form-control col-12" rows="5" cols="30" required></textarea>
+                                                    <textarea name="messages" id="message" class="form-control col-12 @error('message'){{"is-invalid"}}@enderror" rows="5" cols="30" required></textarea>
                                                 </div>
-
+                                                @error('message')
+                                                <span class="form-text text-danger">{{$errors->first('message')}}</span>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -316,7 +323,7 @@
 <!--                            </div>-->
 
                             <div class="fresh-datatables">
-                                <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                <table id="datatables" class="table table-striped table-no-bordered table-hover table-responsive" cellspacing="0" width="100%" style="width:100%">
                                     <thead>
                                     <tr>
                                         <th>S/N</th>
@@ -337,7 +344,7 @@
                                     @foreach($invoices as $invoice)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-
+                                        <td>#{{$invoice->series->prefix ?? ''}}{{str_pad($invoice->number, 5,'0' STR_PAD_LEFT)}}</td>
                                         <td>#{{$invoice->patients_id}}</td>
                                         <td>{{date('d-m-y', strtotime($invoice->date))}}</td>
                                         <td>{{$invoice->email}}</td>
@@ -346,14 +353,14 @@
                                         <td>{{$invoice->date}}</td>
                                         <td>
                                             @if($invoice->status == '0')
-                                            <button class=" btn btn-danger">reject</button>
+                                            <button class=" btn btn-danger">pending</button>
                                             @elseif($invoice->status == '1')
                                             <button class="btn btn-success">approved</button>
                                             @endif
                                         </td>
                                         <td>
-                                             @if($invoice->status == '0')
-                                            <a href="{{route('invoice.approve', $invoice->id)}}"><button class="btn btn-outline-success"><i class="fa fa-check-circle" style="color: black;"></i></button></a>
+                                            @if($invoice->status == '0')
+                                            <a href="{{route('invoice.approve', $invoice->id)}}"><i>approved</i></a>
                                             @endif
                                         <td>
 
@@ -436,34 +443,34 @@
 
             });
             fetchproduct();
-            // function  fetchproduct() {
-            //     $.ajax({
-            //         type: "GET",
-            //         url:"{{route('fetch.patient.appointment')}}",
-            //         dataType:"json",
-            //         success: function (response) {
-            //             // console.log(response.posts);
-            //
-            //             $('tbody').html("");
-            //             $.each(response.appointment, function (key, item){
-            //                 $('tbody').append('<tr>\
-            //                                 <td>'+item.id+'</td>\
-            //                                <td>'+item.patients_id+'</td>\
-            //                                <td>'+item.email+'</td>\
-            //                                <td>'+item.phone_number+'</td>\
-            //                                 <td>'+item.time+'</td>\
-            //                                <td>'+item.date+'</td>\
-            //                                <td>'+item.message+'</td>\
-            //                                 <td><button type="button"  value="'+item.id+'" class="edit_product btn btn-primary" ><i class="fa fa-edit">edit</i></button></td>\
-            //                                   <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash">delete</i></button></td>\
-            //                                 </tr>');
-            //             });
-            //         }
-            //     })
-            // }
+            function  fetchproduct() {
+                $.ajax({
+                    type: "GET",
+                    url:"{{route('fetch.patient.appointment')}}",
+                    dataType:"json",
+                    success: function (response) {
+                        // console.log(response.posts);
+
+                        $('tbody').html("");
+                        $.each(response.appointment, function (key, item){
+                            $('tbody').append('<tr>\
+                                            <td>'+item.id+'</td>\
+                                           <td>'+item.patients_id+'</td>\
+                                           <td>'+item.email+'</td>\
+                                           <td>'+item.phone_number+'</td>\
+                                            <td>'+item.time+'</td>\
+                                           <td>'+item.date+'</td>\
+                                           <td>'+item.message+'</td>\
+                                            <td><button type="button"  value="'+item.id+'" class="edit_product btn btn-primary" ><i class="fa fa-edit">edit</i></button></td>\
+                                              <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash">delete</i></button></td>\
+                                            </tr>');
+                        });
+                    }
+                })
+            }
             $(document).on('click', '.add_product', function (e){
                 e.preventDefault();
-                console.log('click');
+
                 var data = {
                     'patients_id': $('#name').val(),
                     'appointment_id' : $('#appointment_id').val(),
@@ -485,7 +492,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url:"{{route('patient.appointment.store')}}",
+                    url:"/post-patient-appointments/",
                     data:data,
                     dataType:"json",
 

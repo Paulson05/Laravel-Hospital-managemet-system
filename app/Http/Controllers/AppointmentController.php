@@ -37,10 +37,10 @@ public function approved(){
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function getStore(Request $request)
     {
-              dd('ok');
-        $request->all();
+
+
         $validator = Validator::make($request->all(),[
             'patients_id' => 'required',
             'appointment_id' => 'required',

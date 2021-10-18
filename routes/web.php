@@ -187,7 +187,7 @@ Route::get('/patient/appointment', [AppointmentController::class, 'index'])->nam
 Route::get('/fetch/appointment', [AppointmentController::class, 'fetchPatientAppointment'])->name('fetch.patient.appointment');
 
 Route::get('/patient/list', [AppointmentController::class, 'approved'])->name('patient.approved.list');
-Route::post('/post-patient-appointments', [AppointmentController::class, 'store'])->name('patient.appointment.store');
+Route::post('/post-patient-appointments', [AppointmentController::class, 'getStore'])->name('patient.appointment.store');
 
 
 //ABULANCE
