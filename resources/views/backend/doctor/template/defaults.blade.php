@@ -87,7 +87,7 @@
                 </div>
             </div>
 
-           @include('backend.template.partials.sidebar')
+           @include('backend.doctor.template.partials.sidebar')
         </div>
     </div>
 
@@ -199,7 +199,7 @@
 
 
 
-          @yield('body')
+          @yield('doctor')
 
 
 
@@ -222,7 +222,7 @@
 
 
 
-@include('backend.template.partials.script')
+@include('backend.doctor.template.partials.scripts')
 
 </body>
 

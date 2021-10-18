@@ -77,7 +77,7 @@
                 <li  class="{{ Route::currentRouteNamed('patient.appointment.index') ? 'active' : '' }}" >
                     <a href="{{route('patient.appointment.index')}}">
                         <span class="sidebar-mini-icon">PA</span>
-                        <span class="sidebar-normal">PAtent Appointmetn</span>
+                        <span class="sidebar-normal">Patient Appointment</span>
                     </a>
                 </li>
                 <li  class="{{ Route::currentRouteNamed('patient.approved.list') ? 'active' : '' }}" >

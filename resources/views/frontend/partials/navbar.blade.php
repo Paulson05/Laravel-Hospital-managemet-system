@@ -31,7 +31,7 @@
             </li>
             <li class="nav-item mt-1">
                 <a class="login btn btn-sm ml-2"
-                   href="">Register</a>
+                   href="{{Route('doctor.register')}}">Register</a>
             </li>
         </ul>
     </div>

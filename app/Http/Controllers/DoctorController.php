@@ -15,9 +15,11 @@ class DoctorController extends Controller
     return view('backend.doctor.index');
 }
 public  function doctorDashboard(){
-    return view('backend.doctor.dashboard');
+    $invoices = \App\Models\Appointment::with(['series'])->orderBy('date', 'desc')->get();
+    return view('backend.doctor.dashboard', [  'invoices'=> $invoices]);
 }
 public  function doctorRegister(){
+
     return view('backend.doctor.register');
 }
 
@@ -31,7 +33,7 @@ public  function doctorRegister(){
 
         $post = User::create(collect($request->only(['name','email']))->put('password',bcrypt($request->password))->all());
         $post->save();
-        return redirect()->route('doctor.get.login');
+        return redirect()->route('doctor.login');
 
     }
     public function getLogin(){

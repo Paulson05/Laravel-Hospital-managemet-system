@@ -55,13 +55,62 @@
 
             </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 table-responsive card">
+            <div class="data-tables">
+                <div class="card-body table-striped table-no-bordered table-hover dataTable dtr-inline table-full-width">
+                    <div class="toolbar">
+                        <!--        Here you can write extra buttons/actions for the toolbar              -->
+                    </div>
 
 
+                    <div class="fresh-datatables">
+                        <table id="datatables" class="table table-striped table-no-bordered table-hover table-responsive" cellspacing="0" width="100%" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Name</th>
 
+                                <th>Invoice No</th>
+                                <th>date</th>
+                                <th>Description</th>
+                                <th>status</th>
 
+                            </tr>
+                            </thead>
 
+                            <tbody>
 
+                            @foreach($invoices as $invoice)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td> {{ $invoice->series->name }}-{{ str_pad($invoice->number, 5, '0', STR_PAD_LEFT) }} </td>
+                                <td>{{$invoice->patients_id}}</td>
+                                <td>{{date('d-m-y', strtotime($invoice->date))}}</td>
+                                <td>{{$invoice->email}}</td>
+                                <td>{{$invoice->message}}</td>
+                                <td>{{$invoice->time}}</td>
+                                <td>{{$invoice->date}}</td>
+                                <td>
+                                    @if($invoice->status == '0')
+                                    <button class=" btn btn-danger">pending</button>
+                                    @elseif($invoice->status == '1')
+                                    <button class="btn btn-success">approved</button>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($invoice->status == '0')
+                                    <a href="{{route('invoice.approve', $invoice->id)}}"><button class="btn btn-outline-success"><i class="fa fa-check-circle" style="color: black;"></i></button></a>
+
+                                    @endif
+                                <td>
+
+                            </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
