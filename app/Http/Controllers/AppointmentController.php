@@ -15,7 +15,9 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('backend.patient-appointment.index');
+        $invoices = \App\Models\Appointment::with(['series'])->orderBy('date', 'desc')->get();
+
+        return view('backend.patient-appointment.index', [  'invoices'=> $invoices]);
     }
 
     /**
@@ -43,7 +45,7 @@ public function approved(){
 
         $validator = Validator::make($request->all(),[
             'patients_id' => 'required',
-            'appointment_id' => 'required',
+            'serials_id' => 'required',
             'phone_number' => 'required',
             'email' => 'required',
             'doctor' => 'required',
@@ -58,8 +60,9 @@ public function approved(){
                 'errors' => $validator->messages(),
             ]);
         }
+
         else
-            $array=collect($request->only(['name','phone_number', 'number', 'patients_id','appointment_id','email','doctor','department','date','time','message' ]))->all();
+            $array=collect($request->only(['name','phone_number', 'number', 'patients_id','serials_id','email','doctor','department','date','time','message' ]))->all();
        Appointment::create($array);
 
 //        $department->created_by = Auth::user()->id;

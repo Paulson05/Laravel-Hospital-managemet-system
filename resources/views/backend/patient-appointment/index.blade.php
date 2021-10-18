@@ -35,7 +35,7 @@
                                             <div class="form-group">
 
                                                 <strong>Serial</strong>
-                                                <select name="appointment_id" id="appointment_id" class="appointment_id form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                <select name="serials_id" id="serials_id" class="serials_id form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
                                                     @php
                                                     $doctor = \App\Models\Serial::all();
                                                     @endphp
@@ -336,16 +336,14 @@
 
                                     </tr>
                                     </thead>
-                                    @php
-                                    $invoices = \App\Models\Appointment::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
-                                    @endphp
+
                                     <tbody>
 
                                     @foreach($invoices as $invoice)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>#{{$invoice->series->prefix ?? ''}}{{str_pad($invoice->number, 5,'0' STR_PAD_LEFT)}}</td>
-                                        <td>#{{$invoice->patients_id}}</td>
+                                        <td> {{ $invoice->series->name }}-{{ str_pad($invoice->number, 5, '0', STR_PAD_LEFT) }} </td>
+                                        <td>{{$invoice->patients_id}}</td>
                                         <td>{{date('d-m-y', strtotime($invoice->date))}}</td>
                                         <td>{{$invoice->email}}</td>
                                         <td>{{$invoice->message}}</td>
@@ -473,7 +471,7 @@
 
                 var data = {
                     'patients_id': $('#name').val(),
-                    'appointment_id' : $('#appointment_id').val(),
+                    'serials_id' : $('#serials_id').val(),
                     'email' : $('#email').val(),
                     'phone_number' : $('#phone_number').val(),
                     'doctor' : $('#doctor').val(),
