@@ -1,6 +1,6 @@
-@extends('backend.template.defaults')
+@extends('backend.doctor.template.defaults')
 @section('title', '| patient approved-Appointment')
-@section('body')
+@section('doctor')
 <div class="content">
     <div class="container-fluid">
 

@@ -1,6 +1,6 @@
-@extends('backend.template.defaults')
-@section('title', '| patient approved-Appointment')
-@section('body')
+@extends('backend.doctor.template.defaults')
+@section('title', '| patient-Appointment pending list')
+@section('doctor')
 <div class="content">
     <div class="container-fluid">
 
@@ -337,7 +337,7 @@
                                 </tr>
 
                                 @php
-                                $appointment = \App\Models\Appointment::orderBy('date', 'desc')->orderby('id', 'desc')->where('status', '1')->get();
+                                $appointment = \App\Models\Appointment::orderBy('date', 'desc')->orderby('id', 'desc')->where('status', '0')->get();
 
                                 @endphp
                                 </thead>
@@ -345,21 +345,21 @@
                                 <tbody>
 
                                 @foreach($appointment as $invoice)
-                                    <td>{{$loop->iteration}}</td>
-                                    <td> {{ $invoice->series->name }}-{{ str_pad($invoice->number, 5, '0', STR_PAD_LEFT) }} </td>
-                                    <td>{{$invoice->patients_id}}</td>
-                                    <td>{{date('d-m-y', strtotime($invoice->date))}}</td>
-                                    <td>{{$invoice->email}}</td>
-                                    <td>{{$invoice->message}}</td>
-                                    <td>{{$invoice->time}}</td>
-                                    <td>{{$invoice->date}}</td>
-                                    <td>
-                                        @if($invoice->status == '0')
-                                        <button class=" btn btn-danger">pending</button>
-                                        @elseif($invoice->status == '1')
-                                        <button class="btn btn-success">approved</button>
-                                        @endif
-                                    </td>
+                                <td>{{$loop->iteration}}</td>
+                                <td> {{ $invoice->series->name }}-{{ str_pad($invoice->number, 5, '0', STR_PAD_LEFT) }} </td>
+                                <td>{{$invoice->patients_id}}</td>
+                                <td>{{date('d-m-y', strtotime($invoice->date))}}</td>
+                                <td>{{$invoice->email}}</td>
+                                <td>{{$invoice->message}}</td>
+                                <td>{{$invoice->time}}</td>
+                                <td>{{$invoice->date}}</td>
+                                <td>
+                                    @if($invoice->status == '0')
+                                    <button class=" btn btn-danger">pending</button>
+                                    @elseif($invoice->status == '1')
+                                    <button class="btn btn-success">approved</button>
+                                    @endif
+                                </td>
 
 
 

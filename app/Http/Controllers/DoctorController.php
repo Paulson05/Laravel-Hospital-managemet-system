@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,6 +19,15 @@ public  function doctorDashboard(){
     $invoices = \App\Models\Appointment::with(['series'])->orderBy('date', 'desc')->get();
     return view('backend.doctor.dashboard', [  'invoices'=> $invoices]);
 }
+
+public function allApprovedList(){
+
+    return view('backend.doctor.approved_list');
+}
+    public function allPendingList(){
+
+        return view('backend.doctor.pending_list');
+    }
 public  function doctorRegister(){
 
     return view('backend.doctor.register');

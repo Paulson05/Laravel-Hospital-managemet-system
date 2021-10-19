@@ -61,6 +61,10 @@ Route::get('/doctor/index', [DoctorController::class, 'index'])->name('doctor.in
 Route::get('/doctor/get/login', [DoctorController::class, 'getLogin'])->name('doctor.login');
 Route::post('/doctor/post/login', [DoctorController::class, 'postLogin'])->name('doctor.post');
 Route::get('/doctor/dashboard', [DoctorController::class, 'doctorDashboard'])->name('doctor.dashboard');
+Route::get('/doctor/approve/list', [DoctorController::class, 'allApprovedList'])->name('doctor.approved.list');
+Route::get('/doctor/all/pending/list', [DoctorController::class, 'allPendingList'])->name('doctor.pending.list');
+
+
 Route::get('/doctor/register', [DoctorController::class, 'doctorRegister'])->name('doctor.register');
 Route::post('/doctor/post/register', [DoctorController::class, 'postRegister'])->name('doctor.post.register');
 
@@ -186,7 +190,7 @@ Route::get('/fetch/patient', [PatientController::class, 'fetchPatient'])->name('
 Route::get('/patient/appointment', [AppointmentController::class, 'index'])->name('patient.appointment.index');
 Route::get('/fetch/appointment', [AppointmentController::class, 'fetchPatientAppointment'])->name('fetch.patient.appointment');
 
-Route::get('/patient/approve/list', [AppointmentController::class, 'approvedList'])->name('patient.approved.list');
+Route::get('/patient/list', [AppointmentController::class, 'approved'])->name('patient.approved.list');
 Route::post('/post-patient-appointments', [AppointmentController::class, 'getStore'])->name('patient.appointment.store');
 Route::get('/appointment/invoice/{id}', [AppointmentController::class, 'approve'])->name('appointment.approve');
 
