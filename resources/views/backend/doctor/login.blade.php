@@ -212,7 +212,7 @@
 </div>
 
 
-@include('backend.template.partials.script')
+@include('backend.template.partials.scripts')
 
 </body>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class AppointmentController extends Controller
@@ -29,7 +30,7 @@ class AppointmentController extends Controller
     {
         //
     }
-public function approved(){
+public function approvedList(){
 
         return view('backend.patient-appointment.approved_list');
 }
@@ -126,5 +127,13 @@ public function approved(){
     public function destroy(Appointment $appointment)
     {
         //
+    }
+
+    public function approve($id){
+
+        $invoice = Appointment::find($id);
+            DB::table('patients_appointments')->where('id', $id)->update(['status' => 1]);
+
+        return redirect()->route('patient.appointment.index');
     }
 }

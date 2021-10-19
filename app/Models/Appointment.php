@@ -22,4 +22,8 @@ class Appointment extends Model
             $model->full_number = $model->series->name . '-' . str_pad($model->number, 5, '0', STR_PAD_LEFT);
         });
     }
+
+    public function invoicedetails(){
+        return $this->hasMany(Appointment::class, 'patients_id', 'id' );
+    }
 }

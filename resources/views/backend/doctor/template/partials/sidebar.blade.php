@@ -1,9 +1,9 @@
 <ul class="nav">
 
-    <li class="{{ Route::currentRouteNamed('dashboard') ? 'active' : '' }}"  >
+    <li class="{{ Route::currentRouteNamed('patient.appointment.index') ? 'active' : '' }}"  >
 
 
-        <a href="{{Route('dashboard')}}">
+        <a href="{{Route('patient.appointment.index')}}">
 
             <i class="now-ui-icons design_app"></i>
 
@@ -14,14 +14,25 @@
 
 
 
-    <li class="{{ Route::currentRouteNamed('dashboard') ? 'active' : '' }}"  >
+    <li class="{{ Route::currentRouteNamed('patient.appointment.index') ? 'active' : '' }}"  >
 
 
-        <a href="{{Route('dashboard')}}">
+        <a href="{{Route('patient.appointment.index')}}">
 
             <i class="now-ui-icons design_app"></i>
 
-            <p>Approved Appointment</p>
+            <p>All Appointment</p>
+        </a>
+
+    </li>
+    <li class="{{ Route::currentRouteNamed('patient.approved.list') ? 'active' : '' }}"  >
+
+
+        <a href="{{Route('patient.approved.list')}}">
+
+            <i class="now-ui-icons design_app"></i>
+
+            <p>Approved list</p>
         </a>
 
     </li>

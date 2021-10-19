@@ -99,7 +99,7 @@
                                 </td>
                                 <td>
                                     @if($invoice->status == '0')
-                                    <a href="{{route('invoice.approve', $invoice->id)}}"><button class="btn btn-outline-success"><i class="fa fa-check-circle" style="color: black;"></i></button></a>
+                                    <a href="{{route('appointment.approve', $invoice->id)}}"><button class="btn btn-outline-success"><i class="fa fa-check-circle" style="color: black;"></i></button></a>
 
                                     @endif
                                 <td>

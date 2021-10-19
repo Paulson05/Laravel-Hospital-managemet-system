@@ -358,7 +358,7 @@
                                         </td>
                                         <td>
                                             @if($invoice->status == '0')
-                                            <a href="{{route('invoice.approve', $invoice->id)}}"><i>approved</i></a>
+                                            <a href="{{route('appointment.approve',  $invoice->id)}}"><i>approved</i></a>
                                             @endif
                                         <td>
 

@@ -186,9 +186,9 @@ Route::get('/fetch/patient', [PatientController::class, 'fetchPatient'])->name('
 Route::get('/patient/appointment', [AppointmentController::class, 'index'])->name('patient.appointment.index');
 Route::get('/fetch/appointment', [AppointmentController::class, 'fetchPatientAppointment'])->name('fetch.patient.appointment');
 
-Route::get('/patient/list', [AppointmentController::class, 'approved'])->name('patient.approved.list');
+Route::get('/patient/approve/list', [AppointmentController::class, 'approvedList'])->name('patient.approved.list');
 Route::post('/post-patient-appointments', [AppointmentController::class, 'getStore'])->name('patient.appointment.store');
-
+Route::get('/appointment/invoice/{id}', [AppointmentController::class, 'approve'])->name('appointment.approve');
 
 //ABULANCE
 Route::get('/amblulance', [AmbulanceController::class, 'index'])->name('ambulance.index');
