@@ -322,8 +322,8 @@
                         <!--                                </table>-->
                         <!--                            </div>-->
 
-                        <div class="fresh-datatables">
-                            <table id="datatables" class="table table-striped table-no-bordered table-hover table-responsive" cellspacing="0" width="100%" style="width:100%">
+                        <div class="fresh-datatables justify-content-center">
+                            <table id="datatables" class="container table table-striped table-no-bordered table-hover table-responsive" cellspacing="0" width="100%" style="width:100%">
                                 <thead>
                                 <tr>
                                     <th>S/N</th>

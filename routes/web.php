@@ -63,6 +63,8 @@ Route::post('/doctor/post/login', [DoctorController::class, 'postLogin'])->name(
 Route::get('/doctor/dashboard', [DoctorController::class, 'doctorDashboard'])->name('doctor.dashboard');
 Route::get('/doctor/approve/list', [DoctorController::class, 'allApprovedList'])->name('doctor.approved.list');
 Route::get('/doctor/all/pending/list', [DoctorController::class, 'allPendingList'])->name('doctor.pending.list');
+Route::get('/doctor/profile', [DoctorController::class, 'profile'])->name('doctor.profile');
+
 
 
 Route::get('/doctor/register', [DoctorController::class, 'doctorRegister'])->name('doctor.register');

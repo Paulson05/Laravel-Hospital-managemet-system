@@ -16,7 +16,7 @@ class DoctorController extends Controller
     return view('backend.doctor.index');
 }
 public  function doctorDashboard(){
-    $invoices = \App\Models\Appointment::with(['series'])->orderBy('date', 'desc')->get();
+    $invoices = \App\Models\Appointment::with(['series'])->where('status', '0')->get();
     return view('backend.doctor.dashboard', [  'invoices'=> $invoices]);
 }
 
@@ -27,6 +27,9 @@ public function allApprovedList(){
     public function allPendingList(){
 
         return view('backend.doctor.pending_list');
+    }
+    public function profile(){
+        return view('backend.doctor.profile');
     }
 public  function doctorRegister(){
 

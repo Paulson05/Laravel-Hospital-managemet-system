@@ -9,11 +9,11 @@
                         <div class="col-md-3">
                             <div class="statistics">
                                 <div class="info">
-                                    <div class="icon icon-primary">
-                                        <i class="now-ui-icons ui-2_chat-round"></i>
+                                    <div class="icon icon-info">
+                                        <i class="now-ui-icons users_single-02"></i>
                                     </div>
-  <h3 class="info-title">{{\App\Models\Appointment::where('status', '1')->count()}}</h3>
-                                    <h6 class="stats-title">Approved</h6>
+                                    <h3 class="info-title">{{\App\Models\Appointment::count()}}</h3>
+                                    <h6 class="stats-title">Appointment</h6>
                                 </div>
                             </div>
                         </div>
@@ -31,14 +31,16 @@
                         <div class="col-md-3">
                             <div class="statistics">
                                 <div class="info">
-                                    <div class="icon icon-info">
-                                        <i class="now-ui-icons users_single-02"></i>
+                                    <div class="icon icon-primary">
+                                        <i class="now-ui-icons ui-2_chat-round"></i>
                                     </div>
-                        <h3 class="info-title">{{\App\Models\Appointment::count()}}</h3>
-                                    <h6 class="stats-title">Appointment</h6>
+  <h3 class="info-title">{{\App\Models\Appointment::where('status', '1')->count()}}</h3>
+                                    <h6 class="stats-title">Approved</h6>
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-md-3">
                             <div class="statistics">
                                 <div class="info">
@@ -55,8 +57,8 @@
 
             </div>
         </div>
-        <div class="col-md-12 table-responsive card">
-            <div class="data-tables">
+        <div class="col-md-12 table-responsive card ">
+            <div class="data-tables container justify-content-center">
                 <div class="card-body table-striped table-no-bordered table-hover dataTable dtr-inline table-full-width">
                     <div class="toolbar">
                         <!--        Here you can write extra buttons/actions for the toolbar              -->

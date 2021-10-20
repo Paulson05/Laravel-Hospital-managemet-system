@@ -134,6 +134,6 @@ public function approvedList(){
         $invoice = Appointment::find($id);
             DB::table('patients_appointments')->where('id', $id)->update(['status' => 1]);
 
-        return redirect()->route('patient.appointment.index');
+        return redirect()->route('doctor.approved.list');
     }
 }

@@ -36,10 +36,10 @@
         </a>
 
     </li>
-    <li class=""  >
+    <li class="{{ Route::currentRouteNamed('doctor.profile') ? 'active' : '' }}" >
 
 
-        <a href="">
+        <a href="{{route('doctor.profile')}}">
 
             <i class="now-ui-icons design_app"></i>
 
