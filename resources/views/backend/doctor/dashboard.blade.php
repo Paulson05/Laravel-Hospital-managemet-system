@@ -12,8 +12,8 @@
                                     <div class="icon icon-primary">
                                         <i class="now-ui-icons ui-2_chat-round"></i>
                                     </div>
-{{--                                    <h3 class="info-title">{{\App\Models\Customer::count()}}</h3>--}}
-                                    <h6 class="stats-title">Customer</h6>
+  <h3 class="info-title">{{\App\Models\Appointment::where('status', '1')->count()}}</h3>
+                                    <h6 class="stats-title">Approved</h6>
                                 </div>
                             </div>
                         </div>
@@ -23,8 +23,8 @@
                                     <div class="icon icon-success">
                                         <i class="now-ui-icons business_money-coins"></i>
                                     </div>
-{{--                                    <h3 class="info-title">{{\App\Models\Supplier::count()}}</h3>--}}
-                                    <h6 class="stats-title">Supplier</h6>
+                                    <h3 class="info-title">{{\App\Models\Appointment::where('status', '0')->count()}}</h3>
+                                    <h6 class="stats-title">Pending</h6>
                                 </div>
                             </div>
                         </div>
@@ -34,8 +34,8 @@
                                     <div class="icon icon-info">
                                         <i class="now-ui-icons users_single-02"></i>
                                     </div>
-{{--                                    <h3 class="info-title">{{\App\Models\Category::count()}}</h3>--}}
-                                    <h6 class="stats-title">Category</h6>
+                        <h3 class="info-title">{{\App\Models\Appointment::count()}}</h3>
+                                    <h6 class="stats-title">Appointment</h6>
                                 </div>
                             </div>
                         </div>
@@ -45,8 +45,8 @@
                                     <div class="icon icon-danger">
                                         <i class="now-ui-icons objects_support-17"></i>
                                     </div>
-{{--                                    <h3 class="info-title">{{\App\Models\Product::count()}}</h3>--}}
-                                    <h6 class="stats-title">Product</h6>
+                     <h3 class="info-title">{{\App\Models\Patient::count()}}</h3>
+                                    <h6 class="stats-title">Patient</h6>
                                 </div>
                             </div>
                         </div>
