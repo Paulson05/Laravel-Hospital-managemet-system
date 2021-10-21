@@ -21,8 +21,8 @@ class CreatePatientsAppointmentsTable extends Migration
             $table->integer('patients_id');
             $table->string('email');
             $table->string('phone_number');
-            $table->string('doctor');
-            $table->string('department');
+            $table->integer('doctors_id');
+            $table->string('departments_id');
             $table->string('date');
             $table->string('time');
             $table->string('message');

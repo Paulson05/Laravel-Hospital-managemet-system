@@ -56,7 +56,7 @@
                                             <div class="form-group">
 
                                                 <strong>Doctor</strong>
-                                                <select name="doctor" id="doctor" class="doctor form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                                <select name="doctors_id" id="doctors_id" class="doctors_id form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
                                                     @php
                                                     $doctor = \App\Models\User::all();
                                                     @endphp
@@ -144,7 +144,7 @@
 
                                                 <div class="form-group">
                                                     <label>message</label>
-                                                    <textarea name="messages" id="message" class="form-control col-12 @error('message'){{"is-invalid"}}@enderror" rows="5" cols="30" required></textarea>
+                                                    <textarea name="messages" id="message" class="message form-control col-12 @error('message'){{"is-invalid"}}@enderror" rows="5" cols="30" required></textarea>
                                                 </div>
                                                 @error('message')
                                                 <span class="form-text text-danger">{{$errors->first('message')}}</span>
@@ -385,7 +385,7 @@
     </script>
     <script>
         $(document).ready(function () {
-            $(document).on('change', '.doctor', function (){
+            $(document).on('change', '.doctors_id', function (){
 
                 var doctor_id = $(this).val();
                 console.log(doctor_id);
@@ -431,6 +431,7 @@
                         a.find('.email').val(data.email);
                         a.find('.patient_number').val(data.patient_number);
                         a.find('.department_id').val(data.department_id);
+                        a.find('.message').val(data.symptoms);
                         },
                     error:function (){
 
@@ -474,8 +475,8 @@
                     'serials_id' : $('#serials_id').val(),
                     'email' : $('#email').val(),
                     'phone_number' : $('#phone_number').val(),
-                    'doctor' : $('#doctor').val(),
-                    'department' : $('#department_id').val(),
+                    'doctors_id' : $('#doctors_id').val(),
+                    'departments_id' : $('#department_id').val(),
                     'date' : $('#date').val(),
                     'time' : $('#time').val(),
                     'message' : $('#message').val(),

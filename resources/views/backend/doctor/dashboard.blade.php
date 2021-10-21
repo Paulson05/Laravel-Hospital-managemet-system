@@ -81,7 +81,9 @@
                             </thead>
 
                             <tbody>
-
+                                      @php
+                                      $invoices = \App\Models\Appointment::where('departments_id',auth()->user()->departments_id)->get();
+                                      @endphp
                             @foreach($invoices as $invoice)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
@@ -157,28 +159,28 @@
             });
             fetchUser();
             function fetchUser() {
-                $.ajax({
-                    type: "GET",
-                    url:"/fetchuser",
-                    dataType:"json",
-                    success: function (response) {
-                        // console.log(response.posts);
-
-                        $('tbody').html("");
-                        $.each(response.users, function (key, item) {
-                            $('tbody').append('<tr>\
-                                            <td>'+item.id+'</td>\
-                                           <td>'+item.name+'</td>\
-                                           <td>'+item.email+'</td>\
-                                           <td>'+item.phone_number+'</td>\
-                                           <td>'+item.address+'</td>\
-                                           <td>'+item.phone_number+'</td>\
-                                            <td><button type="button"  value="'+item.id+'" class="edit_btn btn btn-primary" ><i class="fa fa-edit"></i></button></td>\
-                                              <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash"></i></button></td>\
-                                            </tr>');
-                        });
-                    }
-                })
+                // $.ajax({
+                //     type: "GET",
+                //     url:"/fetchuser",
+                //     dataType:"json",
+                //     success: function (response) {
+                //         // console.log(response.posts);
+                //
+                //         $('tbody').html("");
+                //         $.each(response.users, function (key, item) {
+                //             $('tbody').append('<tr>\
+                //                             <td>'+item.id+'</td>\
+                //                            <td>'+item.name+'</td>\
+                //                            <td>'+item.email+'</td>\
+                //                            <td>'+item.phone_number+'</td>\
+                //                            <td>'+item.address+'</td>\
+                //                            <td>'+item.phone_number+'</td>\
+                //                             <td><button type="button"  value="'+item.id+'" class="edit_btn btn btn-primary" ><i class="fa fa-edit"></i></button></td>\
+                //                               <td><button type="button" value="'+item.id+'"  class="delete_post btn btn-danger" ><i class="fa fa-trash"></i></button></td>\
+                //                             </tr>');
+                //         });
+                //     }
+                // })
             }
 
 

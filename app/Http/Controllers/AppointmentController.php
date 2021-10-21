@@ -49,8 +49,8 @@ public function approvedList(){
             'serials_id' => 'required',
             'phone_number' => 'required',
             'email' => 'required',
-            'doctor' => 'required',
-            'department' => 'required',
+            'doctors_id' => 'required',
+            'departments_id' => 'required',
             'date' => 'required',
             'time' => 'required',
             'message' => 'required',
@@ -63,7 +63,7 @@ public function approvedList(){
         }
 
         else
-            $array=collect($request->only(['name','phone_number', 'number', 'patients_id','serials_id','email','doctor','department','date','time','message' ]))->all();
+            $array=collect($request->only(['name','phone_number', 'number', 'patients_id','serials_id','email','doctors_id','departments_id','date','time','message' ]))->all();
        Appointment::create($array);
 
 //        $department->created_by = Auth::user()->id;

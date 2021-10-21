@@ -57,7 +57,7 @@
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
-                        James Amos
+                        {{auth()->user()->name}}
                         <b class="caret"></b>
                     </span>
                     </a>

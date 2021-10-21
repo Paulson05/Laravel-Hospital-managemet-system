@@ -16,7 +16,7 @@ class DefaultController extends Controller
         return response()->json($data);
     }
     public function findEmail(Request  $request){
-        $email = Patient::select(['email','patient_number','department_id'])->with(['depts'])->where('id', $request->id)->first();
+        $email = Patient::select(['email','patient_number','department_id', 'symptoms'])->with(['depts'])->where('id', $request->id)->first();
 
         return  response()->json($email);
     }
