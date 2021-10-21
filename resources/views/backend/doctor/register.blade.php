@@ -54,51 +54,204 @@
         <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
         <div class="content">
             <div class="container">
-                <div class="col-md-4 ml-auto mr-auto">
+                <div class="col-md-12 ml-auto mr-auto">
                     <form class="form" method="post" action="{{route('doctor.post.register')}}">
                         @csrf
-                        <div class="card card-login card-plain">
-                            <h2 class="text-center">Register</h2>
-
-                            <div class="card-body ml-5 ">
+                        <div class="row" style="color: white !important;">
 
 
-                                <div class="input-group no-border form-control-lg">
-                                <span class="input-group-prepend">
-                                  <div class="input-group-text">
-                                    <i class="now-ui-icons users_circle-08"></i>
-                                  </div>
-                                </span>
-                                    <input type="text" name="name" class="form-control" placeholder="name">
+                            <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
+                                <div class="form-group">
+                                    <strong>Doctor name</strong>
+                                    <input type="text" name="name"   id="name" class="name form-control " placeholder=" name" >
+
                                 </div>
 
-                                <div class="input-group no-border form-control-lg">
-                                <span class="input-group-prepend">
-                                  <div class="input-group-text">
-                                    <i class="now-ui-icons users_circle-08"></i>
-                                  </div>
-                                </span>
-                                    <input type="text" name="email" class="form-control" placeholder="email">
-                                </div>
-
-                                <div class="input-group no-border form-control-lg">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="now-ui-icons text_caps-small"></i>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
+                                <div class="form-group">
+                                    <strong>password</strong>
                                     <input type="password" name="password" placeholder="Password..." class="form-control">
+
                                 </div>
 
-
-                                <div class="col-xs-12 col-sm-12 col-md-12 ">
-                                    <button type="submit" class="btn btn-primary text-center">Register</button>
-                                </div>
                             </div>
 
 
 
 
+
+                            <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                <div class="form-group">
+
+                                    <strong>Degree</strong>
+                                    <select name="degree" id="degree" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                        @php
+                                        $degree = \App\Models\Degree::all();
+                                        @endphp
+
+                                        <option>--select degree--</option>
+                                        @forelse( $degree as $item)
+                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @empty
+                                        <option value=""> select degree</option>
+                                        @endforelse
+
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                <div class="form-group">
+                                    <strong>email</strong>
+                                    <input type="text" name="email"   id="email" class="email form-control " placeholder="email" >
+
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                <div class="form-group">
+
+                                    <strong>Specialist</strong>
+                                    <select name="specialist" id="specialist" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                        @php
+                                        $specislist = \App\Models\Specialist::all();
+                                        @endphp
+
+                                        <option>--select specilist--</option>
+                                        @forelse( $specislist as $item)
+                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @empty
+                                        <option value="">specialist</option>
+                                        @endforelse
+
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
+                                <div class="form-group">
+                                    <strong>Date-Of-Birth</strong>
+                                    <input type="date" name="D_O_B"   id="D_O_B" class="D_O_B form-control " placeholder="D_O_B" >
+
+                                </div>
+
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                <div class="form-group">
+
+                                    <strong>Department</strong>
+                                    <select name="departments_id" id="departments_id" class="departments_id form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                        @php
+                                        $department = \App\Models\Department::all();
+                                        @endphp
+
+                                        <option>--select specilist--</option>
+                                        @forelse( $department as $item)
+                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @empty
+                                        <option value="">specialist</option>
+                                        @endforelse
+
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                <div class="form-group">
+
+                                    <strong>Country</strong>
+                                    <select name="country" id="country" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
+                                        @php
+                                        $department = \App\Models\Department::all();
+                                        @endphp
+
+                                        <option>--select specilist--</option>
+                                        @forelse( $department as $item)
+                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @empty
+                                        <option value="">specialist</option>
+                                        @endforelse
+
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                <div class="form-group">
+
+                                    <strong>Gender</strong>
+
+                                    <select class="form-control" id="gender"  name="gender">
+                                        <option>---select gender---</option>
+
+                                        <option value="male">male</option>
+                                        <option value="female">female</option>
+
+
+                                    </select>
+
+
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 text-left ">
+                                <div class="form-group">
+                                    <strong>Address</strong>
+                                    <input type="text" name="address"   id="address" class="address form-control " placeholder="address" >
+
+                                </div>
+
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                                <div class="form-group">
+                                    <strong>Phone number</strong>
+                                    <input type="text" name="phone"   id="phone" class="phone form-control " placeholder="phone" >
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="card-title text-left">Photo</h4>
+                                <input type="file" id="photo" name="photo"  />
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-left">
+
+                                <div class="form-group">
+
+                                    <div class="form-group">
+                                        <label>short bio</label>
+                                        <textarea name="description" id="description" class="form-control col-12" rows="5" cols="30" required></textarea>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-left">
+                                <div class="form-group">
+
+                                    <strong>status</strong>
+
+                                    <select class="form-control" id="status"  name="status">
+                                        <option>---select status---</option>
+
+                                        <option value="active">active</option>
+                                        <option value="inactive">inactive</option>
+
+
+                                    </select>
+
+
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-left">
+                                <button type="submit" class="add_product btn btn-primary">Save</button>
+                            </div>
                         </div>
 
 
@@ -208,7 +361,7 @@
 </div>
 
 
-@include('backend.template.partials.script')
+@include('backend.template.partials.scripts')
 
 </body>
 

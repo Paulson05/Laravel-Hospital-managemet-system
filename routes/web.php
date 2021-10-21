@@ -72,9 +72,11 @@ Route::post('/doctor/post/register', [DoctorController::class, 'postRegister'])-
 
 Route::post('/post-doctor', [DoctorController::class, 'store'])->name('post.doctor');
 Route::get('/fetch-doc', [DoctorController::class, 'fetchDoctor'])->name('fetch.doctor');
-Route::get('/edit-doctor/{id}', [ DoctorController::class, 'edit']);
-Route::put('/update-doctor/{id}', [DoctorController::class, 'update']);
-Route::delete('/delete-doctor/{id}', [DoctorController::class, 'destroy']);
+Route::resource('doctors', DoctorController::class)->except('create');
+Route::get('/edit-doctor', [DoctorController::class, 'getEdit'])->name('edit.doctor');
+Route::post('/post/update/doctor', [DoctorController::class, 'postEdit'])->name('post.update.doctor');
+
+
 
 //serial
 Route::resource('serial', SerialController::class)->except('create');
@@ -108,6 +110,7 @@ Route::get('/fetch-department', [DepartmentController::class, 'fetchDepartment']
 Route::get('/edit-departmentdepartment/{id}', [DepartmentController::class, 'edit']);
 Route::put('/update-department/{id}', [DepartmentController::class, 'update']);
 Route::delete('/delete-department/{id}', [DepartmentController::class, 'destroy']);
+
 
 //customer
 Route::get('/customer', [CustomerController::class, 'index'])->name('customer.index');

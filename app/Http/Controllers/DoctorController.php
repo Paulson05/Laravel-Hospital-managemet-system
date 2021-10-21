@@ -39,16 +39,42 @@ public  function doctorRegister(){
     public function postRegister(Request $request){
 
         $this->validate($request,[
-            'name'=> 'required',
-            'email'=> 'required',
-            'password' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'specialist' => "required",
+            'address' => 'required',
+            'gender' => 'required',
+            'D_O_B' => 'required',
+            'country' => 'required',
+            'phone' => 'required',
+            'description' => 'required',
+            'photo' => 'required',
+            'status' => 'required',
+            'departments_id' => 'required'
         ]);
 
-        $post = User::create(collect($request->only(['name','email']))->put('password',bcrypt($request->password))->all());
-        $post->save();
+
+        $employer_id = rand(106890128, 100000000);
+        $array=collect($request->only(['name', 'departments_id', 'email', 'specialist', 'address', 'gender', 'D_O_B', 'country', 'phone', 'degree', 'description', 'photo']))->put('password',bcrypt($request->password))->put('employer_id',$employer_id)->all();
+        User::create($array);
         return redirect()->route('doctor.login');
 
     }
+
+    public function postEdit(Request $request)
+
+    {
+
+
+       auth()->user()->update([
+           'name' => $request->input( 'name'),
+           'email' => $request->input('email'),
+           'address' => $request->input( 'address'),
+           'phone' => $request->input('phone'),
+       ]);
+      return redirect()->route('doctor.profile');
+    }
+
     public function getLogin(){
       return view('backend.doctor.login');
     }
@@ -133,30 +159,12 @@ public  function doctorRegister(){
     }
 
 
-    public function edit($id)
+    public function getEdit()
     {
-        $product = Product::find($id);
-
-        if ($product) {
-            return response()->json([
-                'status' => 200,
-                'doctor' => $product,
-
-            ]);
-        } else {
-            return response()->json([
-                'status' => 200,
-                'message' => 'doctor added succesfully',
-
-            ]);
-        }
+      return view('backend.doctor.edit');
     }
 
 
-    public function update(Request $request, $id)
-    {
-
-    }
 
     public function destroy($id)
     {
