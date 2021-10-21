@@ -12,7 +12,7 @@
                                     <div class="icon icon-info">
                                         <i class="now-ui-icons users_single-02"></i>
                                     </div>
-                                    <h3 class="info-title">{{\App\Models\Appointment::count()}}</h3>
+                                    <h3 class="info-title">{{\App\Models\Appointment::where('departments_id',auth()->user()->departments_id)->count()}}</h3>
                                     <h6 class="stats-title">Appointment</h6>
                                 </div>
                             </div>
@@ -23,7 +23,7 @@
                                     <div class="icon icon-success">
                                         <i class="now-ui-icons business_money-coins"></i>
                                     </div>
-                                    <h3 class="info-title">{{\App\Models\Appointment::where('status', '0')->count()}}</h3>
+                                    <h3 class="info-title">{{\App\Models\Appointment::where('departments_id',auth()->user()->departments_id)->where('status', '0')->count()}}</h3>
                                     <h6 class="stats-title">Pending</h6>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                                     <div class="icon icon-primary">
                                         <i class="now-ui-icons ui-2_chat-round"></i>
                                     </div>
-  <h3 class="info-title">{{\App\Models\Appointment::where('status', '1')->count()}}</h3>
+  <h3 class="info-title">{{\App\Models\Appointment::where('departments_id',auth()->user()->departments_id)->where('status', '1')->count()}}</h3>
                                     <h6 class="stats-title">Approved</h6>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
 
                             <tbody>
                                       @php
-                                      $invoices = \App\Models\Appointment::where('departments_id',auth()->user()->departments_id)->get();
+                                      $invoices = \App\Models\Appointment::orderBy('date', 'desc')->orderby('id', 'desc')->where('departments_id',auth()->user()->departments_id)->get();
                                       @endphp
                             @foreach($invoices as $invoice)
                             <tr>

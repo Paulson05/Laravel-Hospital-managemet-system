@@ -337,7 +337,7 @@
                                 </tr>
 
                                 @php
-                                $appointment = \App\Models\Appointment::orderBy('date', 'desc')->orderby('id', 'desc')->where('status', '1')->get();
+                                $appointment = \App\Models\Appointment::orderBy('date', 'desc')->orderby('id', 'desc')->where('status', '1')->where('departments_id',auth()->user()->departments_id)->get();
 
                                 @endphp
                                 </thead>
