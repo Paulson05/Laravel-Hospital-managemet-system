@@ -128,7 +128,7 @@
                                                 <strong>Visiting Doctor</strong>
                                                 <select name="visiting_doctor" id="visiting_doctor" class="form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
                                                     @php
-                                                        $department = \App\Models\Doctor::all();
+                                                        $department = \App\Models\User::all();
                                                     @endphp
 
                                                     <option>--select doctor--</option>

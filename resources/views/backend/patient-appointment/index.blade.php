@@ -7,7 +7,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Patient Appointment</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">({{\App\Models\Appointment::count()}})</li>
+                    <li class="breadcrumb-item active" aria-current="page">({{\App\Models\User::count()}})</li>
                 </ol>
             </nav>
             <div class="row">
@@ -58,7 +58,7 @@
                                                 <strong>Doctor</strong>
                                                 <select name="doctor" id="doctor" class="doctor form-control" data-title="Single Unit" data-style="btn-default btn-outline" data-menu-style="dropdown-blue">
                                                     @php
-                                                    $doctor = \App\Models\Doctor::all();
+                                                    $doctor = \App\Models\User::all();
                                                     @endphp
 
                                                     <option value="0" disabled="true" selected="true">--select doctor--</option>
