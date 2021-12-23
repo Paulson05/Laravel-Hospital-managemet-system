@@ -19,6 +19,7 @@ use App\Http\Controllers\PharmacyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SeatBedController;
 use App\Http\Controllers\SerialController;
 use App\Http\Controllers\SpecialistController;
@@ -286,6 +287,7 @@ Route::prefix('admin')->group(function (){
 
     });
 });
+Route::resource('role', RolesController::class)->only(['index','store','show','update','destroy','edit',  ]);
 
 Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
 

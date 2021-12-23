@@ -26,4 +26,8 @@ class Appointment extends Model
     public function invoicedetails(){
         return $this->hasMany(Appointment::class, 'patients_id', 'id' );
     }
+
+    public function patient(){
+        return $this->belongsTo(Patient::class, 'patients_id', 'id'  );
+    }
 }

@@ -70,11 +70,11 @@
                             <thead>
                             <tr>
                                 <th>S/N</th>
-                                <th>Name</th>
-
-                                <th>Invoice No</th>
-                                <th>date</th>
-                                <th>Description</th>
+                                <th>Appointment number</th>
+                                <th>Patient Name</th>
+                                <th>message</th>
+                                <th>Appointment date</th>
+                                <th>Appointment time</th>
                                 <th>status</th>
 
                             </tr>
@@ -83,17 +83,16 @@
                             <tbody>
                                       @php
                                       $invoices = \App\Models\Appointment::orderBy('date', 'desc')->orderby('id', 'desc')->where('departments_id',auth()->user()->departments_id)->get();
+
                                       @endphp
                             @foreach($invoices as $invoice)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td> {{ $invoice->series->name }}-{{ str_pad($invoice->number, 5, '0', STR_PAD_LEFT) }} </td>
-                                <td>{{$invoice->patients_id}}</td>
-                                <td>{{date('d-m-y', strtotime($invoice->date))}}</td>
-                                <td>{{$invoice->email}}</td>
+                                <td>{{$invoice->patient->name}}</td>
                                 <td>{{$invoice->message}}</td>
+                                <td>{{date('d-m-y', strtotime($invoice->date))}}</td>
                                 <td>{{$invoice->time}}</td>
-                                <td>{{$invoice->date}}</td>
                                 <td>
                                     @if($invoice->status == '0')
                                     <button class=" btn btn-danger">pending</button>
