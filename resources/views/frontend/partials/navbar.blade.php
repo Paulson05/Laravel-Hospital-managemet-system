@@ -12,19 +12,19 @@
         <ul class="navbar-nav ml-auto font-weight-bold">
             <li class="nav-item active">
                 <a class="nav-link active"
-                   href="index.html">Home</a>
+                   href="{{route('home.index')}}">Home</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link "
-                   href="appointment.html">Appointments</a>
+                   href="{{route('appointment')}}">Appointments</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link "
-                   href="contact-us.html">Contact Us</a>
+                   href="{{route('contact')}}">Contact Us</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link "
-                   href="about-us.html">About Us</a>
+                   href="{{route('about') }}">About Us</a>
             </li>
             <li class="nav-item mt-1 {{ Route::currentRouteNamed('dashboard') ? 'active' : '' }}">
                 <a class="login btn btn-sm" href="{{Route('doctor.login')}}">Login as Doctor</a>

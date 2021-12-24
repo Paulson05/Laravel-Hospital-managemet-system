@@ -56,6 +56,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomepageController::class, 'index'])->name('home.index');
 
+Route::get('/contactus', [HomepageController::class, 'contactUs'])->name('contact');
+Route::get('/about-us', [HomepageController::class, 'aboutUS'])->name('about');
+Route::get('/appointment', [HomepageController::class, 'appointment'])->name('appointment');
 //doctor
 Route::get('/doctor/index', [DoctorController::class, 'index'])->name('doctor.index');
 //Route::get('/doctor/barcode', [DoctorController::class, 'getProductCode'])->name('doctor.barcode');
