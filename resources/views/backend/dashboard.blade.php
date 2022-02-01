@@ -35,7 +35,7 @@
                                         <i class="now-ui-icons users_single-02"></i>
                                     </div>
 {{--                                    <h3 class="info-title">{{\App\Models\Category::count()}}</h3>--}}
-                                    <h6 class="stats-title">Category</h6>
+                                    <h6 class="stats-title">Patient</h6>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                         <i class="now-ui-icons objects_support-17"></i>
                                     </div>
 {{--                                    <h3 class="info-title">{{\App\Models\Product::count()}}</h3>--}}
-                                    <h6 class="stats-title">Product</h6>
+                                    <h6 class="stats-title">Doctors</h6>
                                 </div>
                             </div>
                         </div>
@@ -347,7 +347,7 @@
 
 
             });
-            {{--update--}}
+
             $(document).on('click', '.update_supplier', function (e){
                 e.preventDefault();
 

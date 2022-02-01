@@ -20,48 +20,8 @@
     Tip 2: you can also add an image using data-image tag
 -->
         <div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="https://www.creative-tim.com/" class="simple-text logo-mini">
-                    Ct
-                </a>
-                <a href="https://www.creative-tim.com/" class="simple-text logo-normal">
-                    Creative Tim
-                </a>
-            </div>
-            <div class="user">
-                <div class="photo">
-                    <img src="../assets/img/default-avatar.png" />
-                </div>
-                <div class="info ">
-                    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                            <span>Tania Andrew
-                                <b class="caret"></b>
-                            </span>
-                    </a>
-                    <div class="collapse" id="collapseExample">
-                        <ul class="nav">
-                            <li>
-                                <a class="profile-dropdown" href="#pablo">
-                                    <span class="sidebar-mini">MP</span>
-                                    <span class="sidebar-normal">My Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="profile-dropdown" href="#pablo">
-                                    <span class="sidebar-mini">EP</span>
-                                    <span class="sidebar-normal">Edit Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="profile-dropdown" href="#pablo">
-                                    <span class="sidebar-mini">S</span>
-                                    <span class="sidebar-normal">Settings</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
+
            @include('backend.partials.sidebar')
         </div>
     </div>

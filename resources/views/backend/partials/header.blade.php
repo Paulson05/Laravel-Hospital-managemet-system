@@ -3,7 +3,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('/assets/img/apple-icon.png')}}">
     <link rel="icon" type="image/png" href="{{asset('/assets/img/favicon.html')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Light Bootstrap Dashboard PRO - Premium Bootstrap 4 Admin Template by Creative Tim</title>
+    <title>bucci hospital</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://www.creative-tim.com/product/light-bootstrap-dashboard-pro" />

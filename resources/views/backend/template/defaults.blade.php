@@ -32,11 +32,11 @@
 
         <div class="logo">
             <a href="http://www.creative-tim.com/" class="simple-text logo-mini">
-                CT
+                BH
             </a>
 
             <a href="http://www.creative-tim.com/" class="simple-text logo-normal">
-                Creative Tim
+        Bucci Hospital
             </a>
 
             <div class="navbar-minimize">
@@ -51,40 +51,8 @@
         <div class="sidebar-wrapper" id="sidebar-wrapper">
 
             <div class="user">
-                <div class="photo">
-                    <img src="../assets/img/james.jpg" />
-                </div>
-                <div class="info">
-                    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                    <span>
-                        James Amos
-                        <b class="caret"></b>
-                    </span>
-                    </a>
-                    <div class="clearfix"></div>
-                    <div class="collapse" id="collapseExample">
-                        <ul class="nav">
-                            <li>
-                                <a href="#">
-                                    <span class="sidebar-mini-icon">MP</span>
-                                    <span class="sidebar-normal">My Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="sidebar-mini-icon">EP</span>
-                                    <span class="sidebar-normal">Edit Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="sidebar-mini-icon">S</span>
-                                    <span class="sidebar-normal">Settings</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
+
             </div>
 
            @include('backend.template.partials.sidebar')
