@@ -29,6 +29,9 @@
             <li class="nav-item mt-1 {{ Route::currentRouteNamed('dashboard') ? 'active' : '' }}">
                 <a class="login btn btn-sm" href="{{Route('doctor.login')}}">Login as Doctor</a>
             </li>
+            <li class="nav-item mt-1 {{ Route::currentRouteNamed('dashboard') ? 'active' : '' }}">
+                <a class="login btn btn-sm" href="{{Route('dashboard')}}">dashboard</a>
+            </li>
             <li class="nav-item mt-1">
                 <a class="login btn btn-sm ml-2"
                    href="{{Route('doctor.register')}}">Register</a>

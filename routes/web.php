@@ -54,7 +54,7 @@ use Illuminate\Support\Facades\Route;
 //
 //});
 
-Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('/', [HomepageController::class, 'index'])->name('home.index');
 
 Route::get('/contactus', [HomepageController::class, 'contactUs'])->name('contact');
 Route::get('/about-us', [HomepageController::class, 'aboutUS'])->name('about');
